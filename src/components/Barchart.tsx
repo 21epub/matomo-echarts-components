@@ -15,10 +15,7 @@ function Barchart({ url }: Props) {
     const { data: elements } = useSWR('/api/barchat', fetcher);
 
     if(elements){
-        let keylist = []
-        for(let key in elements[0]){
-            keylist.push(key)
-        }
+        const keylist = Object.keys(elements[0]);
 
         let content = {
             legend: {},
