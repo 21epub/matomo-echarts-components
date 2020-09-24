@@ -15,12 +15,12 @@ npm install --save @21epub/matomo-echarts-components
 ```tsx
 import React, { Component } from 'react'
 
-import MyComponent from '@21epub/matomo-echarts-components'
+import { Barchart} from '@21epub/matomo-echarts-components'
 import '@21epub/matomo-echarts-components/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <Barchart />
   }
 }
 ```

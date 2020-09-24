@@ -5,9 +5,6 @@
   "author": "garry",
   "license": "MIT",
   "homepage": "https://github.com/21epub/matomo-echarts-components",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/21epub/matomo-echarts-components.git"
