@@ -6,10 +6,10 @@ import 'antd/dist/antd.css';
 
 interface Props {
     url: string,
-    period?:string 
+    options?:string 
 }
 
-function Barchart({ url }: Props) {
+function Barchart({ url,options }: Props) {
     const _url = url;
     const fetcher = () => fetch(_url).then(r => r.json())
     const { data: elements } = useSWR('/api/barchat', fetcher);
@@ -18,7 +18,6 @@ function Barchart({ url }: Props) {
         const keylist = Object.keys(elements[0]);
 
         let content = {
-            legend: {},
             tooltip: {},
             dataset: {
                 dimensions: keylist,
@@ -27,14 +26,26 @@ function Barchart({ url }: Props) {
             xAxis: {type: 'category'},
             yAxis: {type: 'value'},
             series: [
-                {type: 'bar'}
+                {
+                    type: 'bar',
+                    itemStyle: {
+                        normal: {
+                            color: '#7CA1F5',
+                            label: {
+                                show: true,
+                                position: 'top',
+                                color:'#000000 '
+                            }
+                        }
+                    },
+    　　　　　　　　　　barWidth:50
+                }
             ]
         };
 
         return(
             <div>
-                <h1>扩展渠道</h1>
-                <Card>
+                <Card title="扩展渠道">
                     <ReactEcharts option={content}/>
                 </Card>
             </div>
