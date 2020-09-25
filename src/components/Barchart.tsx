@@ -44,11 +44,9 @@ function Barchart({ url,options }: Props) {
         };
 
         return(
-            <div>
-                <Card title="扩展渠道">
-                    <ReactEcharts option={content}/>
-                </Card>
-            </div>
+            <Card title="扩展渠道">
+                <ReactEcharts option={content}/>
+            </Card>
         )
     }else{
         return <div><Spin/>loading...</div>

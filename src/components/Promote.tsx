@@ -1,28 +1,49 @@
 import React from"react";
 import useSWR from 'swr';
-import {Card,DatePicker} from 'antd'
+import {Card, Spin} from 'antd'
 import ReactEcharts from 'echarts-for-react';
 import 'antd/dist/antd.css';
-//import { DatePicker } from 'antd';
 
-const url = "https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/map/";
+interface Props {
+    url: string,
+    options?:string 
+}
 
-const fetcher = () => fetch(url).then(r => r.json())
+function Promote({ url,options }: Props) {
+    const _url = url;
+    const fetcher = () => fetch(_url).then(r => r.json())
+    const { data: elements } = useSWR('/api/promote', fetcher);
 
-function Promote() {
-    const { data: elements } = useSWR('/api/book', fetcher);
-    console.log('ele',elements);
+    if(elements){
+        const keylist = Object.keys(elements[0]);
+        let content = {
+            tooltip: {},
+            legend: {
+                orient: 'vertical',
+                x: 'right',
+            },
+            dataset: {
+                dimensions: keylist,
+                source: elements
+            },
+            xAxis: {type: 'category',show:false},
+            yAxis: {type: 'value',show:false},
+            series: [
+                {
+                    type: 'pie',
+                    radius:['50%','80%'],
+                }
+            ]
+        };
 
-    return (
-        // <div>
-        //     {/* <p>{JSON.stringify(elements)}</p> */}
-        //     <h1>ceshi</h1>
-        //     <Card>
-        //         <DatePicker/>
-        //         <ReactEcharts option={testpic}/>
-        //     </Card>
-        // </div>
-    )
+        return(
+            <Card title="推广分析">
+                <ReactEcharts option={content}/>
+            </Card>
+        )
+    }else{
+        return <div><Spin/>loading...</div>
+    }
 }
 
 export default Promote;
