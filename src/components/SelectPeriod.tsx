@@ -1,31 +1,34 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import { DatePicker } from 'antd'
 import moment from 'moment';
-import 'antd/dist/antd.css';
-
-// interface Props {
-//     startDate?: string,
-//     EndDate?:string 
-// }
-
-//function SelectPeriod( { startDate,endDate}: Props) {
+import { AppContext } from './context';
+import { checkPeriod } from './dateCompute';
+//import styles from './index.module.less';
 
 function SelectPeriod() {
+    const { state: globalProps,dispatch} = useContext(AppContext);
     const { RangePicker } = DatePicker;
     const dateFormat = 'YYYY/MM/DD';
-    let startDate = '2015/01/01';
-    let endDate = '2015/01/01';
-    // const [startDate,setStartDate] = useState(_startDate);
-    // const [endDate,setEndDate] = useState(_endDate);
  
+    const selectPeriod = (data:any,dateString:string[]) => {
+        const period = checkPeriod(globalProps._dateRange[0],globalProps._dateRange[1])
+        const newSate ={
+            _dateRange:[dateString[0],dateString[1]],
+            options:period
+        }
+        dispatch({
+            type: 'selectPeriod',
+            payload: newSate
+        })
+    };
+
     return(
-        <div>
-            <RangePicker  
-            defaultValue={[moment(startDate, dateFormat),moment(endDate, dateFormat)]} 
-            format={dateFormat} 
-            onChange={(data,dateString)=>{console.log(dateString)}}
-            />
-        </div>
+        //className={styles.selectPeriod}
+        <RangePicker  
+        format={dateFormat} 
+        onChange={selectPeriod}
+        value={[moment(globalProps._dateRange[0], dateFormat),moment(globalProps._dateRange[1], dateFormat)]}
+        />  
     )
 }
 

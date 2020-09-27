@@ -1,8 +1,9 @@
-import React from"react";
+import React,{useContext} from"react";
 import useSWR from 'swr';
-import {Card, Spin} from 'antd'
+import {Card, Spin,Space} from 'antd'
+import {RightOutlined} from '@ant-design/icons'
+import {AppContext} from './context';
 import ReactEcharts from 'echarts-for-react';
-import 'antd/dist/antd.css';
 
 interface Props {
     url: string,
@@ -12,15 +13,27 @@ interface Props {
 function Trend({ url,options }: Props) {
     const _url = url;
     const fetcher = () => fetch(_url).then(r => r.json())
-    const { data: elements } = useSWR('/api/promote', fetcher);
+    const { data: elements } = useSWR('/api/trend', fetcher);
+
+    const { state: globalProps} = useContext(AppContext);
+    const startDate = globalProps._dateRange[0];
+    const endDate = globalProps._dateRange[1];
 
     if(elements){
-        const keylist = Object.keys(elements[0]);
+        const keylist = Object.keys(elements);
+        let elements_nb_hits = []
+        let i = 0;
+        for(;i<keylist.length;i++){
+            elements_nb_hits[i]={'date':keylist[i],'nb_hits':elements[keylist[i]].nb_hits};
+        }
+        const nb_hits = elements_nb_hits;
+        const labelList =['date','nb_hits']
+
         let content = {
             tooltip: {},
             dataset: {
-                dimensions: keylist,
-                source: elements
+                dimensions: labelList,
+                source: nb_hits,
             },
             xAxis: {type: 'category'},
             yAxis: {type: 'value'},
@@ -34,7 +47,7 @@ function Trend({ url,options }: Props) {
         };
 
         return(
-            <Card title="趋势图">
+            <Card title="趋势图" extra={<Space size={'large'}><p>{startDate}-{endDate}</p><a href="#"><RightOutlined/></a></Space>}>
                 <ReactEcharts option={content}/>
             </Card>
         )

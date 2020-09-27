@@ -1,8 +1,9 @@
-import React from"react";
+import React,{useContext} from"react";
 import useSWR from 'swr';
-import {Card, Spin} from 'antd'
+import {Card, Spin,Space} from 'antd'
+import {RightOutlined} from '@ant-design/icons'
+import {AppContext} from './context';
 import ReactEcharts from 'echarts-for-react';
-import 'antd/dist/antd.css';
 
 interface Props {
     url: string,
@@ -14,9 +15,12 @@ function Barchart({ url,options }: Props) {
     const fetcher = () => fetch(_url).then(r => r.json())
     const { data: elements } = useSWR('/api/barchat', fetcher);
 
+    const { state: globalProps} = useContext(AppContext);
+    const startDate = globalProps._dateRange[0];
+    const endDate = globalProps._dateRange[1];
+
     if(elements){
         const keylist = Object.keys(elements[0]);
-
         let content = {
             tooltip: {},
             dataset: {
@@ -44,7 +48,7 @@ function Barchart({ url,options }: Props) {
         };
 
         return(
-            <Card title="扩展渠道">
+            <Card title="扩展渠道" extra={<Space size={'large'}><p>{startDate}-{endDate}</p><a href="#"><RightOutlined/></a></Space>}>
                 <ReactEcharts option={content}/>
             </Card>
         )

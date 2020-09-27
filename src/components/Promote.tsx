@@ -1,8 +1,9 @@
-import React from"react";
+import React,{useContext} from"react";
 import useSWR from 'swr';
-import {Card, Spin} from 'antd'
+import {Card, Spin,Space} from 'antd';
+import {RightOutlined} from '@ant-design/icons'
 import ReactEcharts from 'echarts-for-react';
-import 'antd/dist/antd.css';
+import { AppContext } from './context';
 
 interface Props {
     url: string,
@@ -13,6 +14,10 @@ function Promote({ url,options }: Props) {
     const _url = url;
     const fetcher = () => fetch(_url).then(r => r.json())
     const { data: elements } = useSWR('/api/promote', fetcher);
+
+    const { state: globalProps} = useContext(AppContext);
+    const startDate = globalProps._dateRange[0];
+    const endDate = globalProps._dateRange[1];
 
     if(elements){
         const keylist = Object.keys(elements[0]);
@@ -37,7 +42,7 @@ function Promote({ url,options }: Props) {
         };
 
         return(
-            <Card title="推广分析">
+            <Card title="推广分析" extra={<Space size={'large'}><p>{startDate}-{endDate}</p><a href="#"><RightOutlined/></a></Space>}>
                 <ReactEcharts option={content}/>
             </Card>
         )

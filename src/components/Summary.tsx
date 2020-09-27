@@ -1,7 +1,6 @@
 import React from"react";
 import {Card,Row,Col,Spin} from 'antd'
 import useSWR from 'swr';
-import 'antd/dist/antd.css';
 
 interface Props {
     url: string,
@@ -23,7 +22,6 @@ function Summary({ url,options }: Props) {
         for(let i=0;i<5;i++){
             content[i] = {'spanList':spanList[i],'titleList':titleList[i],'todayData':todayData[i],'yesterdayData':yesterdayData[i],'totalData':totalData[i]}  
         }
-        console.log('content',content)
         return(
             <Card title="今日">
                 <Row align='bottom'> 

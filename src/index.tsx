@@ -4,3 +4,4 @@ export {default as Summary} from './components/Summary';
 export {default as Filter} from './components/Filter';
 export {default as Promote} from './components/Promote';
 export {default as Trend} from './components/Trend';
+export {AppProvider} from './components/context';

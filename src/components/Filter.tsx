@@ -1,31 +1,37 @@
-import React from 'react';
-import { DatePicker } from 'antd'
-import moment from 'moment';
-import 'antd/dist/antd.css';
-
-// interface Props {
-//     startDate?: string,
-//     EndDate?:string 
-// }
-
-//function SelectPeriod( { startDate,endDate}: Props) {
+import React,{useContext} from 'react';
+import {AppContext} from './context';
+import SelectPeriod from './SelectPeriod';
+import { Tabs} from 'antd';
+const { TabPane } = Tabs;
 
 function Filter() {
-    const { RangePicker } = DatePicker;
-    const dateFormat = 'YYYY/MM/DD';
-    let startDate = '2015/01/01';
-    let endDate = '2015/01/01';
-    // const [startDate,setStartDate] = useState(_startDate);
-    // const [endDate,setEndDate] = useState(_endDate);
- 
+    const { state: globalProps} = useContext(AppContext);
+    const startDate = globalProps._dateRange[0];
+    const endDate = globalProps._dateRange[1];
+    // var now = '2017-12-12 00:00:00';
+    // var moment = moment(now,'YYYY-MM-DD HH:mm:ss');
+    if(startDate===endDate){
+        console.log('是同一天')
+    }else{
+        console.log('不是同一天')
+    }
+    
+
     return(
-        <div>
-            <RangePicker  
-            defaultValue={[moment(startDate, dateFormat),moment(endDate, dateFormat)]} 
-            format={dateFormat} 
-            onChange={(data,dateString)=>{console.log(dateString)}}
-            />
-        </div>
+        <Tabs defaultActiveKey="today" tabBarExtraContent={<SelectPeriod/>}>
+            <TabPane tab="今日" key="today">          
+            </TabPane>
+            <TabPane tab="昨日" key="yesterday">          
+            </TabPane>
+            <TabPane tab="近7日" key="last7">        
+            </TabPane>
+            <TabPane tab="近15日" key="last15">        
+            </TabPane>
+            <TabPane tab="近30日" key="last30">        
+            </TabPane>
+            <TabPane tab="全部" key="all">        
+            </TabPane>
+        </Tabs>
     )
 }
 
