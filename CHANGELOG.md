@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7-alpha.0](https://github.com/21epub/matomo-echarts-components/compare/v0.1.6...v0.1.7-alpha.0) (2020-09-27)
+
+
+### Features
+
+* 🎸 add SelectPeriod component ([cbc05a2](https://github.com/21epub/matomo-echarts-components/commit/cbc05a29cd9ee23a3d269f9e71039616ac1db2ef))
+
 ### [0.1.6](https://github.com/21epub/matomo-echarts-components/compare/v0.1.5...v0.1.6) (2020-09-25)
 
 ### [0.1.5](https://github.com/21epub/matomo-echarts-components/compare/v0.1.4...v0.1.5) (2020-09-25)
