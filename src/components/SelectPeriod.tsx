@@ -11,7 +11,7 @@ function SelectPeriod() {
     const dateFormat = 'YYYY/MM/DD';
  
     const selectPeriod = (data:any,dateString:string[]) => {
-        const period = checkPeriod(globalProps._dateRange[0],globalProps._dateRange[1])
+        const period = checkPeriod(dateString[0],dateString[1])
         const newSate ={
             _dateRange:[dateString[0],dateString[1]],
             options:period
@@ -21,15 +21,24 @@ function SelectPeriod() {
             payload: newSate
         })
     };
-
-    return(
-        //className={styles.selectPeriod}
-        <RangePicker  
-        format={dateFormat} 
-        onChange={selectPeriod}
-        value={[moment(globalProps._dateRange[0], dateFormat),moment(globalProps._dateRange[1], dateFormat)]}
-        />  
-    )
+    
+    if(globalProps.options === 'all'){
+        return(
+            <RangePicker  
+            format={dateFormat} 
+            onChange={selectPeriod}
+            />
+        )
+    }else{
+        return(
+                        //className={styles.selectPeriod}
+            <RangePicker  
+            format={dateFormat} 
+            onChange={selectPeriod}
+            value={[moment(globalProps._dateRange[0], dateFormat),moment(globalProps._dateRange[1], dateFormat)]}
+            />  
+        )
+    }
 }
 
 export default SelectPeriod;

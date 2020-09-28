@@ -8,7 +8,6 @@ function getPastedDay(day:number){
     return moment(new Date()).subtract(day, "days");
 }
 
-//这个有问题
 function checkPeriod(_startDate:string,_endDate:string){
     const startDate = _startDate;
     const endDate = _endDate;
@@ -17,6 +16,7 @@ function checkPeriod(_startDate:string,_endDate:string){
     const last7Date = getPastedDay(6).format("YYYY/MM/DD");
     const last15Date = getPastedDay(14).format("YYYY/MM/DD");
     const last30Date = getPastedDay(29).format("YYYY/MM/DD");
+    console.log('startDate:',startDate,'!!!endDate:',endDate,'!!today:',todayDate,'!!!yesterday',yesterdayDate)
 
     if(startDate===endDate){
         switch (startDate) {
@@ -44,7 +44,39 @@ function checkPeriod(_startDate:string,_endDate:string){
                 return 'range';
         }
     }
-
 }
 
-export {getToday,checkPeriod}
+function keyToRange(key:string){
+    const todayDate = getToday().format("YYYY/MM/DD");
+    const yesterdayDate = getPastedDay(1).format("YYYY/MM/DD");
+    const last7Date = getPastedDay(6).format("YYYY/MM/DD");
+    const last15Date = getPastedDay(14).format("YYYY/MM/DD");
+    const last30Date = getPastedDay(29).format("YYYY/MM/DD");
+    let newdate = []
+    switch (key) {
+        case 'today': {
+            newdate=[todayDate,todayDate];
+            return newdate;
+        } 
+        case 'yesterday':{
+            newdate=[yesterdayDate,yesterdayDate];
+            return newdate;
+        }
+        case 'last7':{
+            newdate=[last7Date,todayDate];
+            return newdate;
+        }
+        case 'last15':{
+            newdate=[last15Date,todayDate];
+            return newdate;
+        }
+        case 'last30':{
+            newdate=[last30Date,todayDate];
+            return newdate;
+        }
+        default:
+            return 'err';
+    }
+}
+
+export {getToday,checkPeriod,keyToRange}

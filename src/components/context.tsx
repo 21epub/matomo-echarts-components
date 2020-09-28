@@ -8,7 +8,7 @@ type IGlobalProps = {
 
 const globalProps={
   _dateRange:['2020/01/01','2020/01/01'],
-  options:'today'||'yesterday'||'last7'||'last15'||'last30'||'all'||'range'
+  options:'all'||'today'||'yesterday'||'last7'||'last15'||'last30'||'range'
 }
 
 const AppContext = createContext<{
