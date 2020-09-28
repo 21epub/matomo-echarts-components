@@ -2,23 +2,37 @@ import React,{useContext} from 'react';
 import {AppContext} from './context';
 import SelectPeriod from './SelectPeriod';
 import { Tabs} from 'antd';
+import {keyToRange} from './dateCompute';
 const { TabPane } = Tabs;
 
 function Filter() {
-    const { state: globalProps} = useContext(AppContext);
-    const startDate = globalProps._dateRange[0];
-    const endDate = globalProps._dateRange[1];
-    // var now = '2017-12-12 00:00:00';
-    // var moment = moment(now,'YYYY-MM-DD HH:mm:ss');
-    if(startDate===endDate){
-        console.log('是同一天')
-    }else{
-        console.log('不是同一天')
-    }
-    
+    const {state:globalProps, dispatch} = useContext(AppContext);
 
+    const filter = (key:string) => {
+        const period = key;
+        if(key==='all'){
+            const newstate = {
+                options:period
+            }
+            dispatch({
+                type:'filter',
+                payload:newstate
+            })
+        }else{
+            const newRange = keyToRange(key);
+            const newSate ={
+                _dateRange:newRange,
+                options:period
+            }
+            dispatch({
+                type: 'filter',
+                payload: newSate
+            })
+        }
+    };
+    
     return(
-        <Tabs defaultActiveKey="today" tabBarExtraContent={<SelectPeriod/>}>
+        <Tabs defaultActiveKey="today" activeKey={globalProps.options} tabBarExtraContent={<SelectPeriod/>} onChange={filter}>
             <TabPane tab="今日" key="today">          
             </TabPane>
             <TabPane tab="昨日" key="yesterday">          

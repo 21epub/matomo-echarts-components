@@ -7,17 +7,25 @@ import ReactEcharts from 'echarts-for-react';
 
 interface Props {
     url: string,
-    options?:string 
+    id?:string 
 }
 
-function Barchart({ url,options }: Props) {
+function Barchart({ url,id}: Props) {
+    const { state: globalProps} = useContext(AppContext);
+    const option = globalProps.options;
+    const startDate = globalProps._dateRange[0];
+    const endDate = globalProps._dateRange[1];
+
+    const params = new URLSearchParams();
+    params.set('option', option);      
+    params.set('startDate', startDate);     
+    params.set('endDate', endDate);   
+    console.log('newurl:',params.toString());
+
+    //用新URL发送请求
     const _url = url;
     const fetcher = () => fetch(_url).then(r => r.json())
     const { data: elements } = useSWR('/api/barchat', fetcher);
-
-    const { state: globalProps} = useContext(AppContext);
-    const startDate = globalProps._dateRange[0];
-    const endDate = globalProps._dateRange[1];
 
     if(elements){
         const keylist = Object.keys(elements[0]);
