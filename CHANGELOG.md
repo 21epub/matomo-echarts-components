@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7-alpha.1](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.0...v0.1.7-alpha.1) (2020-09-28)
+
+
+### Features
+
+* 🎸 --story=1002259 --user=张薇 【建行】 熟悉ant design pro， 参与成效统计 ([0ebcc86](https://github.com/21epub/matomo-echarts-components/commit/0ebcc86abce715b5ed56628ceb1eb5649153689f))
+
 ### [0.1.7-alpha.0](https://github.com/21epub/matomo-echarts-components/compare/v0.1.6...v0.1.7-alpha.0) (2020-09-27)
 
 

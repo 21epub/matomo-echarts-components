@@ -31,6 +31,7 @@ function Detail({ url,options }: Props) {
                 key: i,
                 [keylist[0]]: elements[i][keylist[0]],
                 [keylist[1]]: elements[i][keylist[1]],
+                //[keylist[1]]: elements[i][keylist[1]],
             }
         }
 
