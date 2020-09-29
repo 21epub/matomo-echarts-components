@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7-alpha.3](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.1...v0.1.7-alpha.3) (2020-09-29)
+
+
+### Bug Fixes
+
+* 🐛 --task=1002278 --user=张薇 统计图的开发 https://www.tapd.cn/2014 ([716475d](https://github.com/21epub/matomo-echarts-components/commit/716475d28397bc7b4525c17b85a625326bc2e71d))
+* 🐛 fix some components ([418c2dd](https://github.com/21epub/matomo-echarts-components/commit/418c2ddb350d57aa2a483d2d39a967c7907f7117))
+
 ### [0.1.7-alpha.2](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.1...v0.1.7-alpha.2) (2020-09-28)
 
 
