@@ -7,7 +7,7 @@ import ReactEcharts from 'echarts-for-react';
 
 interface Props {
     url: string,
-    id?:string 
+    id:string 
 }
 
 function Barchart({ url,id}: Props) {
@@ -16,10 +16,12 @@ function Barchart({ url,id}: Props) {
     const startDate = globalProps._dateRange[0];
     const endDate = globalProps._dateRange[1];
 
+    //兼容性
     const params = new URLSearchParams();
     params.set('option', option);      
     params.set('startDate', startDate);     
-    params.set('endDate', endDate);   
+    params.set('endDate', endDate);  
+    params.set('id', id);
     console.log('newurl:',params.toString());
 
     //用新URL发送请求
@@ -50,7 +52,7 @@ function Barchart({ url,id}: Props) {
                             }
                         }
                     },
-    　　　　　　　　　　barWidth:50
+    　　　　　　　　　　barWidth:30
                 }
             ]
         };

@@ -37,7 +37,22 @@ function Promote({ url,options }: Props) {
                 {
                     type: 'pie',
                     radius:['50%','80%'],
-                }
+                    itemStyle:{
+                        normal:{
+                            label: {
+                                show : true,
+                                formatter: '{b} {d}%'
+                            }
+                        },
+                    }
+                },
+            ],
+            color:[ 
+                'rgb(124,161,245)',
+                'rgb(143,221,184)',
+                'rgb(122,134,161)',
+                'rgb(240,200,85)',
+                'rgb(223,131,108)'        
             ]
         };
 

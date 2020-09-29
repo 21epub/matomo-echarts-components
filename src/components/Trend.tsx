@@ -32,7 +32,7 @@ function Trend({ url,options }: Props) {
         let i = 0;
         for(;i<keylist.length;i++){
             if(keyState==='bounce_rate'){
-                console.log('转换类型')
+                console.log('转换类型',elements[keylist[1]][keyState])
             }else{
                 elements_value[i]={'date':keylist[i],[keyState]:elements[keylist[i]][keyState]};
             }        
