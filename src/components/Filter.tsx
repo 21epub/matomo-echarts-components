@@ -1,7 +1,7 @@
 import React,{useContext} from 'react';
 import {AppContext} from './context';
 import SelectPeriod from './SelectPeriod';
-import { Card, Tabs} from 'antd';
+import { Tabs} from 'antd';
 import {keyToRange} from './dateCompute';
 const { TabPane } = Tabs;
 
@@ -32,22 +32,20 @@ function Filter() {
     };
     
     return(
-        <Card>
-            <Tabs defaultActiveKey="today" activeKey={globalProps.options} tabBarExtraContent={<SelectPeriod/>} onChange={filter}>
-                <TabPane tab="今日" key="today">          
-                </TabPane>
-                <TabPane tab="昨日" key="yesterday">          
-                </TabPane>
-                <TabPane tab="近7日" key="last7">        
-                </TabPane>
-                <TabPane tab="近15日" key="last15">        
-                </TabPane>
-                <TabPane tab="近30日" key="last30">        
-                </TabPane>
-                <TabPane tab="全部" key="all">        
-                </TabPane>
-            </Tabs>
-        </Card>
+        <Tabs defaultActiveKey="today" activeKey={globalProps.options} tabBarExtraContent={<SelectPeriod/>} onChange={filter}>
+            <TabPane tab="今日" key="today">          
+            </TabPane>
+            <TabPane tab="昨日" key="yesterday">          
+            </TabPane>
+            <TabPane tab="近7日" key="last7">        
+            </TabPane>
+            <TabPane tab="近15日" key="last15">        
+            </TabPane>
+            <TabPane tab="近30日" key="last30">        
+            </TabPane>
+            <TabPane tab="全部" key="all">        
+            </TabPane>
+        </Tabs>
     )
 }
 
