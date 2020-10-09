@@ -10,14 +10,14 @@ interface Props {
 }
 
 //这个数据处理有问题
-function Detail({ url,options }: Props) {
+function TrendDetail({ url,options }: Props) {
     const _url = url;
     const fetcher = () => fetch(_url).then(r => r.json())
     const { data: elements } = useSWR('/api/barchat', fetcher);
 
     const { state: globalProps} = useContext(AppContext);
-    const startDate = globalProps._dateRange[0];
-    const endDate = globalProps._dateRange[1];
+    const startDate = globalProps.dateRange[0];
+    const endDate = globalProps.dateRange[1];
 
     if(elements){
         const keylist = Object.keys(elements[0]);
@@ -54,4 +54,4 @@ function Detail({ url,options }: Props) {
     }
 }
 
-export default Detail;
+export default TrendDetail;

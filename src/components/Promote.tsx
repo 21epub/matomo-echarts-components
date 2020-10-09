@@ -1,23 +1,31 @@
-import React,{useContext} from"react";
+import React from"react";
 import useSWR from 'swr';
 import {Card, Spin,Space} from 'antd';
 import {RightOutlined} from '@ant-design/icons'
 import ReactEcharts from 'echarts-for-react';
-import { AppContext } from './context';
+
+type Options = {
+    dateRange:string[],
+    period:string
+}
 
 interface Props {
     url: string,
-    options?:string 
+    options: Options,
+    detailLink:string,
+    cardTitle:string,
+    isShowDetailLink?:boolean
 }
 
-function Promote({ url,options }: Props) {
+function Promote({ url,options,detailLink,cardTitle,isShowDetailLink=true}: Props) {
+    const option = options.period;
+    const startDate = options.dateRange[0];
+    const endDate = options.dateRange[1];
+    console.log('promote',option,startDate,endDate)
+
     const _url = url;
     const fetcher = () => fetch(_url).then(r => r.json())
     const { data: elements } = useSWR('/api/promote', fetcher);
-
-    const { state: globalProps} = useContext(AppContext);
-    const startDate = globalProps._dateRange[0];
-    const endDate = globalProps._dateRange[1];
 
     if(elements){
         const keylist = Object.keys(elements[0]);
@@ -41,7 +49,8 @@ function Promote({ url,options }: Props) {
                         normal:{
                             label: {
                                 show : true,
-                                formatter: '{b} {d}%'
+                                formatter: '{b}: {@nb_visits}',//formatter: '{b}:{@nb_visits} {d}%',
+                                color:'#000'
                             }
                         },
                     }
@@ -57,7 +66,7 @@ function Promote({ url,options }: Props) {
         };
 
         return(
-            <Card title="推广分析" extra={<Space size={'large'}><p>{startDate}-{endDate}</p><a href="#"><RightOutlined/></a></Space>}>
+            <Card title={cardTitle} extra={<Space size={'large'}><p>{startDate}-{endDate}</p><a href={detailLink} style={{display:isShowDetailLink?"block":"none"}}><RightOutlined/></a></Space>}>
                 <ReactEcharts option={content}/>
             </Card>
         )

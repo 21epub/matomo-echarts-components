@@ -6,15 +6,15 @@ import { checkPeriod } from './dateCompute';
 //import styles from './index.module.less';
 
 function SelectPeriod() {
-    const { state: globalProps,dispatch} = useContext(AppContext);
+    const { state: options,dispatch} = useContext(AppContext);
     const { RangePicker } = DatePicker;
     const dateFormat = 'YYYY/MM/DD';
  
     const selectPeriod = (data:any,dateString:string[]) => {
         const period = checkPeriod(dateString[0],dateString[1])
         const newSate ={
-            _dateRange:[dateString[0],dateString[1]],
-            options:period
+            dateRange:[dateString[0],dateString[1]],
+            period:period
         }
         dispatch({
             type: 'selectPeriod',
@@ -22,7 +22,7 @@ function SelectPeriod() {
         })
     };
     
-    if(globalProps.options === 'all'){
+    if(options.period === 'all'){
         return(
             <RangePicker  
             format={dateFormat} 
@@ -35,7 +35,7 @@ function SelectPeriod() {
             <RangePicker  
             format={dateFormat} 
             onChange={selectPeriod}
-            value={[moment(globalProps._dateRange[0], dateFormat),moment(globalProps._dateRange[1], dateFormat)]}
+            value={[moment(options.dateRange[0], dateFormat),moment(options.dateRange[1], dateFormat)]}
             />  
         )
     }

@@ -1,28 +1,36 @@
-import React,{useContext} from"react";
+import React from 'react';
 import useSWR from 'swr';
 import {Card, Spin,Space} from 'antd'
 import {RightOutlined} from '@ant-design/icons'
-import {AppContext} from './context';
+//import {AppContext} from './context';
 import ReactEcharts from 'echarts-for-react';
+import styles from './index.module.less';
+
+type Options = {
+    dateRange:string[],
+    period:string,
+}
 
 interface Props {
     url: string,
-    id:string 
+    options: Options,
+    detailLink:string,
+    cardTitle:string,
+    isShowDetailLink?:boolean
 }
 
-function Barchart({ url,id}: Props) {
-    const { state: globalProps} = useContext(AppContext);
-    const option = globalProps.options;
-    const startDate = globalProps._dateRange[0];
-    const endDate = globalProps._dateRange[1];
+function Barchart({ url,options,detailLink,cardTitle,isShowDetailLink=true}: Props) {
+    // //兼容性
+    // const params = new URLSearchParams();
+    // params.set('option', option);      
+    // params.set('startDate', startDate);     
+    // params.set('endDate', endDate);  
+    // console.log('newurl:',params.toString());
 
-    //兼容性
-    const params = new URLSearchParams();
-    params.set('option', option);      
-    params.set('startDate', startDate);     
-    params.set('endDate', endDate);  
-    params.set('id', id);
-    console.log('newurl:',params.toString());
+    const startDate = options.dateRange[0];
+    const endDate = options.dateRange[1];
+    const period = options.period;
+    console.log('barchart',startDate,endDate,period)
 
     //用新URL发送请求
     const _url = url;
@@ -58,7 +66,7 @@ function Barchart({ url,id}: Props) {
         };
 
         return(
-            <Card title="扩展渠道" extra={<Space size={'large'}><p>{startDate}-{endDate}</p><a href="#"><RightOutlined/></a></Space>}>
+            <Card title={cardTitle} extra={<Space size={'large'}><p className={styles.daterange}>{startDate}-{endDate}</p><a href={detailLink} style={{display:isShowDetailLink?"block":"none"}}><RightOutlined/></a></Space>}>
                 <ReactEcharts option={content}/>
             </Card>
         )

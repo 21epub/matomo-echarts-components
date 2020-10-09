@@ -3,11 +3,10 @@ import {Card,Row,Col,Spin} from 'antd'
 import useSWR from 'swr';
 
 interface Props {
-    url: string,
-    options?:string 
+    url: string
 }
 
-function Summary({ url,options }: Props) {
+function Summary({url}: Props) {
     const _url = url;
     const fetcher = () => fetch(_url).then(r => r.json())
     const { data: elements } = useSWR('/api/summary', fetcher);

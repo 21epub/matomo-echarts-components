@@ -6,13 +6,14 @@ import {keyToRange} from './dateCompute';
 const { TabPane } = Tabs;
 
 function Filter() {
-    const {state:globalProps, dispatch} = useContext(AppContext);
+    const {state:options, dispatch} = useContext(AppContext);
 
     const filter = (key:string) => {
+        console.log('filter',key);
         const period = key;
         if(key==='all'){
             const newstate = {
-                options:period
+                period:period
             }
             dispatch({
                 type:'filter',
@@ -21,8 +22,8 @@ function Filter() {
         }else{
             const newRange = keyToRange(key);
             const newSate ={
-                _dateRange:newRange,
-                options:period
+                dateRange:newRange,
+                period:period
             }
             dispatch({
                 type: 'filter',
@@ -32,7 +33,7 @@ function Filter() {
     };
     
     return(
-        <Tabs defaultActiveKey="today" activeKey={globalProps.options} tabBarExtraContent={<SelectPeriod/>} onChange={filter}>
+        <Tabs defaultActiveKey="today" activeKey={options.period} tabBarExtraContent={<SelectPeriod/>} onChange={filter}>
             <TabPane tab="今日" key="today">          
             </TabPane>
             <TabPane tab="昨日" key="yesterday">          
