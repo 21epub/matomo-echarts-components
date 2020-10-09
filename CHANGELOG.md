@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7-alpha.5](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.4...v0.1.7-alpha.5) (2020-10-09)
+
+
+### Features
+
+* 🎸 add echarts-map ([c749184](https://github.com/21epub/matomo-echarts-components/commit/c749184d4eb17c28d081b017cff036aa24fce559))
+
 ### [0.1.7-alpha.4](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.3...v0.1.7-alpha.4) (2020-09-29)
 
 
