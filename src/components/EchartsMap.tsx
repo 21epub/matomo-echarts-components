@@ -1,9 +1,10 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import useSWR from 'swr';
 import {Card, Spin,Space} from 'antd'
 import {RightOutlined} from '@ant-design/icons'
 import ReactEcharts from 'echarts-for-react';
 import {dataFormat} from './util'
+import styles from './index.module.less';
 require('echarts/map/js/china.js');
 
 type Options = {
@@ -20,17 +21,34 @@ type Datatype = {
 interface Props {
     url: string,
     options: Options,
-    detailLink:string,
+    detailLink?:string,
     cardTitle:string,
-    isShowDetailLink?:boolean
+    isDetailVersion?:boolean
 }
 
-function EchartsMap({ url,options,detailLink,cardTitle,isShowDetailLink=true}: Props) {
-    
+function EchartsMap({ url,options,detailLink="#",cardTitle,isDetailVersion=false}: Props) {
+    const bigVersion = styles.bigVersion;
+    const smallVersion = styles.smallVersion;
+
     const startDate = options.dateRange[0];
     const endDate = options.dateRange[1];
     const period = options.period;
-    console.log('map',startDate,endDate,period)
+
+    let daterangeContent =`${startDate}-${endDate}`
+    if(period==='all'){
+         daterangeContent = '';
+    }
+
+    let newUrl =''
+    if(period!=='all'){
+        newUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
+    }else{
+        newUrl = `${url}?period=${period}`
+    }
+
+    useEffect(() => {
+        console.log('map',newUrl);
+    }, [newUrl]); 
 
     //用新URL发送请求
     const _url = url;
@@ -119,9 +137,11 @@ function EchartsMap({ url,options,detailLink,cardTitle,isShowDetailLink=true}: P
         } 
 
         return(
-            <Card title={cardTitle} extra={<Space size={'large'}><p>{startDate}-{endDate}</p><a href={detailLink} style={{display:isShowDetailLink?"block":"none"}}><RightOutlined/></a></Space>}>
-                <ReactEcharts option={content}/>
-            </Card>
+            <div className={isDetailVersion?bigVersion:smallVersion}>
+                <Card title={cardTitle} extra={<Space size={'large'}><p className='daterange'>{daterangeContent}</p><a className='detailLink' href={detailLink}><RightOutlined/></a></Space>}>
+                    <ReactEcharts option={content}/>
+                </Card>
+            </div>
         )
     }else{
         return <div><Spin/>loading...</div>

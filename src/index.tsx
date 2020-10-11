@@ -7,3 +7,5 @@ export {default as Trend} from './components/Trend';
 export {default as EchartsMap} from './components/EchartsMap';
 export {AppContext, AppProvider} from './components/context';
 export {default as TrendDetail} from './components/TrendDetail';
+export {default as DetailFilter} from './components/DetailFilter';
+export {default as Detail} from './components/Detail';

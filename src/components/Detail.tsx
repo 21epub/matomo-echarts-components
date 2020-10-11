@@ -10,7 +10,7 @@ interface Props {
 }
 
 //这个数据处理有问题
-function TrendDetail({ url,options }: Props) {
+function Detail({ url,options }: Props) {
     const _url = url;
     const fetcher = () => fetch(_url).then(r => r.json())
     const { data: elements } = useSWR('/api/barchat', fetcher);
@@ -61,4 +61,4 @@ function TrendDetail({ url,options }: Props) {
     }
 }
 
-export default TrendDetail;
+export default Detail;

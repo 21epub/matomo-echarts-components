@@ -13,15 +13,6 @@ const App = () => {
     <AppProvider>
     <TestOptions/>
     </AppProvider>
-    {/* </AppProvider> */}
-    {/* <AppProvider>
-    <Summary url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/summary/'/>
-    <Filter/>
-    <SelectPeriod/>
-    <Promote url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/campaign/'/>
-    <Trend url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/visits/'/>
-    <Detail url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/campaign/'/>
-    </AppProvider> */}
     </div>
     )
 }
