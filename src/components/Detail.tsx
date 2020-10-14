@@ -1,23 +1,50 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import {Table,Card, Button,Space,Spin} from 'antd';
 import useSWR from 'swr';
 import {DownloadOutlined} from '@ant-design/icons'
 import styles from './index.module.less';
 
-interface Props {
-    url: string,
-    options?:any
+type Options = {
+    dateRange:string[],
+    period:string,
 }
 
-//这个数据处理有问题
-function Detail({ url,options }: Props) {
-    const _url = url;
-    const fetcher = () => fetch(_url).then(r => r.json())
-    const { data: elements } = useSWR('/api/barchat', fetcher);
+interface Props {
+    url: string,
+    options: Options,
+    detailType:string
+}
 
+function Detail({ url,options,detailType}: Props) {
     const period = options.period;
     const startDate = options.dateRange[0];
     const endDate = options.dateRange[1];
+
+    // let defaultUrl = ''       
+    // if(period!=='all'){
+    //     defaultUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
+    // }else{
+    //     defaultUrl = `${url}?period=${period}`
+    // }
+    const swrApi = `/api/${detailType}`
+    console.log(swrApi)
+    const defaultUrl = url
+    const [resultUrl , setResultUrl] = useState(defaultUrl);
+    const fetcher = () => fetch(resultUrl).then(r => r.json())
+    const { data: elements } = useSWR(swrApi, fetcher);
+
+    //用新URL发送请求
+    useEffect(() => {
+        let newUrl ='' 
+        if(period!=='all'){
+            newUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
+        }else{
+            newUrl = `${url}?period=${period}`
+        }
+        
+        console.log(`${detailType}Detail`,newUrl);      
+        setResultUrl(newUrl)
+    }, [options]); 
 
     let daterangeContent =`${startDate}-${endDate}`
     if(period==='all'){
@@ -30,14 +57,11 @@ function Detail({ url,options }: Props) {
         for(let i = 0;i<keylist.length;i++){
             columns[i] = {title:keylist[i],dataIndex:keylist[i]}
         }
+
         let data = []
         for(let i = 0;i<elements.length;i++){
-            data[i] = { 
-                key: i,
-                [keylist[0]]: elements[i][keylist[0]],
-                [keylist[1]]: elements[i][keylist[1]],
-                //[keylist[1]]: elements[i][keylist[1]],
-            }
+            Object.defineProperty(elements[i], 'key', {value:i})
+            data[i] = elements[i];        
         }
 
         return(

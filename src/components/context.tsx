@@ -6,7 +6,8 @@ type Options = {
   period:string
 }
 const options={
-  dateRange:['2020/01/01','2020/01/01'],
+  dateRange:[],
+  //period:'all'||'today'||'yesterday'||'last7'||'last15'||'last30'||'range'
   period:'all'||'today'||'yesterday'||'last7'||'last15'||'last30'||'range'
 }
 

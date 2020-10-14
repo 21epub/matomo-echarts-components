@@ -1,4 +1,4 @@
-import React,{useEffect} from 'react';
+import React,{useEffect,useState} from 'react';
 import useSWR from 'swr';
 import {Card, Spin,Space} from 'antd'
 import {RightOutlined} from '@ant-design/icons'
@@ -34,26 +34,34 @@ function EchartsMap({ url,options,detailLink="#",cardTitle,isDetailVersion=false
     const endDate = options.dateRange[1];
     const period = options.period;
 
+    // let defaultUrl = ''       
+    // if(period!=='all'){
+    //     defaultUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
+    // }else{
+    //     defaultUrl = `${url}?period=${period}`
+    // }
+    const defaultUrl = url
+    const [resultUrl , setResultUrl] = useState(defaultUrl);
+    const fetcher = () => fetch(resultUrl).then(r => r.json())
+    const { data: elements } = useSWR('/api/map', fetcher);
+
+    //用新URL发送请求
+    useEffect(() => {
+        let newUrl ='' 
+        if(period!=='all'){
+            newUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
+        }else{
+            newUrl = `${url}?period=${period}`
+        }
+        
+        console.log('map',newUrl);      
+        setResultUrl(newUrl)
+    }, [options]); 
+
     let daterangeContent =`${startDate}-${endDate}`
     if(period==='all'){
          daterangeContent = '';
     }
-
-    let newUrl =''
-    if(period!=='all'){
-        newUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
-    }else{
-        newUrl = `${url}?period=${period}`
-    }
-
-    useEffect(() => {
-        console.log('map',newUrl);
-    }, [newUrl]); 
-
-    //用新URL发送请求
-    const _url = url;
-    const fetcher = () => fetch(_url).then(r => r.json())
-    const { data: elements } = useSWR('/api/map', fetcher);
 
     if(elements){
         const data = dataFormat(elements);

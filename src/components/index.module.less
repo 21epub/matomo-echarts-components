@@ -83,6 +83,9 @@
                         display: none;
                     }
                 }
+                .ant-tabs-tab-btn:focus {
+                    color: #1890ff;
+                }
             }
         }
 
@@ -126,6 +129,10 @@
                         display: none;
                     }
                 }
+
+                .ant-tabs-tab-btn:focus {
+                    color: #1890ff;
+                }
             }
         }
 
@@ -144,13 +151,13 @@
 
         .ant-tabs {
             background-color: white;
+            height: 46px;
       
             .ant-tabs-nav::before {
               border-bottom: 0;
             }
             .ant-tabs-extra-content {
               position: relative;
-              top: 7px;
               right: 10px;
             }
       
@@ -207,23 +214,26 @@
 
         .ant-tabs {
             background-color: white;
-      
+            height: 46px;
+
             .ant-tabs-nav::before {
               border-bottom: 0;
             }
             .ant-tabs-extra-content {
               position: relative;
-              top: 7px;
               right: 10px;
 
                 .ant-picker-range{
                     position: relative;
-                    left: -200px;
+                    left: -300px;
                 }
             }
       
             .ant-tabs-tab-btn:focus {
               color: #1890ff;
+            }
+            .ant-tabs-content-holder{
+                display:none;
             }
       
         }

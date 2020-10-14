@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect,useState}from 'react';
 import {Table,Card, Button,Space,Spin} from 'antd';
 import useSWR from 'swr';
 import {DownloadOutlined} from '@ant-design/icons'
@@ -6,15 +6,11 @@ import styles from './index.module.less';
 
 interface Props {
     url: string,
-    options?:any
+    options?:any,
+    keyState:string
 }
 
-//这个数据处理有问题
-function TrendDetail({ url,options }: Props) {
-    const _url = url;
-    const fetcher = () => fetch(_url).then(r => r.json())
-    const { data: elements } = useSWR('/api/barchat', fetcher);
-
+function TrendDetail({ url,options,keyState}: Props) {
     const period = options.period;
     const startDate = options.dateRange[0];
     const endDate = options.dateRange[1];
@@ -23,20 +19,44 @@ function TrendDetail({ url,options }: Props) {
     if(period==='all'){
          daterangeContent = '';
     }
+    
+    // let defaultUrl = ''       
+    // if(period!=='all'){
+    //     defaultUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
+    // }else{
+    //     defaultUrl = `${url}?period=${period}`
+    // }
+    const defaultUrl = url
+    const [resultUrl , setResultUrl] = useState(defaultUrl);
+    const fetcher = () => fetch(resultUrl).then(r => r.json())
+    const { data: elements } = useSWR('/api/trend', fetcher);
+
+    //用新URL发送请求
+    useEffect(() => {
+        let newUrl ='' 
+        if(period!=='all'){
+            newUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
+        }else{
+            newUrl = `${url}?period=${period}`
+        }
+        
+        console.log('trendDetail',newUrl);      
+        setResultUrl(newUrl)
+    }, [options]); 
 
     if(elements){
-        const keylist = Object.keys(elements[0]);
-        let columns = []
+        const keylist = Object.keys(elements);
+
+        let columns = [];
+        columns[0] = {title:'日期',dataIndex:'date'};
+        columns[1] = {title:keyState,dataIndex:keyState};
+
+        let data = [];
         for(let i = 0;i<keylist.length;i++){
-            columns[i] = {title:keylist[i],dataIndex:keylist[i]}
-        }
-        let data = []
-        for(let i = 0;i<elements.length;i++){
             data[i] = { 
-                key: i,
-                [keylist[0]]: elements[i][keylist[0]],
-                [keylist[1]]: elements[i][keylist[1]],
-                //[keylist[1]]: elements[i][keylist[1]],
+                'key': [i],
+                'date':[keylist[i]],
+                [keyState]:elements[keylist[i]][keyState]
             }
         }
 

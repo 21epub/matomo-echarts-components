@@ -1,4 +1,4 @@
-import React ,{useEffect}from 'react';
+import React ,{useState,useEffect}from 'react';
 import useSWR from 'swr';
 import {Card, Spin,Space} from 'antd'
 import {RightOutlined} from '@ant-design/icons'
@@ -19,40 +19,41 @@ interface Props {
 }
 
 function Barchart({ url,options,detailLink="#",cardTitle,isDetailVersion=false}: Props) {
-    const bigVersion = styles.bigVersion;
-    const smallVersion = styles.smallVersion;
-
     const startDate = options.dateRange[0];
     const endDate = options.dateRange[1];
     const period = options.period;
+    
+    // let defaultUrl = ''       
+    // if(period!=='all'){
+    //     defaultUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
+    // }else{
+    //     defaultUrl = `${url}?period=${period}`
+    // }
+    const defaultUrl = url
+    const [resultUrl , setResultUrl] = useState(defaultUrl);
+    const fetcher = () => fetch(resultUrl).then(r => r.json())
+    const { data: elements } = useSWR('/api/barchart', fetcher);
+
+    //用新URL发送请求
+    useEffect(() => {
+        let newUrl ='' 
+        if(period!=='all'){
+            newUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
+        }else{
+            newUrl = `${url}?period=${period}`
+        }
+        
+        console.log('barchart',newUrl);      
+        setResultUrl(newUrl)
+    }, [options]); 
+
+    const bigVersion = styles.bigVersion;
+    const smallVersion = styles.smallVersion;
 
     let daterangeContent =`${startDate}-${endDate}`
     if(period==='all'){
          daterangeContent = '';
     }
-
-    let newUrl =''
-    
-    if(period!=='all'){
-        newUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
-    }else{
-        newUrl = `${url}?period=${period}`
-    }
-
-    // const _url = url;
-    // let elements = ''
-    //用新URL发送请求
-    useEffect(() => {
-        //const fetcher = () => fetch(newUrl,{method:'GET'}).then(r => r.json())
-        // const fetcher = () => fetch(_url).then(r => r.json())
-        // const { data: data } = useSWR('/api/barchat', fetcher);
-        // elements = data;
-        console.log('barchart',newUrl);
-    }, [newUrl]); 
-
-    const _url = url;
-    const fetcher = () => fetch(_url).then(r => r.json())
-    const { data: elements } = useSWR('/api/barchat', fetcher);
 
     if(elements){
         const keylist = Object.keys(elements[0]);

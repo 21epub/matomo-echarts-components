@@ -9,7 +9,7 @@ const { TabPane } = Tabs;
 const { Option } = Select;
 
 function DetailFilter() {
-    const {state:options, dispatch} = useContext(AppContext);
+  const {state:options, dispatch} = useContext(AppContext);
 
     const menu = (
         <Menu>
@@ -29,7 +29,7 @@ function DetailFilter() {
             </a>
           </Menu.Item>
         </Menu>
-      );
+     );
 
     const filter = (key:string) => {
         const period = key;
@@ -57,8 +57,7 @@ function DetailFilter() {
     return(
         <div className={styles.detailFilter}>
             <Tabs 
-            defaultActiveKey="today" 
-            activeKey={options.period} 
+            defaultActiveKey={options.period}
             tabBarExtraContent={
             <Space>
 

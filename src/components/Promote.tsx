@@ -1,4 +1,4 @@
-import React,{useEffect} from"react";
+import React,{useEffect,useState} from"react";
 import useSWR from 'swr';
 import {Card, Spin,Space} from 'antd';
 import {RightOutlined} from '@ant-design/icons'
@@ -22,28 +22,38 @@ function Promote({ url,options,detailLink="#",cardTitle,isDetailVersion=false}: 
     const bigVersion = styles.bigVersion;
     const smallVersion = styles.smallVersion;
 
+    // let defaultUrl = ''       
+    // if(period!=='all'){
+    //     defaultUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
+    // }else{
+    //     defaultUrl = `${url}?period=${period}`
+    // }
     const period = options.period; 
     const startDate = options.dateRange[0];
     const endDate = options.dateRange[1];
+
     let daterangeContent =`${startDate}-${endDate}`
     if(period==='all'){
          daterangeContent = '';
     }
 
-    let newUrl =''
-    if(period!=='all'){
-        newUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
-    }else{
-        newUrl = `${url}?period=${period}`
-    }
-
-    useEffect(() => {
-        console.log('promote',newUrl);
-    }, [newUrl]); 
-
-    const _url = url;
-    const fetcher = () => fetch(_url).then(r => r.json())
+    const defaultUrl = url
+    const [resultUrl , setResultUrl] = useState(defaultUrl);
+    const fetcher = () => fetch(resultUrl).then(r => r.json())
     const { data: elements } = useSWR('/api/promote', fetcher);
+
+    //用新URL发送请求
+    useEffect(() => {
+        let newUrl ='' 
+        if(period!=='all'){
+            newUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
+        }else{
+            newUrl = `${url}?period=${period}`
+        }
+        
+        console.log('promote',newUrl);      
+        setResultUrl(newUrl)
+    }, [options]); 
 
     if(elements){
         const keylist = Object.keys(elements[0]);

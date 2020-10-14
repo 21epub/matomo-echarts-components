@@ -25,10 +25,6 @@ function Trend({ url,options,detailLink,cardTitle,isDetailVersion=false}: Props)
     const bigVersion = styles.bigTrendVersion;
     const smallVersion = styles.smallTrendVersion;
 
-    const _url = url;
-    const fetcher = () => fetch(_url).then(r => r.json())
-    const { data: elements } = useSWR('/api/trend', fetcher);
-
     const period = options.period;
     const startDate = options.dateRange[0];
     const endDate = options.dateRange[1];
@@ -38,16 +34,29 @@ function Trend({ url,options,detailLink,cardTitle,isDetailVersion=false}: Props)
          daterangeContent = '';
     }
 
-    let newUrl =''
-    if(period!=='all'){
-        newUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
-    }else{
-        newUrl = `${url}?period=${period}`
-    }
+    // let defaultUrl = ''       
+    // if(period!=='all'){
+    //     defaultUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
+    // }else{
+    //     defaultUrl = `${url}?period=${period}`
+    // }
+    const defaultUrl = url
+    const [resultUrl , setResultUrl] = useState(defaultUrl);
+    const fetcher = () => fetch(resultUrl).then(r => r.json())
+    const { data: elements } = useSWR('/api/trend', fetcher);
 
+    //用新URL发送请求
     useEffect(() => {
-        console.log('trend',newUrl);
-    }, [newUrl]); 
+        let newUrl ='' 
+        if(period!=='all'){
+            newUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
+        }else{
+            newUrl = `${url}?period=${period}`
+        }
+        
+        console.log('trend',newUrl);      
+        setResultUrl(newUrl)
+    }, [options]); 
 
     const [keyState,setKeyState] =useState("nb_hits");
 
@@ -57,9 +66,8 @@ function Trend({ url,options,detailLink,cardTitle,isDetailVersion=false}: Props)
 
     if(elements){
         const keylist = Object.keys(elements);
-        let elements_value = [];
-        let i = 0;
-        for(;i<keylist.length;i++){
+        let elements_value = [];        
+        for(let i = 0;i<keylist.length;i++){
             if(keyState==='bounce_rate'){
                 let value = elements[keylist[i]][keyState];
                 value = Number(value.substr(0,value.length - 1))
@@ -97,6 +105,7 @@ function Trend({ url,options,detailLink,cardTitle,isDetailVersion=false}: Props)
                 }
             ]
         };
+
         const tab =(
             <Tabs defaultActiveKey="nb_hits" activeKey={keyState} onChange={getKey}>
                 <TabPane tab="PV" key="nb_hits">          
@@ -125,7 +134,7 @@ function Trend({ url,options,detailLink,cardTitle,isDetailVersion=false}: Props)
                     </Row>
                     <Row gutter={[16, 16]}>
                         <Col span={24}>
-                            <TrendDetail url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/campaign/' options={options}/>
+                            <TrendDetail url={url} options={options} keyState={keyState}/>
                         </Col>
                     </Row>
                 </div>
