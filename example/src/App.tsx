@@ -5,7 +5,6 @@ import 'antd/dist/antd.css';
 import TestOptions from './TestOptions'
 //import { AppProvider } from '../';
 import {AppProvider} from '@21epub/matomo-echarts-components'
-import DetailPage from './DetailPage'
 
 const App = () => {
   return (
@@ -15,9 +14,6 @@ const App = () => {
     <TestOptions/>
     </AppProvider> 
     
-    <AppProvider>
-    <DetailPage/>
-    </AppProvider>
     </div>
     )
 }
