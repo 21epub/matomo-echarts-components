@@ -1,4 +1,4 @@
-function dataFormat(elements:Array<any>){
+function dataFormat(elements:Array<any>,mapDetail=false){
     let dataList= []
     for(let i=0;i<elements.length;i++){
         let str:string = elements[i].label
@@ -75,10 +75,46 @@ function dataFormat(elements:Array<any>){
             default:{console.log('transfer err')}
                 break;
         }
-        dataList[i]={'name':area,'value':elements[i].nb_visits,'rate':elements[i].rate}
+        if(mapDetail===true){
+            dataList[i]={'label':area,'nb_visits':elements[i].nb_visits,'rate':`${elements[i].rate}%`}
+        }else{
+            dataList[i]={'name':area,'value':elements[i].nb_visits,'rate':elements[i].rate}
+        }
     }
     const data = dataList;
+
     return data;
 }
 
-export {dataFormat}
+function TitleTranslate(titleList:any){
+    switch (titleList) {
+        case 'nb_hits':
+            return 'PV';
+        case 'nb_uniq_visitors':
+            return 'UV';
+        case 'forwarding_number':
+            return '转发数';
+        case 'avg_time_on_page':
+            return '平均时长';
+        case 'bounce_rate':
+            return '跳出率';
+        case 'maplabel':
+            return '城市';
+        case 'mapnb_visits':
+            return '访问数量';
+        case 'maprate':
+            return '占比';
+        case 'barchartlabel':
+            return '渠道名';
+        case 'barchartnb_visits':
+            return '访问数量';
+        case 'promotelabel':
+            return '渠道名';
+        case 'promotenb_visits':
+            return '访问数量';
+        default:{console.log('transfer err')}
+            return 'null';
+    }
+
+}
+export {dataFormat,TitleTranslate}

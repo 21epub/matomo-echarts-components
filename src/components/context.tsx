@@ -7,7 +7,6 @@ type Options = {
 }
 const options={
   dateRange:[],
-  //period:'all'||'today'||'yesterday'||'last7'||'last15'||'last30'||'range'
   period:'all'||'today'||'yesterday'||'last7'||'last15'||'last30'||'range'
 }
 

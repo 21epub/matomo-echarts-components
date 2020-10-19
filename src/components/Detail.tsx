@@ -1,5 +1,6 @@
 import React,{useEffect,useState} from 'react';
 import {Table,Card, Button,Space,Spin} from 'antd';
+import {TitleTranslate,dataFormat} from './util'
 import useSWR from 'swr';
 import {DownloadOutlined} from '@ant-design/icons'
 import styles from './index.module.less';
@@ -55,13 +56,21 @@ function Detail({ url,options,detailType}: Props) {
         const keylist = Object.keys(elements[0]);
         let columns = []
         for(let i = 0;i<keylist.length;i++){
-            columns[i] = {title:keylist[i],dataIndex:keylist[i]}
+            columns[i] = {title:TitleTranslate(`${detailType}${keylist[i]}`),dataIndex:keylist[i]}
         }
-
         let data = []
-        for(let i = 0;i<elements.length;i++){
-            Object.defineProperty(elements[i], 'key', {value:i})
-            data[i] = elements[i];        
+        if(detailType!=='map'){
+            for(let i = 0;i<elements.length;i++){
+                Object.defineProperty(elements[i], 'key', {value:i})
+                data[i] = elements[i];        
+            }
+        }else{
+            const mapDetail=true
+            const dataList = dataFormat(elements,mapDetail);
+            for(let i = 0;i<elements.length;i++){
+                Object.defineProperty(dataList[i], 'key', {value:i})
+                data[i] = dataList[i];        
+            }
         }
 
         return(

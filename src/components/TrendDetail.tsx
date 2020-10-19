@@ -1,6 +1,7 @@
 import React,{useEffect,useState}from 'react';
 import {Table,Card, Button,Space,Spin} from 'antd';
 import useSWR from 'swr';
+import {TitleTranslate} from './util'
 import {DownloadOutlined} from '@ant-design/icons'
 import styles from './index.module.less';
 
@@ -46,10 +47,10 @@ function TrendDetail({ url,options,keyState}: Props) {
 
     if(elements){
         const keylist = Object.keys(elements);
-
+        let titleTransformed = TitleTranslate(keyState);
         let columns = [];
         columns[0] = {title:'日期',dataIndex:'date'};
-        columns[1] = {title:keyState,dataIndex:keyState};
+        columns[1] = {title:titleTransformed,dataIndex:keyState};
 
         let data = [];
         for(let i = 0;i<keylist.length;i++){

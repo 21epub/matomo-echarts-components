@@ -57,8 +57,11 @@ function Barchart({ url,options,detailLink="#",cardTitle,isDetailVersion=false}:
 
     if(elements){
         const keylist = Object.keys(elements[0]);
+        console.log('elements',elements)
         let content = {
-            tooltip: {},
+            tooltip: {
+                // formatter: '{b}: {@nb_visits}'
+            },
             dataset: {
                 dimensions: keylist,
                 source: elements
