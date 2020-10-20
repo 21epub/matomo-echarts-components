@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react';
+import React from 'react';
 import {Table,Card, Button,Space,Spin} from 'antd';
 import {TitleTranslate,dataFormat} from './util'
 import useSWR from 'swr';
@@ -13,46 +13,34 @@ type Options = {
 interface Props {
     url: string,
     options: Options,
-    detailType:string
+    detailType:string,
+    create_time:string
 }
 
-function Detail({ url,options,detailType}: Props) {
+function Detail({ url,options,detailType,create_time}: Props) {
     const period = options.period;
     const startDate = options.dateRange[0];
     const endDate = options.dateRange[1];
 
-    // let defaultUrl = ''       
-    // if(period!=='all'){
-    //     defaultUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
-    // }else{
-    //     defaultUrl = `${url}?period=${period}`
-    // }
-    const swrApi = `/api/${detailType}`
-    console.log(swrApi)
-    const defaultUrl = url
-    const [resultUrl , setResultUrl] = useState(defaultUrl);
-    const fetcher = () => fetch(resultUrl).then(r => r.json())
-    const { data: elements } = useSWR(swrApi, fetcher);
+    let newUrl = ''       
+    if(period!=='all' && startDate && endDate){
+        newUrl = `${url}?period=${period}&start_time=${startDate.replace(/\//g,"-")}&end_time=${endDate.replace(/\//g,"-")}`
+    }else {
+        newUrl = `${url}?period=${period}&start_time=${create_time.replace(/\//g,"-")}`
+    }
 
-    //用新URL发送请求
-    useEffect(() => {
-        let newUrl ='' 
-        if(period!=='all'){
-            newUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
-        }else{
-            newUrl = `${url}?period=${period}`
-        }
-        
-        console.log(`${detailType}Detail`,newUrl);      
-        setResultUrl(newUrl)
-    }, [options]); 
+    const swrOptions ={
+        refreshInterval: 0 
+    }
+    const fetcher = (url:string) => fetch(url).then(r => r.json())
+    const { data: elements } = useSWR(newUrl, fetcher, swrOptions);
 
     let daterangeContent =`${startDate}-${endDate}`
     if(period==='all'){
          daterangeContent = '';
     }
 
-    if(elements){
+    if(elements&&elements.length!==0){
         const keylist = Object.keys(elements[0]);
         let columns = []
         for(let i = 0;i<keylist.length;i++){
@@ -86,6 +74,18 @@ function Detail({ url,options,detailType}: Props) {
                 columns={columns}
                 dataSource={data}
                 />
+                </Card>
+            </div>
+        )
+    }else if(elements&&elements.length===0){
+        return(
+            <div className={styles.trendDetail}>
+                <Card title="详细数据列表"  
+                extra={
+                    <p className='daterange'>{daterangeContent}</p> 
+                }
+                > 
+                <h1>暂无数据</h1>
                 </Card>
             </div>
         )

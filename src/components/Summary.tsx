@@ -3,13 +3,15 @@ import {Card,Row,Col,Spin} from 'antd'
 import useSWR from 'swr';
 
 interface Props {
-    url: string
+    url: string,
+    create_time:string
 }
 
-function Summary({url}: Props) {
-    const _url = url;
-    const fetcher = () => fetch(_url).then(r => r.json())
-    const { data: elements } = useSWR('/api/summary', fetcher);
+function Summary({url,create_time}: Props) {
+    let newUrl = `${url}?start_time=${create_time}`
+    
+    const fetcher = (url:string) => fetch(url).then(r => r.json())
+    const { data: elements } = useSWR(newUrl, fetcher);
     
     if(elements){
         const content = []

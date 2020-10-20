@@ -1,4 +1,4 @@
-import React ,{useState,useEffect}from 'react';
+import React from 'react';
 import useSWR from 'swr';
 import {Card, Spin,Space} from 'antd'
 import {RightOutlined} from '@ant-design/icons'
@@ -15,38 +15,29 @@ interface Props {
     options: Options,
     detailLink?:string,
     cardTitle:string,
-    isDetailVersion?:boolean
+    isDetailVersion?:boolean,
+    create_time:string
 }
 
-function Barchart({ url,options,detailLink="#",cardTitle,isDetailVersion=false}: Props) {
+function Barchart({ url,options,detailLink="#",cardTitle,isDetailVersion=false,create_time}: Props) {
     const startDate = options.dateRange[0];
     const endDate = options.dateRange[1];
     const period = options.period;
     
-    // let defaultUrl = ''       
-    // if(period!=='all'){
-    //     defaultUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
-    // }else{
-    //     defaultUrl = `${url}?period=${period}`
-    // }
-    const defaultUrl = url
-    const [resultUrl , setResultUrl] = useState(defaultUrl);
-    const fetcher = () => fetch(resultUrl).then(r => r.json())
-    const { data: elements } = useSWR('/api/barchart', fetcher);
+    let newUrl = ''       
+    if(period!=='all' && startDate && endDate){
+        newUrl = `${url}?period=${period}&start_time=${startDate.replace(/\//g,"-")}&end_time=${endDate.replace(/\//g,"-")}`
+    }else {
+        newUrl = `${url}?period=${period}&start_time=${create_time.replace(/\//g,"-")}`
+    }
 
-    //用新URL发送请求
-    useEffect(() => {
-        let newUrl ='' 
-        if(period!=='all'){
-            newUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
-        }else{
-            newUrl = `${url}?period=${period}`
-        }
-        
-        console.log('barchart',newUrl);      
-        setResultUrl(newUrl)
-    }, [options]); 
-
+    const swrOptions ={
+        refreshInterval: 0 
+    }
+    const fetcher = (url:string) => fetch(url).then(r => r.json())
+    const { data: elements } = useSWR(newUrl, fetcher, swrOptions);
+ 
+    
     const bigVersion = styles.bigVersion;
     const smallVersion = styles.smallVersion;
 
@@ -55,12 +46,21 @@ function Barchart({ url,options,detailLink="#",cardTitle,isDetailVersion=false}:
          daterangeContent = '';
     }
 
-    if(elements){
-        const keylist = Object.keys(elements[0]);
-        console.log('elements',elements)
+    if(elements&&elements.length!==0){
+        const keylist = Object.keys(elements[0])
+
         let content = {
             tooltip: {
                 // formatter: '{b}: {@nb_visits}'
+            },
+            noDataLoadingOption: {
+                text: '暂无数据',
+                effect: 'bubble',
+                effectOption: {
+                    effect: {
+                        n: 0
+                    }
+                }
             },
             dataset: {
                 dimensions: keylist,
@@ -81,15 +81,25 @@ function Barchart({ url,options,detailLink="#",cardTitle,isDetailVersion=false}:
                             }
                         }
                     },
-    　　　　　　　　　　barWidth:30
+    　　　　　　　　　　barWidth:30,
+    
                 }
-            ]
+            ],
+
         };
 
         return(
             <div className={isDetailVersion?bigVersion:smallVersion}>
             <Card title={cardTitle} extra={<Space size={'large'}><p className='daterange'>{daterangeContent}</p><a className='detailLink' href={detailLink}><RightOutlined/></a></Space>}>
                 <ReactEcharts option={content}/>
+            </Card>
+            </div>
+        )
+    }else if(elements&&elements.length===0){
+        return(
+            <div className={isDetailVersion?bigVersion:smallVersion}>
+            <Card title={cardTitle} extra={<Space size={'large'}><p className='daterange'>{daterangeContent}</p><a className='detailLink' href={detailLink}><RightOutlined/></a></Space>}>
+                <h1>暂无数据</h1>
             </Card>
             </div>
         )

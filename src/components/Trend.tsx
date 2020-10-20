@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from"react";
+import React,{useState} from"react";
 import useSWR from 'swr';
 import {Card, Spin,Space,Row,Col} from 'antd'
 import TrendDetail from './TrendDetail'
@@ -18,10 +18,11 @@ interface Props {
     options: Options,
     detailLink?:string,
     cardTitle:string,
-    isDetailVersion?:boolean
+    isDetailVersion?:boolean,
+    create_time:string
 }
 
-function Trend({ url,options,detailLink,cardTitle,isDetailVersion=false}: Props) {
+function Trend({ url,options,detailLink,cardTitle,isDetailVersion=false,create_time}: Props) {
     const bigVersion = styles.bigTrendVersion;
     const smallVersion = styles.smallTrendVersion;
 
@@ -34,29 +35,18 @@ function Trend({ url,options,detailLink,cardTitle,isDetailVersion=false}: Props)
          daterangeContent = '';
     }
 
-    // let defaultUrl = ''       
-    // if(period!=='all'){
-    //     defaultUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
-    // }else{
-    //     defaultUrl = `${url}?period=${period}`
-    // }
-    const defaultUrl = url
-    const [resultUrl , setResultUrl] = useState(defaultUrl);
-    const fetcher = () => fetch(resultUrl).then(r => r.json())
-    const { data: elements } = useSWR('/api/trend', fetcher);
+    let newUrl = ''       
+    if(period!=='all' && startDate && endDate){
+        newUrl = `${url}?period=${period}&start_time=${startDate.replace(/\//g,"-")}&end_time=${endDate.replace(/\//g,"-")}`
+    }else {
+        newUrl = `${url}?period=${period}&start_time=${create_time.replace(/\//g,"-")}`
+    }
 
-    //用新URL发送请求
-    useEffect(() => {
-        let newUrl ='' 
-        if(period!=='all'){
-            newUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
-        }else{
-            newUrl = `${url}?period=${period}`
-        }
-        
-        console.log('trend',newUrl);      
-        setResultUrl(newUrl)
-    }, [options]); 
+    const swrOptions ={
+        refreshInterval: 0 
+    }
+    const fetcher = (url:string) => fetch(url).then(r => r.json())
+    const { data: elements } = useSWR(newUrl, fetcher, swrOptions);
 
     const [keyState,setKeyState] =useState("nb_hits");
 
@@ -64,7 +54,7 @@ function Trend({ url,options,detailLink,cardTitle,isDetailVersion=false}: Props)
         setKeyState(key);
     }
 
-    if(elements){
+    if(elements&&elements.length!==0){
         const keylist = Object.keys(elements);
         let elements_value = [];        
         for(let i = 0;i<keylist.length;i++){
@@ -77,7 +67,6 @@ function Trend({ url,options,detailLink,cardTitle,isDetailVersion=false}: Props)
             }        
         }
         const sourceValue = elements_value;
-        //console.log('trend',sourceValue);
         const labelList =['date',keyState];
 
         let content = {
@@ -134,9 +123,17 @@ function Trend({ url,options,detailLink,cardTitle,isDetailVersion=false}: Props)
                     </Row>
                     <Row gutter={[16, 16]}>
                         <Col span={24}>
-                            <TrendDetail url={url} options={options} keyState={keyState}/>
+                            <TrendDetail url={url} options={options} keyState={keyState} create_time={create_time}/>
                         </Col>
                     </Row>
+                </div>
+            )
+        }else if(elements&&elements.length===0){
+            return(
+                <div className={isDetailVersion?bigVersion:smallVersion}>
+                <Card title={cardTitle} extra={<Space size={'large'}><p className='daterange'>{daterangeContent}</p><a className='detailLink' href={detailLink}><RightOutlined/></a></Space>}>
+                    <h1>暂无数据</h1>
+                </Card>
                 </div>
             )
         }else{

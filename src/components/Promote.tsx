@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from"react";
+import React from"react";
 import useSWR from 'swr';
 import {Card, Spin,Space} from 'antd';
 import {RightOutlined} from '@ant-design/icons'
@@ -15,47 +15,38 @@ interface Props {
     options: Options,
     detailLink?:string,
     cardTitle:string,
-    isDetailVersion?:boolean
+    isDetailVersion?:boolean,
+    create_time:string
 }
 
-function Promote({ url,options,detailLink="#",cardTitle,isDetailVersion=false}: Props) {
-    const bigVersion = styles.bigVersion;
-    const smallVersion = styles.smallVersion;
-
-    // let defaultUrl = ''       
-    // if(period!=='all'){
-    //     defaultUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
-    // }else{
-    //     defaultUrl = `${url}?period=${period}`
-    // }
+function Promote({ url,options,detailLink="#",cardTitle,isDetailVersion=false,create_time}: Props) {
     const period = options.period; 
     const startDate = options.dateRange[0];
     const endDate = options.dateRange[1];
+
+    let newUrl = ''       
+    if(period!=='all' && startDate && endDate){
+        newUrl = `${url}?period=${period}&start_time=${startDate.replace(/\//g,"-")}&end_time=${endDate.replace(/\//g,"-")}`
+    }else {
+        newUrl = `${url}?period=${period}&start_time=${create_time.replace(/\//g,"-")}`
+    }
+
+    const swrOptions ={
+        refreshInterval: 0 
+    }
+    const fetcher = (url:string) => fetch(url).then(r => r.json())
+    const { data: elements } = useSWR(newUrl, fetcher, swrOptions);
+
+    const bigVersion = styles.bigVersion;
+    const smallVersion = styles.smallVersion;
+
 
     let daterangeContent =`${startDate}-${endDate}`
     if(period==='all'){
          daterangeContent = '';
     }
-
-    const defaultUrl = url
-    const [resultUrl , setResultUrl] = useState(defaultUrl);
-    const fetcher = () => fetch(resultUrl).then(r => r.json())
-    const { data: elements } = useSWR('/api/promote', fetcher);
-
-    //用新URL发送请求
-    useEffect(() => {
-        let newUrl ='' 
-        if(period!=='all'){
-            newUrl = `${url}?period=${period}&startDate=${startDate}&endDate=${endDate}`
-        }else{
-            newUrl = `${url}?period=${period}`
-        }
-        
-        console.log('promote',newUrl);      
-        setResultUrl(newUrl)
-    }, [options]); 
-
-    if(elements){
+    
+    if(elements&&elements.length!==0){
         const keylist = Object.keys(elements[0]);
         let content = {
             tooltip: {},
@@ -98,6 +89,14 @@ function Promote({ url,options,detailLink="#",cardTitle,isDetailVersion=false}: 
                 <Card title={cardTitle} extra={<Space size={'large'}><p className='daterange'>{daterangeContent}</p><a href={detailLink} className='detailLink'><RightOutlined/></a></Space>}>
                     <ReactEcharts option={content}/>
                 </Card>
+            </div>
+        )
+    }else if(elements&&elements.length===0){
+        return(
+            <div className={isDetailVersion?bigVersion:smallVersion}>
+            <Card title={cardTitle} extra={<Space size={'large'}><p className='daterange'>{daterangeContent}</p><a className='detailLink' href={detailLink}><RightOutlined/></a></Space>}>
+                <h1>暂无数据</h1>
+            </Card>
             </div>
         )
     }else{
