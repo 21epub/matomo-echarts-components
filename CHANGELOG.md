@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7-alpha.11](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.10...v0.1.7-alpha.11) (2020-10-21)
+
+
+### Bug Fixes
+
+* 🐛 fix echarts title problem\ ([a2a4a26](https://github.com/21epub/matomo-echarts-components/commit/a2a4a261502783f27b609b5be36c0dd60b9f9086))
+
 ### [0.1.7-alpha.10](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.9...v0.1.7-alpha.10) (2020-10-20)
 
 
