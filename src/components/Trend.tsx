@@ -2,6 +2,7 @@ import React,{useState} from"react";
 import useSWR from 'swr';
 import {Card, Spin,Space,Row,Col} from 'antd'
 import TrendDetail from './TrendDetail'
+import {titleTranslate} from './util'
 import {RightOutlined} from '@ant-design/icons'
 import ReactEcharts from 'echarts-for-react';
 import styles from './index.module.less';
@@ -61,16 +62,26 @@ function Trend({ url,options,detailLink,cardTitle,isDetailVersion=false,create_t
             if(keyState==='bounce_rate'){
                 let value = elements[keylist[i]][keyState];
                 value = Number(value.substr(0,value.length - 1))
-                elements_value[i]={'date':keylist[i],[keyState]:value};
+                const name = titleTranslate(keyState)
+                elements_value[i]={'date':keylist[i],[name]:value};
             }else{
-                elements_value[i]={'date':keylist[i],[keyState]:elements[keylist[i]][keyState]};
+                const name = titleTranslate(keyState)
+                elements_value[i]={'date':keylist[i],[name]:elements[keylist[i]][keyState]};
             }        
         }
+        const name = titleTranslate(keyState)
         const sourceValue = elements_value;
-        const labelList =['date',keyState];
+        const labelList =['date',name];
 
         let content = {
-            tooltip: {},
+            tooltip: {
+                formatter: function (params:any) {
+                    let date = params.data.date;
+                    let key = params.dimensionNames[1];
+                    let value = params.data[key];
+                    return key+'<br/>'+ date + ':  ' + value;
+                }
+            },
             dataset: {
                 dimensions: labelList,
                 source: sourceValue,

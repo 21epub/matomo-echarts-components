@@ -1,7 +1,7 @@
 import React from 'react';
 import {Table,Card, Button,Space,Spin} from 'antd';
 import useSWR from 'swr';
-import {TitleTranslate} from './util'
+import {titleTranslate,compare} from './util'
 import {DownloadOutlined} from '@ant-design/icons'
 import styles from './index.module.less';
 
@@ -37,7 +37,7 @@ function TrendDetail({ url,options,keyState,create_time}: Props) {
 
     if(elements&&elements.length!==0){
         const keylist = Object.keys(elements);
-        let titleTransformed = TitleTranslate(keyState);
+        let titleTransformed = titleTranslate(keyState);
         let columns = [];
         columns[0] = {title:'日期',dataIndex:'date'};
         columns[1] = {title:titleTransformed,dataIndex:keyState};
@@ -50,6 +50,8 @@ function TrendDetail({ url,options,keyState,create_time}: Props) {
                 [keyState]:elements[keylist[i]][keyState]
             }
         }
+
+        data.sort(compare("key"));
 
         return(
             <div className={styles.trendDetail}>

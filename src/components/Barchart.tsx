@@ -35,7 +35,7 @@ function Barchart({ url,options,detailLink="#",cardTitle,isDetailVersion=false,c
         refreshInterval: 0 
     }
     const fetcher = (url:string) => fetch(url).then(r => r.json())
-    const { data: elements } = useSWR(newUrl, fetcher, swrOptions);
+    let { data: elements } = useSWR(newUrl, fetcher, swrOptions);
  
     
     const bigVersion = styles.bigVersion;
@@ -47,21 +47,12 @@ function Barchart({ url,options,detailLink="#",cardTitle,isDetailVersion=false,c
     }
 
     if(elements&&elements.length!==0){
+        elements = JSON.parse(JSON.stringify(elements).replace(/label/g, '渠道名'))
+        elements = JSON.parse(JSON.stringify(elements).replace(/nb_visits/g, '访问数量'))
         const keylist = Object.keys(elements[0])
 
         let content = {
-            tooltip: {
-                // formatter: '{b}: {@nb_visits}'
-            },
-            noDataLoadingOption: {
-                text: '暂无数据',
-                effect: 'bubble',
-                effectOption: {
-                    effect: {
-                        n: 0
-                    }
-                }
-            },
+            tooltip: {},
             dataset: {
                 dimensions: keylist,
                 source: elements

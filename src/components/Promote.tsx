@@ -35,7 +35,7 @@ function Promote({ url,options,detailLink="#",cardTitle,isDetailVersion=false,cr
         refreshInterval: 0 
     }
     const fetcher = (url:string) => fetch(url).then(r => r.json())
-    const { data: elements } = useSWR(newUrl, fetcher, swrOptions);
+    let { data: elements } = useSWR(newUrl, fetcher, swrOptions);
 
     const bigVersion = styles.bigVersion;
     const smallVersion = styles.smallVersion;
@@ -47,6 +47,9 @@ function Promote({ url,options,detailLink="#",cardTitle,isDetailVersion=false,cr
     }
     
     if(elements&&elements.length!==0){
+        // 饼图不知为什么显示的标题是反的，所以这样写
+        elements = JSON.parse(JSON.stringify(elements).replace(/label/g, '访问数量'))
+
         const keylist = Object.keys(elements[0]);
         let content = {
             tooltip: {},

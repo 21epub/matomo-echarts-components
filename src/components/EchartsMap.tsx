@@ -101,8 +101,8 @@ function EchartsMap({ url,options,detailLink="#",cardTitle,isDetailVersion=false
             [
                 {
                     name: '浏览量',
-                    type: 'map',//type必须声明为 map 说明该图标为echarts 中map类型
-                    map: 'china', //这里需要特别注意。如果是中国地图，map值为china，如果为各省市则为中文。这里用北京
+                    type: 'map',
+                    map: 'china',
                     aspectScale: 0.75, //长宽比. default: 0.75
                     zoom: 1.2,
                     roam: false,

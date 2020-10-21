@@ -86,8 +86,8 @@ function dataFormat(elements:Array<any>,mapDetail=false){
     return data;
 }
 
-function TitleTranslate(titleList:any){
-    switch (titleList) {
+function titleTranslate(title:any){
+    switch (title) {
         case 'nb_hits':
             return 'PV';
         case 'nb_uniq_visitors':
@@ -115,6 +115,14 @@ function TitleTranslate(titleList:any){
         default:{console.log('transfer err')}
             return 'null';
     }
-
 }
-export {dataFormat,TitleTranslate}
+
+function compare(p:string){ 
+    return function(m:any,n:any){
+        var a = m[p];
+        var b = n[p];
+        return b - a; 
+    }
+}
+
+export {dataFormat,titleTranslate,compare}
