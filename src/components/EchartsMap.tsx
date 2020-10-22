@@ -38,7 +38,7 @@ function EchartsMap({ url,options,detailLink="#",cardTitle,isDetailVersion=false
     let newUrl = ''       
     if(period!=='all' && startDate && endDate){
         newUrl = `${url}?period=${period}&start_time=${startDate.replace(/\//g,"-")}&end_time=${endDate.replace(/\//g,"-")}`
-    }else {
+    }else if(create_time!==''){
         newUrl = `${url}?period=${period}&start_time=${create_time.replace(/\//g,"-")}`
     }
 

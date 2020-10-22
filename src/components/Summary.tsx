@@ -1,4 +1,4 @@
-import React from"react";
+import React from "react";
 import {Card,Row,Col,Spin} from 'antd'
 import useSWR from 'swr';
 
@@ -8,12 +8,19 @@ interface Props {
 }
 
 function Summary({url,create_time}: Props) {
-    let newUrl = `${url}?start_time=${create_time}`
-    
+
+    let newUrl = ''
+    if(create_time!==''){
+        newUrl = `${url}?start_time=${create_time}`
+    }
+
+    const swrOptions ={
+        refreshInterval: 0 
+    }
     const fetcher = (url:string) => fetch(url).then(r => r.json())
-    const { data: elements } = useSWR(newUrl, fetcher);
+    const { data: elements } = useSWR(newUrl, fetcher,swrOptions);
     
-    if(elements){
+    if(elements&&elements.length!==0){
         const content = []
         const spanList=[5,5,5,4,3]
         const titleList = ['浏览量（PV）','访客数（UV）','转发数','平均时长','跳出率']

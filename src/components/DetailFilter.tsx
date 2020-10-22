@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React,{useContext, useEffect} from 'react';
 import {AppContext} from './context';
 import SelectPeriod from './SelectPeriod';
 import {keyToRange} from './dateCompute';
@@ -8,29 +8,52 @@ import { Space, Tabs,Dropdown,Menu,Select} from 'antd';
 const { TabPane } = Tabs;
 const { Option } = Select;
 
-function DetailFilter() {
+type Options = {
+  dateRange:string[],
+  period:string
+}
+
+interface Props {
+  totalOptions?:Options
+}
+const menu = (
+  <Menu>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="#">
+        1st menu item
+      </a>
+    </Menu.Item>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="#">
+        2nd menu item
+      </a>
+    </Menu.Item>
+    <Menu.Item>
+      <a target="_blank" rel="noopener noreferrer" href="#">
+        3rd menu item
+      </a>
+    </Menu.Item>
+  </Menu>
+);
+
+function DetailFilter({totalOptions}:Props) {
   const {state:options, dispatch} = useContext(AppContext);
 
-    const menu = (
-        <Menu>
-          <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="#">
-              1st menu item
-            </a>
-          </Menu.Item>
-          <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="#">
-              2nd menu item
-            </a>
-          </Menu.Item>
-          <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="#">
-              3rd menu item
-            </a>
-          </Menu.Item>
-        </Menu>
-     );
-
+  if(totalOptions){
+    useEffect(() => {
+      if(totalOptions.period!=='all'){
+        const newSate ={
+            dateRange:totalOptions.dateRange,
+            period:totalOptions.period
+        }
+        dispatch({
+            type: 'filter',
+            payload: newSate
+        })
+      }
+    }, [])
+  }
+  
     const filter = (key:string) => {
         const period = key;
         if(key==='all'){
@@ -57,7 +80,7 @@ function DetailFilter() {
     return(
         <div className={styles.detailFilter}>
             <Tabs 
-            defaultActiveKey={options.period}
+            activeKey={options.period}
             tabBarExtraContent={
             <Space>
 

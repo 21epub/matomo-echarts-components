@@ -6,6 +6,7 @@ import TestOptions from './TestOptions'
 //import { AppProvider } from '../';
 import {AppProvider} from '@21epub/matomo-echarts-components'
 
+
 const App = () => {
   return (
     <div>
@@ -13,7 +14,6 @@ const App = () => {
     <AppProvider>
     <TestOptions/>
     </AppProvider> 
-    
     </div>
     )
 }
