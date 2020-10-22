@@ -79,7 +79,7 @@ function Detail({ url,options,detailType,create_time}: Props) {
         )
     }else if(elements&&elements.length===0){
         return(
-            <div className={styles.trendDetail}>
+            <div className={styles.noDataTrendDetail}>
                 <Card title="详细数据列表"  
                 extra={
                     <p className='daterange'>{daterangeContent}</p> 
