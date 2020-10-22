@@ -12,11 +12,11 @@ type Options = {
   period: string
 }
 
-type Datatype = {
-  name: string
-  value: number
-  rate: number
-}
+// type Datatype = {
+//   name: string
+//   value: number
+//   rate: number
+// }
 
 interface Props {
   url: string
@@ -79,7 +79,7 @@ function EchartsMap({
       },
       tooltip: {
         trigger: 'item',
-        formatter: function (data: Array<Datatype>) {
+        formatter: function (data: any) {
           if (data.data) {
             return `${data.name}<hr/>浏览量: ${data.value} <br/>占比: ${data.data.rate} `
           } else {
