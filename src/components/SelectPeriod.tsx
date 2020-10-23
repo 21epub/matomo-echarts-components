@@ -3,6 +3,7 @@ import { DatePicker } from 'antd'
 import moment from 'moment'
 import { AppContext } from './context'
 import { checkPeriod } from './dateCompute'
+// import {getToday} from './dateCompute'
 // import styles from './index.module.less';
 
 function SelectPeriod() {
@@ -22,6 +23,11 @@ function SelectPeriod() {
     })
   }
 
+  function disabledDate(current: any) {
+    // Can not select days before today and today
+    return current > moment().endOf('day')
+  }
+
   if (options.period === 'all') {
     return <RangePicker format={dateFormat} onChange={selectPeriod} />
   } else {
@@ -29,6 +35,7 @@ function SelectPeriod() {
       // className={styles.selectPeriod}
       <RangePicker
         format={dateFormat}
+        disabledDate={disabledDate}
         onChange={selectPeriod}
         value={[
           moment(options.dateRange[0], dateFormat),

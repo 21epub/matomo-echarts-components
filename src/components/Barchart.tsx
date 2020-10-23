@@ -72,7 +72,11 @@ function Barchart({
         source: elements
       },
       xAxis: { type: 'category' },
-      yAxis: { type: 'value' },
+      yAxis: { 
+        type: 'value',                
+        axisLine: {show:false},
+        axisTick: {show:false}, 
+      },
       series: [
         {
           type: 'bar',

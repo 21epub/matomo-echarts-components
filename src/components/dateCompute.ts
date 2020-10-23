@@ -16,7 +16,6 @@ function checkPeriod(_startDate: string, _endDate: string) {
   const last7Date = getPastedDay(6).format('YYYY/MM/DD')
   const last15Date = getPastedDay(14).format('YYYY/MM/DD')
   const last30Date = getPastedDay(29).format('YYYY/MM/DD')
-  // console.log('startDate:',startDate,'!!!endDate:',endDate,'!!today:',todayDate,'!!!yesterday',yesterdayDate)
 
   if (startDate === endDate) {
     switch (startDate) {

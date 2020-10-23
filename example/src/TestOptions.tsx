@@ -1,5 +1,10 @@
 import React, { useEffect, useState, useContext } from 'react'
-import { AppContext, EchartsMap } from '@21epub/matomo-echarts-components'
+import {
+  Filter,
+  AppContext,
+  EchartsMap,
+  TransformTrend
+} from '@21epub/matomo-echarts-components'
 import '@21epub/matomo-echarts-components/dist/index.css'
 import 'antd/dist/antd.css'
 import { Col, Row } from 'antd'
@@ -25,11 +30,16 @@ const TestOptions = () => {
             <Summary url="https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/summary/" create_time={createTime}/>
           </Col>
         </Row> */}
-      {/* <Row gutter={[16, 16]}>
-          <Col span={24}>
-          <Filter/>
-          </Col>
-        </Row> */}
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <Filter />
+        </Col>
+      </Row>
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <TransformTrend />
+        </Col>
+      </Row>
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>
             <Barchart
