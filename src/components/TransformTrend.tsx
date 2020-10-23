@@ -165,8 +165,8 @@ function TransformTrend(){
                     <Radio.Group defaultValue='day' size='small' buttonStyle="solid" onChange={handleOnChange} >
                       <Radio.Button value="time">按时</Radio.Button>
                       <Radio.Button value="day">按日</Radio.Button>
-                      <Radio.Button value="week" disabled>按周</Radio.Button>
-                      <Radio.Button value="month" disabled>按月</Radio.Button>
+                      <Radio.Button value="week" >按周</Radio.Button>
+                      <Radio.Button value="month" >按月</Radio.Button>
                     </Radio.Group>
                   </Col>
                 </Row>
