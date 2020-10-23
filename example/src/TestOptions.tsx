@@ -3,7 +3,8 @@ import {
   Filter,
   AppContext,
   EchartsMap,
-  TransformTrend
+  TransformTrend,
+  InstallButton
 } from '@21epub/matomo-echarts-components'
 import '@21epub/matomo-echarts-components/dist/index.css'
 import 'antd/dist/antd.css'
@@ -30,6 +31,7 @@ const TestOptions = () => {
             <Summary url="https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/summary/" create_time={createTime}/>
           </Col>
         </Row> */}
+      <InstallButton downloadUrl='testurl' />
       <Row gutter={[16, 16]}>
         <Col span={24}>
           <Filter />
