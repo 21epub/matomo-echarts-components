@@ -72,10 +72,10 @@ function Barchart({
         source: elements
       },
       xAxis: { type: 'category' },
-      yAxis: { 
-        type: 'value',                
-        axisLine: {show:false},
-        axisTick: {show:false}, 
+      yAxis: {
+        type: 'value',
+        axisLine: { show: false },
+        axisTick: { show: false }
       },
       series: [
         {

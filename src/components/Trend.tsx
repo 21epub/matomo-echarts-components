@@ -103,14 +103,14 @@ function Trend({
         source: sourceValue
       },
       xAxis: { type: 'category' },
-      yAxis: { 
+      yAxis: {
         type: 'value',
-        axisLine: {show:false},
-        axisTick: {show:false}
+        axisLine: { show: false },
+        axisTick: { show: false }
       },
       series: [
         {
-          name:'转化次数',
+          name: '转化次数',
           type: 'line',
           smooth: true,
           itemStyle: {
@@ -125,7 +125,7 @@ function Trend({
           }
         },
         {
-          name:'转化率',
+          name: '转化率',
           type: 'line',
           smooth: true,
           itemStyle: {
@@ -138,7 +138,7 @@ function Trend({
               }
             }
           }
-        },
+        }
       ]
     }
 
