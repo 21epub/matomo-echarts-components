@@ -29,7 +29,7 @@
     "lint-staged:js": "eslint --fix --cache --ext .ts,.tsx ./src",
     "prettier": "prettier -c --write \"**/*\"",
     "release": "git fetch --tags && npx standard-version",
-    "commit": "lint-staged && npx git-cz"
+    "commit": "lint-staged && npx git-cz "
   },
   "lint-staged": {
     "**/*.less": "stylelint --fix --syntax less",
