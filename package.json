@@ -32,7 +32,7 @@
     "commit": "lint-staged && npx git-cz --no-verify"
   },
   "lint-staged": {
-    "**/*.less": "stylelint --syntax less",
+    "**/*.less": "stylelint --fix --syntax less",
     "**/*.{ts,tsx}": "npm run lint-staged:js",
     "**/*.{tsx,ts,less,md,json}": [
       "prettier --write"
@@ -72,6 +72,11 @@
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",
     "stylelint": "^13.0.0",
+    "stylelint-config-css-modules": "2.2.0",
+    "stylelint-config-prettier": "8.0.2",
+    "stylelint-config-rational-order": "0.1.2",
+    "stylelint-config-standard": "20.0.0",
+    "stylelint-declaration-block-no-ignored-properties": "2.3.0",
     "typescript": "^3.7.5"
   },
   "files": [
