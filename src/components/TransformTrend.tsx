@@ -153,39 +153,41 @@ function TransformTrend({ optionsUrl, summaryUrl }: Props) {
       <div className={styles.transformTrend}>
         <Row gutter={[16, 16]}>
           <Col span={24}>
-            <Card
-              title='转化目标'
-              extra={
-                <div className='transformSelecter'>
-                  <Select
-                    defaultValue={selectOptions[0].value}
-                    style={{ width: 250 }}
-                    options={selectOptions}
-                    onChange={handleChange}
-                  />
-                </div>
-              }
-            >
-              <Card.Grid style={{ width: '100%' }} hoverable={false}>
-                <Row>
-                  {cardConent.map((e, i) => {
-                    return (
-                      <Col span={4} offset={2} key={i}>
-                        <p>{e.titleList}</p>
-                        <h1>{e.dataList}</h1>
-                      </Col>
-                    )
-                  })}
-                </Row>
-              </Card.Grid>
-              <Card.Grid style={{ width: '100%' }} hoverable={false}>
-                <Row>
-                  <Col span={24}>
-                    <ReactEcharts option={content} />
-                  </Col>
-                </Row>
-              </Card.Grid>
-            </Card>
+            <div className='trendCard'>
+              <Card
+                title='转化目标'
+                extra={
+                  <div className='transformSelecter'>
+                    <Select
+                      defaultValue={selectOptions[0].value}
+                      style={{ width: 250 }}
+                      options={selectOptions}
+                      onChange={handleChange}
+                    />
+                  </div>
+                }
+              >
+                <Card.Grid style={{ width: '100%' }} hoverable={false}>
+                  <Row>
+                    {cardConent.map((e, i) => {
+                      return (
+                        <Col span={4} offset={2} key={i}>
+                          <p>{e.titleList}</p>
+                          <h1>{e.dataList}</h1>
+                        </Col>
+                      )
+                    })}
+                  </Row>
+                </Card.Grid>
+                <Card.Grid style={{ width: '100%' }} hoverable={false}>
+                  <Row>
+                    <Col span={24}>
+                      <ReactEcharts option={content} />
+                    </Col>
+                  </Row>
+                </Card.Grid>
+              </Card>
+            </div>
           </Col>
         </Row>
         <Row gutter={[16, 16]}>
