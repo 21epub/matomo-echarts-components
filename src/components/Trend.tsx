@@ -12,6 +12,7 @@ const { TabPane } = Tabs
 type Options = {
   dateRange: string[]
   period: string
+  source?: string
 }
 
 interface Props {
@@ -21,6 +22,7 @@ interface Props {
   cardTitle: string
   isDetailVersion?: boolean
   createTime: string
+  extra?: any
 }
 
 function Trend({
@@ -29,7 +31,8 @@ function Trend({
   detailLink,
   cardTitle,
   isDetailVersion = false,
-  createTime
+  createTime,
+  extra
 }: Props) {
   const bigVersion = styles.bigTrendVersion
   const smallVersion = styles.smallTrendVersion
@@ -37,6 +40,7 @@ function Trend({
   const period = options.period
   const startDate = options.dateRange[0]
   const endDate = options.dateRange[1]
+  // const source = options.source
 
   let daterangeContent = `${startDate}-${endDate}`
   if (period === 'all') {
@@ -49,11 +53,19 @@ function Trend({
       /\//g,
       '-'
     )}&end_time=${endDate.replace(/\//g, '-')}`
+    // newUrl = `${url}?period=${period}&param=${source}&start_time=${startDate.replace(
+    //   /\//g,
+    //   '-'
+    // )}&end_time=${endDate.replace(/\//g, '-')}`
   } else if (createTime !== '') {
     newUrl = `${url}?period=${period}&start_time=${createTime.replace(
       /\//g,
       '-'
     )}`
+    // newUrl = `${url}?period=${period}&param=${source}&start_time=${createTime.replace(
+    //   /\//g,
+    //   '-'
+    // )}`
   }
 
   const swrOptions = {
@@ -103,14 +115,14 @@ function Trend({
         source: sourceValue
       },
       xAxis: { type: 'category' },
-      yAxis: { 
+      yAxis: {
         type: 'value',
-        axisLine: {show:false},
-        axisTick: {show:false}
+        axisLine: { show: false },
+        axisTick: { show: false }
       },
       series: [
         {
-          name:'转化次数',
+          name: '转化次数',
           type: 'line',
           smooth: true,
           itemStyle: {
@@ -125,7 +137,7 @@ function Trend({
           }
         },
         {
-          name:'转化率',
+          name: '转化率',
           type: 'line',
           smooth: true,
           itemStyle: {
@@ -138,7 +150,7 @@ function Trend({
               }
             }
           }
-        },
+        }
       ]
     }
 
@@ -180,6 +192,7 @@ function Trend({
                 options={options}
                 keyState={keyState}
                 createTime={createTime}
+                extra={extra}
               />
             </Col>
           </Row>

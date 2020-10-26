@@ -4,6 +4,7 @@ import reducers from './reducers'
 type Options = {
   dateRange: string[]
   period: string
+  source?: string
 }
 const options = {
   dateRange: [],
@@ -14,7 +15,9 @@ const options = {
     'last7' ||
     'last15' ||
     'last30' ||
-    'range'
+    'range',
+  source:
+    'allSource' || 'direct' || 'search' || 'website' || 'social' || 'campaign'
 }
 
 const AppContext = createContext<{

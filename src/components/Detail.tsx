@@ -1,8 +1,7 @@
 import React from 'react'
-import { Table, Card, Button, Space, Spin } from 'antd'
+import { Table, Card, Space, Spin } from 'antd'
 import { titleTranslate, dataFormat } from './util'
 import useSWR from 'swr'
-import { DownloadOutlined } from '@ant-design/icons'
 import styles from './index.module.less'
 
 type Options = {
@@ -15,9 +14,10 @@ interface Props {
   options: Options
   detailType: string
   createTime: string
+  extra?: any
 }
 
-function Detail({ url, options, detailType, createTime }: Props) {
+function Detail({ url, options, detailType, createTime, extra }: Props) {
   const period = options.period
   const startDate = options.dateRange[0]
   const endDate = options.dateRange[1]
@@ -77,7 +77,7 @@ function Detail({ url, options, detailType, createTime }: Props) {
           extra={
             <Space size='large'>
               <p className='daterange'>{daterangeContent}</p>
-              <Button icon={<DownloadOutlined />}>下载数据</Button>
+              <div>{extra}</div>
             </Space>
           }
         >

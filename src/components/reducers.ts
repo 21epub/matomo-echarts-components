@@ -5,6 +5,10 @@ const reducer = (state: any, action: any) => {
       const { payload } = action
       return { ...state, ...payload }
     }
+    case 'selectSource': {
+      const { payload } = action
+      return { ...state, ...payload }
+    }
     case 'filter': {
       const { payload } = action
       return { ...state, ...payload }

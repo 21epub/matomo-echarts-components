@@ -4,9 +4,9 @@ import SelectPeriod from './SelectPeriod'
 import { keyToRange } from './dateCompute'
 import styles from './index.module.less'
 import { DownOutlined } from '@ant-design/icons'
-import { Space, Tabs, Dropdown, Menu, Select } from 'antd'
+import { Space, Tabs, Dropdown, Menu } from 'antd'
+import SelectSource from './SelectSource'
 const { TabPane } = Tabs
-const { Option } = Select
 
 type Options = {
   dateRange: string[]
@@ -39,6 +39,7 @@ const menu = (
 function DetailFilter({ totalOptions }: Props) {
   const { state: options, dispatch } = useContext(AppContext)
 
+  // if outside default value exits
   if (totalOptions) {
     useEffect(() => {
       if (totalOptions.period !== 'all') {
@@ -85,10 +86,7 @@ function DetailFilter({ totalOptions }: Props) {
           <Space>
             <SelectPeriod />
 
-            <Select defaultValue='all' style={{ width: 200 }}>
-              <Option value='all'>所有来源</Option>
-              <Option value='Option1'>Option1</Option>
-            </Select>
+            <SelectSource />
 
             <Dropdown overlay={menu} placement='bottomRight'>
               <a

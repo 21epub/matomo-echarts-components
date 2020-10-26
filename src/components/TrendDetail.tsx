@@ -1,8 +1,7 @@
 import React from 'react'
-import { Table, Card, Button, Space, Spin } from 'antd'
+import { Table, Card, Space, Spin } from 'antd'
 import useSWR from 'swr'
 import { titleTranslate, compare } from './util'
-import { DownloadOutlined } from '@ant-design/icons'
 import styles from './index.module.less'
 
 interface Props {
@@ -10,12 +9,14 @@ interface Props {
   options?: any
   keyState: string
   createTime: string
+  extra?: any
 }
 
-function TrendDetail({ url, options, keyState, createTime }: Props) {
+function TrendDetail({ url, options, keyState, createTime, extra }: Props) {
   const period = options.period
   const startDate = options.dateRange[0]
   const endDate = options.dateRange[1]
+  // const source = options.source
 
   let daterangeContent = `${startDate}-${endDate}`
   if (period === 'all') {
@@ -28,11 +29,19 @@ function TrendDetail({ url, options, keyState, createTime }: Props) {
       /\//g,
       '-'
     )}&end_time=${endDate.replace(/\//g, '-')}`
+    // newUrl = `${url}?period=${period}&param=${source}&start_time=${startDate.replace(
+    //   /\//g,
+    //   '-'
+    // )}&end_time=${endDate.replace(/\//g, '-')}`
   } else if (createTime !== '') {
     newUrl = `${url}?period=${period}&start_time=${createTime.replace(
       /\//g,
       '-'
     )}`
+    // newUrl = `${url}?period=${period}&param=${source}&start_time=${createTime.replace(
+    //   /\//g,
+    //   '-'
+    // )}`
   }
 
   const swrOptions = {
@@ -66,7 +75,7 @@ function TrendDetail({ url, options, keyState, createTime }: Props) {
           extra={
             <Space size='large'>
               <p className='daterange'>{daterangeContent}</p>
-              <Button icon={<DownloadOutlined />}>下载数据</Button>
+              {extra}
             </Space>
           }
         >
