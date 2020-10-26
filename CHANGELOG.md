@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7-alpha.17](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.16...v0.1.7-alpha.17) (2020-10-26)
+
+
+### Features
+
+* 🎸 add transform page ([a128fc9](https://github.com/21epub/matomo-echarts-components/commit/a128fc9393fb05c7fb947a7aa4334ee0557295c2))
+
 ### [0.1.7-alpha.16](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.15...v0.1.7-alpha.16) (2020-10-23)
 
 
