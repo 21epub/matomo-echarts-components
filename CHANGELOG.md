@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7-alpha.18](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.17...v0.1.7-alpha.18) (2020-10-26)
+
+
+### Bug Fixes
+
+* 🐛 fix transform card padding problem ([647139e](https://github.com/21epub/matomo-echarts-components/commit/647139e9fdf2ba34c6a8e2700cf91467440f6c1a))
+
 ### [0.1.7-alpha.17](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.16...v0.1.7-alpha.17) (2020-10-26)
 
 
