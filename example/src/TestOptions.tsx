@@ -2,9 +2,11 @@ import React, { useEffect, useState, useContext } from 'react'
 
 import {
   AppContext,
-  TransformTrend,
+  // TransformTrend,
   // Trend,
-  DetailFilter
+  TrendDetailFilter,
+  EchartsMap
+  // Barchart
   // Detail,
   // InstallButton
 } from '@21epub/matomo-echarts-components'
@@ -16,7 +18,7 @@ const TestOptions = () => {
   const { state: options } = useContext(AppContext)
 
   // const detailLink: string = '#'
-  // const mapTitle:string = '地域分布';
+  // // const mapTitle:string = '地域分布';
   // const barchartTitle: string = '扩展渠道'
   // const promoteTitle:string = "推广分析";
   // const trendTitle:string = "趋势图";
@@ -26,7 +28,8 @@ const TestOptions = () => {
       setCreateTime('2020-10-20')
     }, 2000)
   }, [])
-  console.log(options, createTime)
+
+  // const extra = [<div>test1</div>]
 
   return (
     <div>
@@ -38,60 +41,67 @@ const TestOptions = () => {
       {/* <InstallButton downloadUrl='testurl' /> */}
       <Row gutter={[16, 16]}>
         <Col span={24}>
-          <DetailFilter />
+          <TrendDetailFilter />
         </Col>
       </Row>
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>
-          <Trend url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/visits/' options={options} cardTitle={barchartTitle} isDetailVersion={true} createTime ={createTime}  extra={<InstallButton downloadUrl='url'/>}/> 
+            <Trend url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/visits/' 
+            options={options} 
+            cardTitle='test'
+            isDetailVersion
+            createTime ={createTime} 
+            /> 
           </Col>
       </Row>  */}
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <TransformTrend
             summaryUrl='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/transform/'
-            optionsUrl='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/idgoal/'
+            optionsUrl='https://yapi.epub360.com/mock/76/v3/api/tongji/idgoal/'
+            createTime={createTime}
+            options={options}
+            extra={[]}
           />
         </Col>
-      </Row>
+      </Row> */}
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>
             <Barchart
               // url="url" 
               url="https://yapi.epub360.com/mock/76/v3/api/tongji/{book_slug}/campaign/"
               options={options}
-              detailLink={detailLink}
-              cardTitle={barchartTitle}
+              detailLink='#'
+              cardTitle="#"
               isDetailVersion
-              create_time ={createTime}
+              createTime ={createTime}
             />
           </Col>
         </Row> */}
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>
             <Detail
-              // url="url" 
               url="https://yapi.epub360.com/mock/76/v3/api/tongji/{book_slug}/campaign/"
               options={options}
               createTime ={createTime}
-              detailType='promote'
-              extra={<InstallButton downloadUrl='url'/>}
+              detailType='barchart'
+              extra={[]}
             />
           </Col>
         </Row> */}
-      {/* 
+
       <Row gutter={[16, 16]}>
         <Col span={24}>
           <EchartsMap
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/{book_slug}/map/'
             options={options}
-            detailLink={detailLink}
-            cardTitle={barchartTitle}
+            detailLink='#'
+            cardTitle='#'
             isDetailVersion
             createTime={createTime}
           />
         </Col>
-      </Row> */}
+      </Row>
 
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>

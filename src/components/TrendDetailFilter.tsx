@@ -5,6 +5,7 @@ import { keyToRange } from '../util/dateCompute'
 import styles from './index.module.less'
 import { DownOutlined } from '@ant-design/icons'
 import { Space, Tabs, Dropdown, Menu } from 'antd'
+import SelectSource from './SelectSource'
 const { TabPane } = Tabs
 
 type Options = {
@@ -35,7 +36,7 @@ const menu = (
   </Menu>
 )
 
-function DetailFilter({ totalOptions }: Props) {
+function TrendDetailFilter({ totalOptions }: Props) {
   const { state: options, dispatch } = useContext(AppContext)
 
   // if outside default value exits
@@ -85,6 +86,8 @@ function DetailFilter({ totalOptions }: Props) {
           <Space>
             <SelectPeriod />
 
+            <SelectSource />
+
             <Dropdown overlay={menu} placement='bottomRight'>
               <a
                 className='ant-dropdown-link'
@@ -109,4 +112,4 @@ function DetailFilter({ totalOptions }: Props) {
   )
 }
 
-export default DetailFilter
+export default TrendDetailFilter

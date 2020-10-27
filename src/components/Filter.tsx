@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
-import { AppContext } from './context'
+import { AppContext } from '../util/context'
 import SelectPeriod from './SelectPeriod'
-import { keyToRange } from './dateCompute'
+import { keyToRange } from '../util/dateCompute'
 import styles from './index.module.less'
 import { Tabs } from 'antd'
 const { TabPane } = Tabs
@@ -10,7 +10,6 @@ function Filter() {
   const { state: options, dispatch } = useContext(AppContext)
 
   const filter = (key: string) => {
-    // console.log('filter',key);
     const period = key
     if (key === 'all') {
       const newstate = {

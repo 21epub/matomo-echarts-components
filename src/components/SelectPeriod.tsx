@@ -1,10 +1,8 @@
 import React, { useContext } from 'react'
 import { DatePicker } from 'antd'
 import moment from 'moment'
-import { AppContext } from './context'
-import { checkPeriod } from './dateCompute'
-// import {getToday} from './dateCompute'
-// import styles from './index.module.less';
+import { AppContext } from '../util/context'
+import { checkPeriod } from '../util/dateCompute'
 
 function SelectPeriod() {
   const { state: options, dispatch } = useContext(AppContext)

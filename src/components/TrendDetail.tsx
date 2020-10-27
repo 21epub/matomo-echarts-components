@@ -1,22 +1,28 @@
 import React from 'react'
 import { Table, Card, Space, Spin } from 'antd'
 import useSWR from 'swr'
-import { titleTranslate, compare } from './util'
+import { titleTranslate, compare } from '../util/util'
 import styles from './index.module.less'
+
+type Options = {
+  dateRange: string[]
+  period: string
+  source?: string
+}
 
 interface Props {
   url: string
-  options?: any
+  options: Options
   keyState: string
   createTime: string
-  extra?: any
+  extra?: React.ReactNode[]
 }
 
 function TrendDetail({ url, options, keyState, createTime, extra }: Props) {
   const period = options.period
   const startDate = options.dateRange[0]
   const endDate = options.dateRange[1]
-  // const source = options.source
+  const source = options.source
 
   let daterangeContent = `${startDate}-${endDate}`
   if (period === 'all') {
@@ -25,23 +31,15 @@ function TrendDetail({ url, options, keyState, createTime, extra }: Props) {
 
   let newUrl = ''
   if (period !== 'all' && startDate && endDate) {
-    newUrl = `${url}?period=${period}&start_time=${startDate.replace(
+    newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${startDate.replace(
       /\//g,
       '-'
     )}&end_time=${endDate.replace(/\//g, '-')}`
-    // newUrl = `${url}?period=${period}&param=${source}&start_time=${startDate.replace(
-    //   /\//g,
-    //   '-'
-    // )}&end_time=${endDate.replace(/\//g, '-')}`
   } else if (createTime !== '') {
-    newUrl = `${url}?period=${period}&start_time=${createTime.replace(
+    newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${createTime.replace(
       /\//g,
       '-'
     )}`
-    // newUrl = `${url}?period=${period}&param=${source}&start_time=${createTime.replace(
-    //   /\//g,
-    //   '-'
-    // )}`
   }
 
   const swrOptions = {

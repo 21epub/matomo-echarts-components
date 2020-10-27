@@ -10,19 +10,47 @@
 npm install --save @21epub/matomo-echarts-components
 ```
 
+## Example
+
+```tsx
+import React from 'react'
+import { AppProvider } from '@21epub/matomo-echarts-components'
+import Example from './Example'
+import '@21epub/matomo-echarts-components/dist/index.css'
+import 'antd/dist/antd.css'
+
+const App = () => {
+  return (
+    <AppProvider>
+      <Example />
+    </AppProvider>
+  )
+}
+
+export default App
+```
+
 ## Usage
 
 ```tsx
-import React, { Component } from 'react'
+import { AppContext, EchartsMap } from '@21epub/matomo-echarts-components'
 
-import { Barchart} from '@21epub/matomo-echarts-components'
-import '@21epub/matomo-echarts-components/dist/index.css'
+const Example = () => {
+  const { state: options } = useContext(AppContext)
 
-class Example extends Component {
-  render() {
-    return <Barchart />
-  }
+  return (
+    <EchartsMap
+      url='url'
+      options={options}
+      detailLink='#'
+      cardTitle='title'
+      createTime='2020-10-20'
+      isDetailVersion
+    />
+  )
 }
+
+export default Example
 ```
 
 ## License

@@ -3,20 +3,15 @@ import useSWR from 'swr'
 import { Card, Spin, Space } from 'antd'
 import { RightOutlined } from '@ant-design/icons'
 import ReactEcharts from 'echarts-for-react'
-import { dataFormat } from './util'
+import { dataFormat } from '../util/util'
 import styles from './index.module.less'
 require('echarts/map/js/china.js')
 
 type Options = {
   dateRange: string[]
   period: string
+  source?: string
 }
-
-// type Datatype = {
-//   name: string
-//   value: number
-//   rate: number
-// }
 
 interface Props {
   url: string
@@ -41,15 +36,16 @@ function EchartsMap({
   const startDate = options.dateRange[0]
   const endDate = options.dateRange[1]
   const period = options.period
+  const source = options.source
 
   let newUrl = ''
   if (period !== 'all' && startDate && endDate) {
-    newUrl = `${url}?period=${period}&start_time=${startDate.replace(
+    newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${startDate.replace(
       /\//g,
       '-'
     )}&end_time=${endDate.replace(/\//g, '-')}`
   } else if (createTime !== '') {
-    newUrl = `${url}?period=${period}&start_time=${createTime.replace(
+    newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${createTime.replace(
       /\//g,
       '-'
     )}`
@@ -93,9 +89,9 @@ function EchartsMap({
         // seriesIndex:0,
         pieces: [
           // {gt: 10000, color: 'RGBA(125, 22, 24, 1.00)'},            // (1500, Infinity]
-          { gt: 1000, lte: 10000, color: 'RGB(69, 132, 220)' }, // (900, 1500]
-          { gt: 100, lte: 1000, color: 'RGB(105, 157, 230)' }, // (310, 1000]
-          { gt: 10, lte: 100, color: 'RGB(162, 190, 234)' }, // (200, 300]
+          { gt: 1000, lte: 10000, color: 'RGB(69, 132, 220)' },
+          { gt: 100, lte: 1000, color: 'RGB(105, 157, 230)' },
+          { gt: 10, lte: 100, color: 'RGB(162, 190, 234)' },
           { gt: 0, lte: 10, color: 'RGB(207, 223, 244)' },
           { value: 0, color: '#eef3fd' }
         ],

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import useSWR from 'swr'
 import { Card, Spin, Space, Row, Col, Tabs } from 'antd'
 import TrendDetail from './TrendDetail'
-import { titleTranslate } from './util'
+import { titleTranslate } from '../util/util'
 import { RightOutlined } from '@ant-design/icons'
 import ReactEcharts from 'echarts-for-react'
 import styles from './index.module.less'
@@ -22,7 +22,7 @@ interface Props {
   cardTitle: string
   isDetailVersion?: boolean
   createTime: string
-  extra?: any
+  extra?: React.ReactNode[]
 }
 
 function Trend({
@@ -40,7 +40,7 @@ function Trend({
   const period = options.period
   const startDate = options.dateRange[0]
   const endDate = options.dateRange[1]
-  // const source = options.source
+  const source = options.source
 
   let daterangeContent = `${startDate}-${endDate}`
   if (period === 'all') {
@@ -49,23 +49,15 @@ function Trend({
 
   let newUrl = ''
   if (period !== 'all' && startDate && endDate) {
-    newUrl = `${url}?period=${period}&start_time=${startDate.replace(
+    newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${startDate.replace(
       /\//g,
       '-'
     )}&end_time=${endDate.replace(/\//g, '-')}`
-    // newUrl = `${url}?period=${period}&param=${source}&start_time=${startDate.replace(
-    //   /\//g,
-    //   '-'
-    // )}&end_time=${endDate.replace(/\//g, '-')}`
   } else if (createTime !== '') {
-    newUrl = `${url}?period=${period}&start_time=${createTime.replace(
+    newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${createTime.replace(
       /\//g,
       '-'
     )}`
-    // newUrl = `${url}?period=${period}&param=${source}&start_time=${createTime.replace(
-    //   /\//g,
-    //   '-'
-    // )}`
   }
 
   const swrOptions = {
@@ -122,22 +114,6 @@ function Trend({
       },
       series: [
         {
-          name: '转化次数',
-          type: 'line',
-          smooth: true,
-          itemStyle: {
-            normal: {
-              color: '#7CA1F5',
-              label: {
-                show: true,
-                position: 'top',
-                color: '#000000 '
-              }
-            }
-          }
-        },
-        {
-          name: '转化率',
           type: 'line',
           smooth: true,
           itemStyle: {

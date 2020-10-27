@@ -1,12 +1,13 @@
 import React from 'react'
 import { Table, Card, Space, Spin } from 'antd'
-import { titleTranslate, dataFormat } from './util'
+import { titleTranslate, dataFormat } from '../util/util'
 import useSWR from 'swr'
 import styles from './index.module.less'
 
 type Options = {
   dateRange: string[]
   period: string
+  source?: string
 }
 
 interface Props {
@@ -14,25 +15,40 @@ interface Props {
   options: Options
   detailType: string
   createTime: string
-  extra?: any
+  extra?: React.ReactNode[]
 }
 
 function Detail({ url, options, detailType, createTime, extra }: Props) {
   const period = options.period
   const startDate = options.dateRange[0]
   const endDate = options.dateRange[1]
+  const source = options.source
 
   let newUrl = ''
-  if (period !== 'all' && startDate && endDate) {
-    newUrl = `${url}?period=${period}&start_time=${startDate.replace(
-      /\//g,
-      '-'
-    )}&end_time=${endDate.replace(/\//g, '-')}`
-  } else if (createTime !== '') {
-    newUrl = `${url}?period=${period}&start_time=${createTime.replace(
-      /\//g,
-      '-'
-    )}`
+  if (detailType !== 'map') {
+    if (period !== 'all' && startDate && endDate) {
+      newUrl = `${url}?period=${period}&start_time=${startDate.replace(
+        /\//g,
+        '-'
+      )}&end_time=${endDate.replace(/\//g, '-')}`
+    } else if (createTime !== '') {
+      newUrl = `${url}?period=${period}&start_time=${createTime.replace(
+        /\//g,
+        '-'
+      )}`
+    }
+  } else {
+    if (period !== 'all' && startDate && endDate) {
+      newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${startDate.replace(
+        /\//g,
+        '-'
+      )}&end_time=${endDate.replace(/\//g, '-')}`
+    } else if (createTime !== '') {
+      newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${createTime.replace(
+        /\//g,
+        '-'
+      )}`
+    }
   }
 
   const swrOptions = {

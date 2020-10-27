@@ -1,35 +1,64 @@
 import React from 'react'
 import { Table, Card, Space, Spin } from 'antd'
 import useSWR from 'swr'
-import { compare } from './util'
+import { compare } from '../util/util'
 import styles from './index.module.less'
 
-// interface Props {
-//   url: string
-//   options?: any
-//   keyState: string
-//   createTime: string
-//   extra?:any
-// }
-// { url, options, keyState, createTime,extra }: Props
+type Options = {
+  dateRange: string[]
+  period: string
+  source?: string
+}
 
 interface Props {
   url: string
   keyState: string
-  extra?: any
+  extra?: React.ReactNode[]
   defaultValue: string
+  createTime: string
+  options: Options
 }
 
-function TransformDetail({ keyState, extra, url, defaultValue }: Props) {
+function TransformDetail({
+  keyState,
+  extra,
+  url,
+  defaultValue,
+  createTime,
+  options
+}: Props) {
   if (keyState === '') {
     keyState = defaultValue
+  }
+  const period = options.period
+  const startDate = options.dateRange[0]
+  const endDate = options.dateRange[1]
+  const source = options.source
+  const select = keyState
+
+  let daterangeContent = `${startDate}-${endDate}`
+  if (period === 'all') {
+    daterangeContent = ''
+  }
+
+  let newUrl = ''
+  if (period !== 'all' && startDate && endDate) {
+    newUrl = `${url}?period=${period}&referrer_type=${source}&idgoal=${select}&start_time=${startDate.replace(
+      /\//g,
+      '-'
+    )}&end_time=${endDate.replace(/\//g, '-')}`
+  } else if (createTime !== '') {
+    newUrl = `${url}?period=${period}&referrer_type=${source}&idgoal=${select}&start_time=${createTime.replace(
+      /\//g,
+      '-'
+    )}`
   }
 
   const swrOptions = {
     refreshInterval: 0
   }
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
-  const { data: elements } = useSWR(url, fetcher, swrOptions)
+  const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
 
   if (elements && elements.length !== 0) {
     let keylist = Object.keys(elements)
@@ -64,7 +93,7 @@ function TransformDetail({ keyState, extra, url, defaultValue }: Props) {
           title='详细数据列表'
           extra={
             <Space size='large'>
-              {/* <p className='daterange'>{daterangeContent}</p> */}
+              <p className='daterange'>{daterangeContent}</p>
               {extra}
             </Space>
           }
@@ -76,12 +105,12 @@ function TransformDetail({ keyState, extra, url, defaultValue }: Props) {
   } else if (elements && elements.length === 0) {
     return (
       <div className={styles.noDataTrendDetail}>
-        {/* <Card
+        <Card
           title='详细数据列表'
           extra={<p className='daterange'>{daterangeContent}</p>}
         >
           <h1>暂无数据</h1>
-        </Card> */}
+        </Card>
       </div>
     )
   } else {
