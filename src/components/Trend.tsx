@@ -28,7 +28,7 @@ interface Props {
 function Trend({
   url,
   options,
-  detailLink,
+  detailLink = '#',
   cardTitle,
   isDetailVersion = false,
   createTime,
