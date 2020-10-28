@@ -75,6 +75,7 @@ export default Example
 * **Filter**: When user changes the options, Filter will change the options state and make other components contain the same state. 
 * **DetailFilter**: Same as *Filter* but used in some detail page without source option.
 * **TrendDetailFilter**: Like *Filter* and *DetailFilter*,but contains more option button which can select the data source.
+<br>
 
 #### *EchartsMap*
 ```tsx
