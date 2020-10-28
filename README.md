@@ -31,7 +31,6 @@ export default App
 ```
 
 ## Usage
-<br>
 
 #### *Summary*
 ```tsx
