@@ -142,7 +142,15 @@ function TransformTrend({
             axisTick: { show: false },
             splitNumber: 5,
             max: nbVisitsMax,
-            interval: nbVisitsMax / 5
+            interval: nbVisitsMax / 5,
+            axisLabel: {
+              show: true,
+              interval: 'auto',
+              // formatter: '{value}%'
+              formatter: function (value: Number) {
+                return value.toFixed(1)
+              }
+            }
           },
           {
             type: 'value',
@@ -154,7 +162,10 @@ function TransformTrend({
             axisLabel: {
               show: true,
               interval: 'auto',
-              formatter: '{value}%'
+              // formatter: '{value}%'
+              formatter: function (value: Number) {
+                return value.toFixed(1) + '%'
+              }
             }
           }
         ],

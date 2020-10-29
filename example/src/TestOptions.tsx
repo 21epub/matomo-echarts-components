@@ -2,8 +2,8 @@ import React, { useEffect, useState, useContext } from 'react'
 
 import {
   AppContext,
-  TransformTrend,
-  Trend,
+  // TransformTrend,
+  // Trend,
   TrendDetailFilter,
   EchartsMap
   // Barchart
@@ -44,28 +44,28 @@ const TestOptions = () => {
           <TrendDetailFilter />
         </Col>
       </Row>
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <Trend
-            url='http://101.37.22.203:9000/v3/api/tongji/4jab4t/visits/'
+            url='url'
             options={options}
             cardTitle='test'
             isDetailVersion
             createTime={createTime}
           />
         </Col>
-      </Row>
-      <Row gutter={[16, 16]}>
+      </Row> */}
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <TransformTrend
-            summaryUrl='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/transform/'
-            optionsUrl='https://yapi.epub360.com/mock/76/v3/api/tongji/idgoal/'
+            summaryUrl='url'
+            optionsUrl='url'
             createTime={createTime}
             options={options}
             extra={[]}
           />
         </Col>
-      </Row>
+      </Row> */}
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>
             <Barchart
@@ -94,7 +94,7 @@ const TestOptions = () => {
       <Row gutter={[16, 16]}>
         <Col span={24}>
           <EchartsMap
-            url='https://yapi.epub360.com/mock/76/v3/api/tongji/{book_slug}/map/'
+            url='url'
             options={options}
             detailLink='#'
             cardTitle='#'
