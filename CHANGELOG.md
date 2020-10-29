@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7-alpha.20](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.19...v0.1.7-alpha.20) (2020-10-29)
+
+
+### Bug Fixes
+
+* 🐛 change url ([9e1ce11](https://github.com/21epub/matomo-echarts-components/commit/9e1ce112d963afeb5c6733bd66e5e1254fb35966))
+* 🐛 fix peerDependencies ([d9dd0a4](https://github.com/21epub/matomo-echarts-components/commit/d9dd0a49669e5db82be7cf822a637e18cf0b62f2))
+* 🐛 fix test err ([f6722c0](https://github.com/21epub/matomo-echarts-components/commit/f6722c07fbb272ffec5ec7b5ac15b44c9b80ee11))
+* 🐛 fix trend component default detailLink value ([ae494f8](https://github.com/21epub/matomo-echarts-components/commit/ae494f89a28efbd0e215754a270081680dcf268a))
+* 🐛 fix yAxis display problem ([2741e3e](https://github.com/21epub/matomo-echarts-components/commit/2741e3e6ca061cbeed3def952ec8fdc0a95bd40f))
+
 ### [0.1.7-alpha.19](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.18...v0.1.7-alpha.19) (2020-10-27)
 
 
