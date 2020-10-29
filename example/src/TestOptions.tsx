@@ -35,7 +35,7 @@ const TestOptions = () => {
     <div>
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>
-            <Summary url="https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/summary/" create_time={createTime}/>
+            <Summary url="url" create_time={createTime}/>
           </Col>
         </Row> */}
       {/* <InstallButton downloadUrl='testurl' /> */}
