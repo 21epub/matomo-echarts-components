@@ -39,7 +39,8 @@
     ]
   },
   "peerDependencies": {
-    "react": "^16.0.0"
+    "react": "^16.0.0",
+    "antd": "^4.6.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -84,7 +85,6 @@
   ],
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
-    "antd": "^4.6.5",
     "axios": "^0.20.0",
     "echarts": "^4.9.0",
     "echarts-for-react": "^2.0.16",

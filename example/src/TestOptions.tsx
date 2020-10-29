@@ -2,8 +2,8 @@ import React, { useEffect, useState, useContext } from 'react'
 
 import {
   AppContext,
-  // TransformTrend,
-  // Trend,
+  TransformTrend,
+  Trend,
   TrendDetailFilter,
   EchartsMap
   // Barchart
@@ -44,17 +44,18 @@ const TestOptions = () => {
           <TrendDetailFilter />
         </Col>
       </Row>
-      {/* <Row gutter={[16, 16]}>
-          <Col span={24}>
-            <Trend url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/visits/' 
-            options={options} 
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <Trend
+            url='http://101.37.22.203:9000/v3/api/tongji/4jab4t/visits/'
+            options={options}
             cardTitle='test'
             isDetailVersion
-            createTime ={createTime} 
-            /> 
-          </Col>
-      </Row>  */}
-      {/* <Row gutter={[16, 16]}>
+            createTime={createTime}
+          />
+        </Col>
+      </Row>
+      <Row gutter={[16, 16]}>
         <Col span={24}>
           <TransformTrend
             summaryUrl='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/transform/'
@@ -64,7 +65,7 @@ const TestOptions = () => {
             extra={[]}
           />
         </Col>
-      </Row> */}
+      </Row>
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>
             <Barchart
