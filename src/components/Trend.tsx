@@ -151,7 +151,7 @@ function Trend({
                   <Space size='large'>
                     <p className='daterange'>{daterangeContent}</p>
                     <a className='detailLink' href={detailLink}>
-                      <RightOutlined style={{ color: 'grey' }}/>
+                      <RightOutlined style={{ color: 'grey' }} />
                     </a>
                   </Space>
                 }
@@ -183,7 +183,7 @@ function Trend({
               <Space size='large'>
                 <p className='daterange'>{daterangeContent}</p>
                 <a className='detailLink' href={detailLink}>
-                  <RightOutlined style={{ color: 'grey' }}/>
+                  <RightOutlined style={{ color: 'grey' }} />
                 </a>
               </Space>
             }
@@ -201,7 +201,7 @@ function Trend({
               <Space size='large'>
                 <p className='daterange'>{daterangeContent}</p>
                 <a className='detailLink' href={detailLink}>
-                  <RightOutlined style={{ color: 'grey' }}/>
+                  <RightOutlined style={{ color: 'grey' }} />
                 </a>
               </Space>
             }
