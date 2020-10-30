@@ -110,7 +110,7 @@ function Promote({
             <Space size='large'>
               <p className='daterange'>{daterangeContent}</p>
               <a href={detailLink} className='detailLink'>
-                <RightOutlined />
+                <RightOutlined style={{ color: 'grey' }}/>
               </a>
             </Space>
           }
@@ -128,7 +128,7 @@ function Promote({
             <Space size='large'>
               <p className='daterange'>{daterangeContent}</p>
               <a className='detailLink' href={detailLink}>
-                <RightOutlined />
+                <RightOutlined style={{ color: 'grey' }}/>
               </a>
             </Space>
           }

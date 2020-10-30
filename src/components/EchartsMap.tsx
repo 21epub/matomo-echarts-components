@@ -148,7 +148,7 @@ function EchartsMap({
             <Space size='large'>
               <p className='daterange'>{daterangeContent}</p>
               <a className='detailLink' href={detailLink}>
-                <RightOutlined />
+                <RightOutlined style={{ color: 'grey' }}/>
               </a>
             </Space>
           }
@@ -166,7 +166,7 @@ function EchartsMap({
             <Space size='large'>
               <p className='daterange'>{daterangeContent}</p>
               <a className='detailLink' href={detailLink}>
-                <RightOutlined />
+                <RightOutlined style={{ color: 'grey' }}/>
               </a>
             </Space>
           }
