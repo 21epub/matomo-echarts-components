@@ -30,7 +30,6 @@ function TransformTrend({
 
   const handleChange = (value: string) => {
     setKeyState(value)
-    console.log(`selected ${value}`)
   }
 
   const swrOptions = {

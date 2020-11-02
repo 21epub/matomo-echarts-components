@@ -21,6 +21,7 @@ interface Props {
   detailLink?: string
   cardTitle: string
   isDetailVersion?: boolean
+  isOrgVersion?: boolean
   createTime: string
   extra?: React.ReactNode[]
 }
@@ -31,6 +32,7 @@ function Trend({
   detailLink = '#',
   cardTitle,
   isDetailVersion = false,
+  isOrgVersion = false,
   createTime,
   extra
 }: Props) {
@@ -42,29 +44,32 @@ function Trend({
   const endDate = options.dateRange[1]
   const source = options.source
 
-  let daterangeContent = `${startDate}-${endDate}`
-  if (period === 'all') {
-    daterangeContent = ''
-  }
-
   let newUrl = ''
-  if (period !== 'all' && startDate && endDate) {
-    newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${startDate.replace(
-      /\//g,
-      '-'
-    )}&end_time=${endDate.replace(/\//g, '-')}`
-  } else if (createTime !== '') {
-    newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${createTime.replace(
-      /\//g,
-      '-'
-    )}`
+  if (isOrgVersion === false) {
+    if (period !== 'all' && startDate && endDate) {
+      newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${startDate.replace(
+        /\//g,
+        '-'
+      )}&end_time=${endDate.replace(/\//g, '-')}`
+    } else if (createTime !== '') {
+      newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${createTime}`
+    }
+  } else if (isOrgVersion === true) {
+    if (period !== 'all' && startDate && endDate) {
+      newUrl = `${url}?period=${period}&start_time=${startDate.replace(
+        /\//g,
+        '-'
+      )}&end_time=${endDate.replace(/\//g, '-')}`
+    } else if (createTime !== '') {
+      newUrl = `${url}?period=${period}&start_time=${createTime}`
+    }
   }
 
   const swrOptions = {
     refreshInterval: 0
   }
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
-  const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
+  const { data: ele } = useSWR(newUrl, fetcher, swrOptions)
 
   const [keyState, setKeyState] = useState('nb_hits')
 
@@ -72,7 +77,34 @@ function Trend({
     setKeyState(key)
   }
 
-  if (elements && elements.length !== 0) {
+  let daterangeContent = `${startDate}-${endDate}`
+  if (period === 'all') {
+    daterangeContent = ''
+  }
+
+  const workTab = (
+    <Tabs defaultActiveKey='nb_hits' activeKey={keyState} onChange={getKey}>
+      <TabPane tab='PV' key='nb_hits' />
+      <TabPane tab='UV' key='nb_uniq_visitors' />
+      <TabPane tab='转发数' key='forwarding_number' />
+      <TabPane tab='平均时长' key='avg_time_on_page' />
+      <TabPane tab='跳出率' key='bounce_rate' />
+    </Tabs>
+  )
+
+  const orgTab = (
+    <Tabs defaultActiveKey='nb_hits' activeKey={keyState} onChange={getKey}>
+      <TabPane tab='PV' key='nb_hits' />
+      <TabPane tab='UV' key='nb_uniq_visitors' />
+      <TabPane tab='分享转发' key='forwarding_number' />
+      <TabPane tab='数据' key='add_data' />
+    </Tabs>
+  )
+
+  const tab = isOrgVersion ? orgTab : workTab
+
+  if (ele && ele.length !== 0) {
+    const { total, ...elements } = ele
     const keylist = Object.keys(elements)
     const elementsValue = []
     for (let i = 0; i < keylist.length; i++) {
@@ -130,16 +162,6 @@ function Trend({
       ]
     }
 
-    const tab = (
-      <Tabs defaultActiveKey='nb_hits' activeKey={keyState} onChange={getKey}>
-        <TabPane tab='PV' key='nb_hits' />
-        <TabPane tab='UV' key='nb_uniq_visitors' />
-        <TabPane tab='转发数' key='forwarding_number' />
-        <TabPane tab='平均时长' key='avg_time_on_page' />
-        <TabPane tab='跳出率' key='bounce_rate' />
-      </Tabs>
-    )
-
     if (isDetailVersion === true) {
       return (
         <div className={isDetailVersion ? bigVersion : smallVersion}>
@@ -169,6 +191,7 @@ function Trend({
                 keyState={keyState}
                 createTime={createTime}
                 extra={extra}
+                isOrgVersion={isOrgVersion}
               />
             </Col>
           </Row>

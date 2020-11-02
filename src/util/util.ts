@@ -141,11 +141,19 @@ function titleTranslate(title: any) {
       return '平均时长'
     case 'bounce_rate':
       return '跳出率'
+    case 'add_data':
+      return '数据记录'
     case 'maplabel':
       return '城市'
     case 'mapnb_visits':
       return '访问数量'
     case 'maprate':
+      return '占比'
+    case 'mapOrglabel':
+      return '城市'
+    case 'mapOrgnb_visits':
+      return '访问数量'
+    case 'mapOrgrate':
       return '占比'
     case 'barchartlabel':
       return '渠道名'

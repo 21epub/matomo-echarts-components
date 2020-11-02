@@ -2,13 +2,17 @@ import React, { useEffect, useState, useContext } from 'react'
 
 import {
   AppContext,
+  Filter,
+  // CaseDetail,
+  OrgSummary,
   // TransformTrend,
-  // Trend,
-  TrendDetailFilter,
-  EchartsMap
-  // Barchart
+  Trend
+  // TrendDetailFilter,
+  // EchartsMap,
+  // Barchart,
   // Detail,
-  // InstallButton
+  // InstallButton,
+  // Promote
 } from '@21epub/matomo-echarts-components'
 import '@21epub/matomo-echarts-components/dist/index.css'
 import 'antd/dist/antd.css'
@@ -33,28 +37,52 @@ const TestOptions = () => {
 
   return (
     <div>
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <Filter />
+        </Col>
+      </Row>
+      {/* <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <CaseDetail
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/top10/'
+            options={options}
+            createTime={createTime}
+          />
+        </Col>
+      </Row> */}
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <OrgSummary
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/visits/'
+            options={options}
+            createTime={createTime}
+          />
+        </Col>
+      </Row>
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>
             <Summary url="url" create_time={createTime}/>
           </Col>
         </Row> */}
       {/* <InstallButton downloadUrl='testurl' /> */}
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <TrendDetailFilter />
         </Col>
-      </Row>
-      {/* <Row gutter={[16, 16]}>
+      </Row> */}
+      <Row gutter={[16, 16]}>
         <Col span={24}>
           <Trend
-            url='url'
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/visits/'
             options={options}
             cardTitle='test'
             isDetailVersion
+            isOrgVersion
             createTime={createTime}
           />
         </Col>
-      </Row> */}
+      </Row>
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <TransformTrend
@@ -69,8 +97,7 @@ const TestOptions = () => {
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>
             <Barchart
-              // url="url" 
-              url="https://yapi.epub360.com/mock/76/v3/api/tongji/{book_slug}/campaign/"
+              url="https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/campaign/"
               options={options}
               detailLink='#'
               cardTitle="#"
@@ -78,37 +105,45 @@ const TestOptions = () => {
               createTime ={createTime}
             />
           </Col>
-        </Row> */}
-      {/* <Row gutter={[16, 16]}>
-          <Col span={24}>
-            <Detail
-              url="https://yapi.epub360.com/mock/76/v3/api/tongji/{book_slug}/campaign/"
-              options={options}
-              createTime ={createTime}
-              detailType='barchart'
-              extra={[]}
-            />
-          </Col>
-        </Row> */}
+      </Row> */}
 
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <EchartsMap
-            url='url'
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/map/'
             options={options}
             detailLink='#'
             cardTitle='#'
             isDetailVersion
+            isOrgVersion
             createTime={createTime}
           />
         </Col>
-      </Row>
+      </Row> */}
 
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>
-            <Filter />
+            <Promote
+              url="https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/campaign/"
+              options={options}
+              detailLink='#'
+              cardTitle="#"
+              isDetailVersion
+              createTime ={createTime}
+            />
           </Col>
-        </Row> */}
+      </Row>
+      <Row gutter={[16, 16]}>
+          <Col span={24}>
+            <Detail
+              url="https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/campaign/"
+              options={options}
+              createTime ={createTime}
+              detailType='promote'
+              extra={[]}
+            />
+          </Col>
+      </Row> */}
 
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>

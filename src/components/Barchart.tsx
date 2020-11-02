@@ -38,10 +38,7 @@ function Barchart({
       '-'
     )}&end_time=${endDate.replace(/\//g, '-')}`
   } else if (createTime !== '') {
-    newUrl = `${url}?period=${period}&start_time=${createTime.replace(
-      /\//g,
-      '-'
-    )}`
+    newUrl = `${url}?period=${period}&start_time=${createTime}`
   }
 
   const swrOptions = {

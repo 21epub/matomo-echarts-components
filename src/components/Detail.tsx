@@ -32,10 +32,7 @@ function Detail({ url, options, detailType, createTime, extra }: Props) {
         '-'
       )}&end_time=${endDate.replace(/\//g, '-')}`
     } else if (createTime !== '') {
-      newUrl = `${url}?period=${period}&start_time=${createTime.replace(
-        /\//g,
-        '-'
-      )}`
+      newUrl = `${url}?period=${period}&start_time=${createTime}`
     }
   } else {
     if (period !== 'all' && startDate && endDate) {
@@ -44,10 +41,7 @@ function Detail({ url, options, detailType, createTime, extra }: Props) {
         '-'
       )}&end_time=${endDate.replace(/\//g, '-')}`
     } else if (createTime !== '') {
-      newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${createTime.replace(
-        /\//g,
-        '-'
-      )}`
+      newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${createTime}`
     }
   }
 
@@ -72,17 +66,18 @@ function Detail({ url, options, detailType, createTime, extra }: Props) {
       }
     }
     const data = []
-    if (detailType !== 'map') {
-      for (let i = 0; i < elements.length; i++) {
-        Object.defineProperty(elements[i], 'key', { value: i })
-        data[i] = elements[i]
-      }
-    } else {
+    if (detailType === 'map' || detailType === 'mapOrg') {
       const mapDetail = true
       const dataList = dataFormat(elements, mapDetail)
+
       for (let i = 0; i < elements.length; i++) {
         Object.defineProperty(dataList[i], 'key', { value: i })
         data[i] = dataList[i]
+      }
+    } else {
+      for (let i = 0; i < elements.length; i++) {
+        Object.defineProperty(elements[i], 'key', { value: i })
+        data[i] = elements[i]
       }
     }
 

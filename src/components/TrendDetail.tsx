@@ -16,13 +16,22 @@ interface Props {
   keyState: string
   createTime: string
   extra?: React.ReactNode[]
+  isOrgVersion?: boolean
 }
 
-function TrendDetail({ url, options, keyState, createTime, extra }: Props) {
+function TrendDetail({
+  url,
+  options,
+  keyState,
+  createTime,
+  extra,
+  isOrgVersion = false
+}: Props) {
   const period = options.period
   const startDate = options.dateRange[0]
   const endDate = options.dateRange[1]
   const source = options.source
+  console.log(keyState)
 
   let daterangeContent = `${startDate}-${endDate}`
   if (period === 'all') {
@@ -30,25 +39,34 @@ function TrendDetail({ url, options, keyState, createTime, extra }: Props) {
   }
 
   let newUrl = ''
-  if (period !== 'all' && startDate && endDate) {
-    newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${startDate.replace(
-      /\//g,
-      '-'
-    )}&end_time=${endDate.replace(/\//g, '-')}`
-  } else if (createTime !== '') {
-    newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${createTime.replace(
-      /\//g,
-      '-'
-    )}`
+  if (isOrgVersion === false) {
+    if (period !== 'all' && startDate && endDate) {
+      newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${startDate.replace(
+        /\//g,
+        '-'
+      )}&end_time=${endDate.replace(/\//g, '-')}`
+    } else if (createTime !== '') {
+      newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${createTime}`
+    }
+  } else if (isOrgVersion === true) {
+    if (period !== 'all' && startDate && endDate) {
+      newUrl = `${url}?period=${period}&start_time=${startDate.replace(
+        /\//g,
+        '-'
+      )}&end_time=${endDate.replace(/\//g, '-')}`
+    } else if (createTime !== '') {
+      newUrl = `${url}?period=${period}&start_time=${createTime}`
+    }
   }
 
   const swrOptions = {
     refreshInterval: 0
   }
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
-  const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
+  const { data: ele } = useSWR(newUrl, fetcher, swrOptions)
 
-  if (elements && elements.length !== 0) {
+  if (ele && ele.length !== 0) {
+    const { total, ...elements } = ele
     const keylist = Object.keys(elements)
     const titleTransformed = titleTranslate(keyState)
     const columns = []
@@ -81,7 +99,7 @@ function TrendDetail({ url, options, keyState, createTime, extra }: Props) {
         </Card>
       </div>
     )
-  } else if (elements && elements.length === 0) {
+  } else if (ele && ele.length === 0) {
     return (
       <div className={styles.noDataTrendDetail}>
         <Card

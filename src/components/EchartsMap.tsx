@@ -19,6 +19,7 @@ interface Props {
   detailLink?: string
   cardTitle: string
   isDetailVersion?: boolean
+  isOrgVersion?: boolean
   createTime: string
 }
 
@@ -28,6 +29,7 @@ function EchartsMap({
   detailLink = '#',
   cardTitle,
   isDetailVersion = false,
+  isOrgVersion = false,
   createTime
 }: Props) {
   const bigVersion = styles.bigVersion
@@ -39,16 +41,24 @@ function EchartsMap({
   const source = options.source
 
   let newUrl = ''
-  if (period !== 'all' && startDate && endDate) {
-    newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${startDate.replace(
-      /\//g,
-      '-'
-    )}&end_time=${endDate.replace(/\//g, '-')}`
-  } else if (createTime !== '') {
-    newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${createTime.replace(
-      /\//g,
-      '-'
-    )}`
+  if (isOrgVersion === false) {
+    if (period !== 'all' && startDate && endDate) {
+      newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${startDate.replace(
+        /\//g,
+        '-'
+      )}&end_time=${endDate.replace(/\//g, '-')}`
+    } else if (createTime !== '') {
+      newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${createTime}`
+    }
+  } else if (isOrgVersion === true) {
+    if (period !== 'all' && startDate && endDate) {
+      newUrl = `${url}?period=${period}&start_time=${startDate.replace(
+        /\//g,
+        '-'
+      )}&end_time=${endDate.replace(/\//g, '-')}`
+    } else if (createTime !== '') {
+      newUrl = `${url}?period=${period}&start_time=${createTime}`
+    }
   }
 
   const swrOptions = {
