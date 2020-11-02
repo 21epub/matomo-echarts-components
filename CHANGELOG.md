@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7-alpha.22](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.21...v0.1.7-alpha.22) (2020-11-02)
+
+
+### Features
+
+* 🎸 add CaseDetail OrgSummary component ([1ce521d](https://github.com/21epub/matomo-echarts-components/commit/1ce521d70763a4d68db6b69f94380f0a876d648b))
+
 ### [0.1.7-alpha.21](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.20...v0.1.7-alpha.21) (2020-10-30)
 
 
