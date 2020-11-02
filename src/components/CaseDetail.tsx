@@ -72,7 +72,7 @@ function CaseDetail({ url, options, createTime, extra }: Props) {
     }
 
     return (
-      <div className={styles.trendDetail}>
+      <div className={styles.caseDetail}>
         <Card
           title='案例成效汇总'
           extra={

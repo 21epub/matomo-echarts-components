@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import {
   AppContext,
   Filter,
-  // CaseDetail,
+  CaseDetail,
   OrgSummary,
   // TransformTrend,
   Trend
@@ -42,7 +42,7 @@ const TestOptions = () => {
           <Filter />
         </Col>
       </Row>
-      {/* <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]}>
         <Col span={24}>
           <CaseDetail
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/top10/'
@@ -50,7 +50,7 @@ const TestOptions = () => {
             createTime={createTime}
           />
         </Col>
-      </Row> */}
+      </Row>
       <Row gutter={[16, 16]}>
         <Col span={24}>
           <OrgSummary

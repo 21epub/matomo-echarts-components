@@ -1,6 +1,7 @@
 import React from 'react'
 import { Row, Col, Spin } from 'antd'
 import useSWR from 'swr'
+import styles from './index.module.less'
 
 type Options = {
   dateRange: string[]
@@ -57,16 +58,18 @@ function OrgSummary({ url, createTime, options, extra }: Props) {
     }
 
     return (
-      <Row>
-        {cardConent.map((e, i) => {
-          return (
-            <Col span={5} offset={1} key={i}>
-              <p>{e.titleList}</p>
-              <h1>{e.dataList}</h1>
-            </Col>
-          )
-        })}
-      </Row>
+      <div className={styles.orgSummary}>
+        <Row>
+          {cardConent.map((e, i) => {
+            return (
+              <Col span={5} offset={1} key={i}>
+                <p>{e.titleList}</p>
+                <h1>{e.dataList}</h1>
+              </Col>
+            )
+          })}
+        </Row>
+      </div>
     )
   } else {
     return (
