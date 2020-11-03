@@ -5,8 +5,8 @@ import {
   Filter,
   // CaseDetail,
   // OrgSummary,
-  TransformTrend
-  // Trend
+  // TransformTrend
+  Trend
   // TrendDetailFilter,
   // EchartsMap,
   // Barchart,
@@ -30,7 +30,7 @@ const TestOptions = () => {
   useEffect(() => {
     setTimeout(() => {
       setCreateTime('2020-10-20')
-    }, 2000)
+    }, 100)
   }, [])
 
   // const extra = [<div>test1</div>]
@@ -39,7 +39,7 @@ const TestOptions = () => {
     <div>
       <Row gutter={[16, 16]}>
         <Col span={24}>
-          <Filter />
+          <Filter isOrgVersion />
         </Col>
       </Row>
       {/* <Row gutter={[16, 16]}>
@@ -71,7 +71,7 @@ const TestOptions = () => {
           <TrendDetailFilter />
         </Col>
       </Row> */}
-      {/* <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]}>
         <Col span={24}>
           <Trend
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/visits/'
@@ -82,8 +82,8 @@ const TestOptions = () => {
             createTime={createTime}
           />
         </Col>
-      </Row> */}
-      <Row gutter={[16, 16]}>
+      </Row>
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <TransformTrend
             summaryUrl='url'
@@ -93,7 +93,7 @@ const TestOptions = () => {
             extra={[]}
           />
         </Col>
-      </Row>
+      </Row> */}
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>
             <Barchart

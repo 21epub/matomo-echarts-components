@@ -6,7 +6,11 @@ import styles from './index.module.less'
 import { Tabs } from 'antd'
 const { TabPane } = Tabs
 
-function Filter() {
+interface Props {
+  isOrgVersion?: boolean
+}
+
+function Filter({ isOrgVersion = false }: Props) {
   const { state: options, dispatch } = useContext(AppContext)
 
   const filter = (key: string) => {
@@ -32,23 +36,43 @@ function Filter() {
     }
   }
 
-  return (
-    <div className={styles.filter}>
-      <Tabs
-        defaultActiveKey='today'
-        activeKey={options.period}
-        tabBarExtraContent={<SelectPeriod />}
-        onChange={filter}
-      >
-        <TabPane tab='今日' key='today' />
-        <TabPane tab='昨日' key='yesterday' />
-        <TabPane tab='近7日' key='last7' />
-        <TabPane tab='近15日' key='last15' />
-        <TabPane tab='近30日' key='last30' />
-        <TabPane tab='全部' key='all' />
-      </Tabs>
-    </div>
-  )
+  if (isOrgVersion === true) {
+    return (
+      <div className={styles.filter}>
+        <Tabs
+          defaultActiveKey='today'
+          activeKey={options.period}
+          tabBarExtraContent={<SelectPeriod />}
+          onChange={filter}
+        >
+          <TabPane tab='今日' key='today' />
+          <TabPane tab='昨日' key='yesterday' />
+          <TabPane tab='近7日' key='last7' />
+          <TabPane tab='近15日' key='last15' />
+          <TabPane tab='近30日' key='last30' />
+          <TabPane tab='近一年' key='last365' />
+        </Tabs>
+      </div>
+    )
+  } else {
+    return (
+      <div className={styles.filter}>
+        <Tabs
+          defaultActiveKey='today'
+          activeKey={options.period}
+          tabBarExtraContent={<SelectPeriod />}
+          onChange={filter}
+        >
+          <TabPane tab='今日' key='today' />
+          <TabPane tab='昨日' key='yesterday' />
+          <TabPane tab='近7日' key='last7' />
+          <TabPane tab='近15日' key='last15' />
+          <TabPane tab='近30日' key='last30' />
+          <TabPane tab='全部' key='all' />
+        </Tabs>
+      </div>
+    )
+  }
 }
 
 export default Filter

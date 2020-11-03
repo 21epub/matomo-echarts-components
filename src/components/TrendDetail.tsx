@@ -31,7 +31,6 @@ function TrendDetail({
   const startDate = options.dateRange[0]
   const endDate = options.dateRange[1]
   const source = options.source
-  console.log(keyState)
 
   let daterangeContent = `${startDate}-${endDate}`
   if (period === 'all') {

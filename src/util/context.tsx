@@ -1,21 +1,26 @@
 import React, { createContext, useReducer } from 'react'
 import reducers from './reducers'
+import { keyToRange } from './dateCompute'
+
+const date = keyToRange('last30')
 
 type Options = {
   dateRange: string[]
   period: string
   source?: string
 }
+
 const options = {
-  dateRange: [],
+  dateRange: date,
   period:
+    'last30' ||
     'all' ||
     'today' ||
     'yesterday' ||
     'last7' ||
     'last15' ||
-    'last30' ||
-    'range',
+    'range' ||
+    'last365',
   source:
     'allSource' || 'direct' || 'search' || 'website' || 'social' || 'campaign'
 }

@@ -8,6 +8,10 @@ function getPastedDay(day: number) {
   return moment(new Date()).subtract(day, 'days')
 }
 
+function getPastedYear(year: number) {
+  return moment(new Date()).subtract(year, 'years')
+}
+
 function checkPeriod(_startDate: string, _endDate: string) {
   const startDate = _startDate
   const endDate = _endDate
@@ -16,6 +20,7 @@ function checkPeriod(_startDate: string, _endDate: string) {
   const last7Date = getPastedDay(6).format('YYYY/MM/DD')
   const last15Date = getPastedDay(14).format('YYYY/MM/DD')
   const last30Date = getPastedDay(29).format('YYYY/MM/DD')
+  const lastYear = getPastedYear(1).format('YYYY/MM/DD')
 
   if (startDate === endDate) {
     switch (startDate) {
@@ -39,6 +44,9 @@ function checkPeriod(_startDate: string, _endDate: string) {
       case last30Date: {
         return 'last30'
       }
+      case lastYear: {
+        return 'last365'
+      }
       default:
         return 'range'
     }
@@ -51,6 +59,8 @@ function keyToRange(key: string) {
   const last7Date = getPastedDay(6).format('YYYY/MM/DD')
   const last15Date = getPastedDay(14).format('YYYY/MM/DD')
   const last30Date = getPastedDay(29).format('YYYY/MM/DD')
+  const lastYear = getPastedYear(1).format('YYYY/MM/DD')
+
   let newdate = []
   switch (key) {
     case 'today': {
@@ -73,8 +83,12 @@ function keyToRange(key: string) {
       newdate = [last30Date, todayDate]
       return newdate
     }
+    case 'last365': {
+      newdate = [lastYear, todayDate]
+      return newdate
+    }
     default:
-      return 'err'
+      return ['undefined', 'undefined']
   }
 }
 
