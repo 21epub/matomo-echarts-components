@@ -3,10 +3,10 @@ import React, { useEffect, useState, useContext } from 'react'
 import {
   AppContext,
   Filter,
-  CaseDetail,
-  OrgSummary,
-  // TransformTrend,
-  Trend
+  // CaseDetail,
+  // OrgSummary,
+  TransformTrend
+  // Trend
   // TrendDetailFilter,
   // EchartsMap,
   // Barchart,
@@ -42,7 +42,7 @@ const TestOptions = () => {
           <Filter />
         </Col>
       </Row>
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <CaseDetail
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/top10/'
@@ -59,7 +59,7 @@ const TestOptions = () => {
             createTime={createTime}
           />
         </Col>
-      </Row>
+      </Row> */}
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>
             <Summary url="url" create_time={createTime}/>
@@ -71,7 +71,7 @@ const TestOptions = () => {
           <TrendDetailFilter />
         </Col>
       </Row> */}
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <Trend
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/visits/'
@@ -82,8 +82,8 @@ const TestOptions = () => {
             createTime={createTime}
           />
         </Col>
-      </Row>
-      {/* <Row gutter={[16, 16]}>
+      </Row> */}
+      <Row gutter={[16, 16]}>
         <Col span={24}>
           <TransformTrend
             summaryUrl='url'
@@ -93,7 +93,7 @@ const TestOptions = () => {
             extra={[]}
           />
         </Col>
-      </Row> */}
+      </Row>
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>
             <Barchart

@@ -206,6 +206,7 @@ function TransformTrend({
                     <div className='transformSelecter'>
                       <Select
                         defaultValue={selectOptions[0].value}
+                        value={keyState}
                         style={{ width: 250 }}
                         options={selectOptions}
                         onChange={handleChange}
