@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Spin } from 'antd'
+import { Row, Col, Spin, Card } from 'antd'
 import useSWR from 'swr'
 import styles from './index.module.less'
 
@@ -59,16 +59,18 @@ function OrgSummary({ url, createTime, options, extra }: Props) {
 
     return (
       <div className={styles.orgSummary}>
-        <Row>
-          {cardConent.map((e, i) => {
-            return (
-              <Col span={5} offset={1} key={i}>
-                <p>{e.titleList}</p>
-                <h1>{e.dataList}</h1>
-              </Col>
-            )
-          })}
-        </Row>
+        <Card>
+          <Row>
+            {cardConent.map((e, i) => {
+              return (
+                <Col span={5} offset={1} key={i}>
+                  <p>{e.titleList}</p>
+                  <h1>{e.dataList}</h1>
+                </Col>
+              )
+            })}
+          </Row>
+        </Card>
       </div>
     )
   } else {
