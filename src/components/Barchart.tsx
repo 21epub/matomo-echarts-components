@@ -16,7 +16,7 @@ interface Props {
   detailLink?: string
   cardTitle: string
   isDetailVersion?: boolean
-  createTime: string
+  createTime?: string
 }
 
 function Barchart({

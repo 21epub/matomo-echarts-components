@@ -30,7 +30,6 @@ function SelectPeriod() {
     return <RangePicker format={dateFormat} onChange={selectPeriod} />
   } else {
     return (
-      // className={styles.selectPeriod}
       <RangePicker
         format={dateFormat}
         disabledDate={disabledDate}

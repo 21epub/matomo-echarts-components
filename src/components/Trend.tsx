@@ -22,7 +22,7 @@ interface Props {
   cardTitle: string
   isDetailVersion?: boolean
   isOrgVersion?: boolean
-  createTime: string
+  createTime?: string
   extra?: React.ReactNode[]
 }
 
@@ -55,13 +55,11 @@ function Trend({
       newUrl = `${url}?period=${period}&referrer_type=${source}&start_time=${createTime}`
     }
   } else if (isOrgVersion === true) {
-    if (period !== 'all' && startDate && endDate) {
+    if (startDate && endDate) {
       newUrl = `${url}?period=${period}&start_time=${startDate.replace(
         /\//g,
         '-'
       )}&end_time=${endDate.replace(/\//g, '-')}`
-    } else if (createTime !== '') {
-      newUrl = `${url}?period=${period}&start_time=${createTime}`
     }
   }
 

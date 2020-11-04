@@ -11,27 +11,21 @@ type Options = {
 interface Props {
   url: string
   options: Options
-  createTime: string
   extra?: React.ReactNode[]
 }
 
-function CaseDetail({ url, options, createTime, extra }: Props) {
+function CaseDetail({ url, options, extra }: Props) {
   const period = options.period
   const startDate = options.dateRange[0]
   const endDate = options.dateRange[1]
 
   let newUrl = ''
 
-  if (period !== 'all' && startDate && endDate) {
+  if (startDate && endDate) {
     newUrl = `${url}?period=${period}&start_time=${startDate.replace(
       /\//g,
       '-'
     )}&end_time=${endDate.replace(/\//g, '-')}`
-  } else if (createTime !== '') {
-    newUrl = `${url}?period=${period}&start_time=${createTime.replace(
-      /\//g,
-      '-'
-    )}`
   }
 
   const swrOptions = {

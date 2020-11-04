@@ -80,7 +80,7 @@ import {
 const Example = () => {
   return (
     <div>
-      <Filter />
+      <Filter isOrgVersion />
       <DetailFilter />
       <TrendDetailFilter />
     </div>

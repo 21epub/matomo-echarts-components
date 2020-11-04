@@ -14,7 +14,7 @@ interface Props {
   url: string
   options: Options
   detailType: string
-  createTime: string
+  createTime?: string
   extra?: React.ReactNode[]
 }
 

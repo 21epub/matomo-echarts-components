@@ -14,7 +14,7 @@ interface Props {
   url: string
   options: Options
   keyState: string
-  createTime: string
+  createTime?: string
   extra?: React.ReactNode[]
   isOrgVersion?: boolean
 }
@@ -53,8 +53,6 @@ function TrendDetail({
         /\//g,
         '-'
       )}&end_time=${endDate.replace(/\//g, '-')}`
-    } else if (createTime !== '') {
-      newUrl = `${url}?period=${period}&start_time=${createTime}`
     }
   }
 

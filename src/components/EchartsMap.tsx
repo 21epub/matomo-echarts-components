@@ -20,7 +20,7 @@ interface Props {
   cardTitle: string
   isDetailVersion?: boolean
   isOrgVersion?: boolean
-  createTime: string
+  createTime?: string
 }
 
 function EchartsMap({
@@ -56,8 +56,6 @@ function EchartsMap({
         /\//g,
         '-'
       )}&end_time=${endDate.replace(/\//g, '-')}`
-    } else if (createTime !== '') {
-      newUrl = `${url}?period=${period}&start_time=${createTime}`
     }
   }
 

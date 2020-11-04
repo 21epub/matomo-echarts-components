@@ -10,24 +10,20 @@ type Options = {
 
 interface Props {
   url: string
-  createTime: string
   options: Options
-  extra?: React.ReactNode[]
 }
 
-function OrgSummary({ url, createTime, options, extra }: Props) {
+function OrgSummary({ url, options }: Props) {
   const period = options.period
   const startDate = options.dateRange[0]
   const endDate = options.dateRange[1]
 
   let newUrl = ''
-  if (period !== 'all' && startDate && endDate) {
+  if (startDate && endDate) {
     newUrl = `${url}?period=${period}&start_time=${startDate.replace(
       /\//g,
       '-'
     )}&end_time=${endDate.replace(/\//g, '-')}`
-  } else if (createTime !== '') {
-    newUrl = `${url}?period=${period}&start_time=${createTime}`
   }
 
   const swrOptions = {
