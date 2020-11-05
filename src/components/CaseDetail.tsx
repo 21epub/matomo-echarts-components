@@ -41,7 +41,7 @@ function CaseDetail({ url, options, extra }: Props) {
 
   if (elements && elements.length !== 0) {
     const keylist = [
-      'name',
+      'label',
       'nb_hits',
       'nb_uniq_visitors',
       'forwarding_number',
@@ -59,8 +59,8 @@ function CaseDetail({ url, options, extra }: Props) {
     const data = []
     for (let i = 0; i < elements.length; i++) {
       Object.defineProperty(elements[i], 'key', { value: i })
-      Object.defineProperty(elements[i], 'name', {
-        value: <a href={elements[i].url}>{elements[i].name}</a>
+      Object.defineProperty(elements[i], 'label', {
+        value: <a href={elements[i].url}>{elements[i].label}</a>
       })
       data[i] = elements[i]
     }

@@ -3,8 +3,8 @@ import React, { useEffect, useState, useContext } from 'react'
 import {
   AppContext,
   Filter,
-  // CaseDetail,
-  // OrgSummary,
+  CaseDetail,
+  OrgSummary,
   // TransformTrend
   Trend
   // TrendDetailFilter,
@@ -42,12 +42,11 @@ const TestOptions = () => {
           <Filter isOrgVersion />
         </Col>
       </Row>
-      {/* <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]}>
         <Col span={24}>
           <CaseDetail
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/top10/'
             options={options}
-            createTime={createTime}
           />
         </Col>
       </Row>
@@ -56,10 +55,9 @@ const TestOptions = () => {
           <OrgSummary
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/visits/'
             options={options}
-            createTime={createTime}
           />
         </Col>
-      </Row> */}
+      </Row>
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>
             <Summary url="url" create_time={createTime}/>
