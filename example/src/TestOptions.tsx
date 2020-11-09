@@ -6,10 +6,10 @@ import {
   // CaseDetail,
   // OrgSummary,
   // TransformTrend
-  Trend
+  Trend,
   // TrendDetailFilter,
   // EchartsMap,
-  // Barchart,
+  Barchart
   // Detail
   // InstallButton,
   // Promote
@@ -79,10 +79,11 @@ const TestOptions = () => {
           />
         </Col>
         <Col span={12}>
-          <Trend
-            url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/visits/'
+          <Barchart
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/campaign/'
             options={options}
-            cardTitle='test'
+            detailLink='#'
+            cardTitle='#'
             createTime={createTime}
           />
         </Col>
@@ -109,18 +110,6 @@ const TestOptions = () => {
             extra={[]}
           />
         </Col>
-      </Row> */}
-      {/* <Row gutter={[16, 16]}>
-          <Col span={24}>
-            <Barchart
-              url="https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/campaign/"
-              options={options}
-              detailLink='#'
-              cardTitle="#"
-              isDetailVersion
-              createTime ={createTime}
-            />
-          </Col>
       </Row> */}
 
       {/* <Row gutter={[16, 16]}>
