@@ -67,7 +67,15 @@ function TrendDetail({
     const keylist = Object.keys(elements)
     const titleTransformed = titleTranslate(keyState)
     const columns = []
-    columns[0] = { title: '日期', dataIndex: 'date' }
+
+    let title
+    if (period === 'today' || period === 'yesterday') {
+      title = '时间'
+    } else {
+      title = '日期'
+    }
+
+    columns[0] = { title: title, dataIndex: 'date' }
     columns[1] = { title: titleTransformed, dataIndex: keyState }
 
     const data = []

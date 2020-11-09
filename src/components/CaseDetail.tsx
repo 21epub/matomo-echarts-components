@@ -49,10 +49,12 @@ function CaseDetail({ url, options, extra }: Props) {
     ]
     const titleList = ['作品', 'PV', 'UV', '分享转发', '数据记录']
     const columns = []
+    const width = `${100 / titleList.length}%`
     for (let i = 0; i < titleList.length; i++) {
       columns[i] = {
         title: titleList[i],
-        dataIndex: keylist[i]
+        dataIndex: keylist[i],
+        width: width
       }
     }
 

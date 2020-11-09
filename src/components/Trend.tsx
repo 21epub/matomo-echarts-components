@@ -80,7 +80,7 @@ function Trend({
     daterangeContent = ''
   }
 
-  const workTab = (
+  const workTab = isDetailVersion ? (
     <Tabs defaultActiveKey='nb_hits' activeKey={keyState} onChange={getKey}>
       <TabPane tab='PV' key='nb_hits' />
       <TabPane tab='UV' key='nb_uniq_visitors' />
@@ -88,15 +88,34 @@ function Trend({
       <TabPane tab='平均时长' key='avg_time_on_page' />
       <TabPane tab='跳出率' key='bounce_rate' />
     </Tabs>
+  ) : (
+    <Col xs={{ span: 14 }}>
+      <Tabs defaultActiveKey='nb_hits' activeKey={keyState} onChange={getKey}>
+        <TabPane tab='PV' key='nb_hits' />
+        <TabPane tab='UV' key='nb_uniq_visitors' />
+        <TabPane tab='转发数' key='forwarding_number' />
+        <TabPane tab='平均时长' key='avg_time_on_page' />
+        <TabPane tab='跳出率' key='bounce_rate' />
+      </Tabs>
+    </Col>
   )
 
-  const orgTab = (
+  const orgTab = isDetailVersion ? (
     <Tabs defaultActiveKey='nb_hits' activeKey={keyState} onChange={getKey}>
       <TabPane tab='PV' key='nb_hits' />
       <TabPane tab='UV' key='nb_uniq_visitors' />
       <TabPane tab='分享转发' key='forwarding_number' />
       <TabPane tab='数据' key='add_data' />
     </Tabs>
+  ) : (
+    <Col xs={{ span: 14 }}>
+      <Tabs defaultActiveKey='nb_hits' activeKey={keyState} onChange={getKey}>
+        <TabPane tab='PV' key='nb_hits' />
+        <TabPane tab='UV' key='nb_uniq_visitors' />
+        <TabPane tab='分享转发' key='forwarding_number' />
+        <TabPane tab='数据' key='add_data' />
+      </Tabs>
+    </Col>
   )
 
   const tab = isOrgVersion ? orgTab : workTab

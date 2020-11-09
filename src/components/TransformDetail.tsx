@@ -70,8 +70,14 @@ function TransformDetail({
         item !== 'nb_visits'
     )
 
+    let title
+    if (period === 'today' || period === 'yesterday') {
+      title = '时间'
+    } else {
+      title = '日期'
+    }
     const columns = []
-    columns[0] = { title: '日期', dataIndex: 'date' }
+    columns[0] = { title: title, dataIndex: 'date' }
     columns[1] = { title: '转化次数', dataIndex: 'nb_visits_converted' }
     columns[2] = { title: '转化率', dataIndex: 'conversion_rate' }
 

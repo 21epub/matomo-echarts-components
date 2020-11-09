@@ -113,7 +113,7 @@ function TransformTrend({
         elementsList[i] = [keyArr[i], nbVisitsList[i], conversionRateList[i]]
       }
 
-      const title = [['日期', '转化次数', '转化率']]
+      const title = [['时间', '转化次数', '转化率']]
       elementsList = title.concat(elementsList)
 
       const content = {

@@ -3,14 +3,14 @@ import React, { useEffect, useState, useContext } from 'react'
 import {
   AppContext,
   Filter,
-  CaseDetail,
-  OrgSummary,
+  // CaseDetail,
+  // OrgSummary,
   // TransformTrend
   Trend
   // TrendDetailFilter,
   // EchartsMap,
   // Barchart,
-  // Detail,
+  // Detail
   // InstallButton,
   // Promote
 } from '@21epub/matomo-echarts-components'
@@ -42,22 +42,22 @@ const TestOptions = () => {
           <Filter isOrgVersion />
         </Col>
       </Row>
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <CaseDetail
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/top10/'
             options={options}
           />
         </Col>
-      </Row>
-      <Row gutter={[16, 16]}>
+      </Row> */}
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <OrgSummary
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/visits/'
             options={options}
           />
         </Col>
-      </Row>
+      </Row> */}
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>
             <Summary url="url" create_time={createTime}/>
@@ -70,17 +70,35 @@ const TestOptions = () => {
         </Col>
       </Row> */}
       <Row gutter={[16, 16]}>
+        <Col span={12}>
+          <Trend
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/visits/'
+            options={options}
+            cardTitle='test'
+            isOrgVersion
+          />
+        </Col>
+        <Col span={12}>
+          <Trend
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/visits/'
+            options={options}
+            cardTitle='test'
+            createTime={createTime}
+          />
+        </Col>
+      </Row>
+      <Row gutter={[16, 16]}>
         <Col span={24}>
           <Trend
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/visits/'
             options={options}
             cardTitle='test'
-            isDetailVersion
-            isOrgVersion
             createTime={createTime}
+            isDetailVersion
           />
         </Col>
       </Row>
+
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <TransformTrend
@@ -130,8 +148,8 @@ const TestOptions = () => {
               createTime ={createTime}
             />
           </Col>
-      </Row>
-      <Row gutter={[16, 16]}>
+      </Row> */}
+      {/* <Row gutter={[16, 16]}>
           <Col span={24}>
             <Detail
               url="https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/campaign/"
