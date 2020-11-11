@@ -5,11 +5,11 @@ import {
   Filter,
   // CaseDetail,
   // OrgSummary,
-  // TransformTrend
-  Trend,
+  TransformTrend
+  // Trend,
   // TrendDetailFilter,
-  // EchartsMap,
-  Barchart
+  // // EchartsMap,
+  // Barchart
   // Detail
   // InstallButton,
   // Promote
@@ -69,7 +69,7 @@ const TestOptions = () => {
           <TrendDetailFilter />
         </Col>
       </Row> */}
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={12}>
           <Trend
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/visits/'
@@ -98,19 +98,19 @@ const TestOptions = () => {
             isDetailVersion
           />
         </Col>
-      </Row>
+      </Row> */}
 
-      {/* <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]}>
         <Col span={24}>
           <TransformTrend
-            summaryUrl='url'
-            optionsUrl='url'
+            summaryUrl='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/transform/'
+            optionsUrl='https://yapi.epub360.com/mock/76/v3/api/tongji/idgoal/'
             createTime={createTime}
             options={options}
             extra={[]}
           />
         </Col>
-      </Row> */}
+      </Row>
 
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>

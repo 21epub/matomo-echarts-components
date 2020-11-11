@@ -26,7 +26,7 @@ function TransformTrend({
   options,
   extra
 }: Props) {
-  let [keyState, setKeyState] = useState('')
+  let [keyState, setKeyState] = useState('0')
 
   const handleChange = (value: string) => {
     setKeyState(value)
@@ -43,6 +43,11 @@ function TransformTrend({
   const endDate = options.dateRange[1]
   const source = options.source
   const select = keyState
+
+  let daterangeContent = `${startDate}-${endDate}`
+  if (period === 'all') {
+    daterangeContent = ''
+  }
 
   let newUrl = ''
   if (period !== 'all' && startDate && endDate) {
@@ -66,11 +71,11 @@ function TransformTrend({
     selectOptions = JSON.parse(
       JSON.stringify(selectOptions).replace(/name/g, 'label')
     )
-    if (keyState === '') {
-      keyState = selectOptions[0].idgoal
+    if (keyState === '0') {
+      keyState = selectOptions[0].value
     }
 
-    if (elements) {
+    if (elements && selectOptions[0].value !== 0) {
       const cardConent = []
       const titleList = ['访问次数', '访客数（UV）', '转化次数', '转化率']
       const todayData = [
@@ -247,6 +252,57 @@ function TransformTrend({
                 createTime={createTime}
                 options={options}
               />
+            </Col>
+          </Row>
+        </div>
+      )
+    } else if (elements && selectOptions[0].value === 0) {
+      const cardConent = []
+      const titleList = ['访问次数', '访客数（UV）', '转化次数', '转化率']
+      const todayData = [
+        elements.nb_visits,
+        elements.nb_uniq_visitors,
+        elements.total_visits_converted,
+        elements.total_conversion_rate
+      ]
+      for (let i = 0; i < titleList.length; i++) {
+        cardConent[i] = {
+          titleList: titleList[i],
+          dataList: todayData[i]
+        }
+      }
+      return (
+        <div className={styles.transformTrend}>
+          <Row gutter={[16, 16]}>
+            <Col span={24}>
+              <div className='trendCard'>
+                <Card title='转化目标'>
+                  <Card.Grid style={{ width: '100%' }} hoverable={false}>
+                    <Row>
+                      {cardConent.map((e, i) => {
+                        return (
+                          <Col span={4} offset={2} key={i}>
+                            <p>{e.titleList}</p>
+                            <h1>{e.dataList}</h1>
+                          </Col>
+                        )
+                      })}
+                    </Row>
+                  </Card.Grid>
+                </Card>
+              </div>
+            </Col>
+          </Row>
+          <Row gutter={[16, 16]}>
+            <Col span={24}>
+              <div className={styles.noDataTrendDetail}>
+                <Card
+                  title='详细数据列表'
+                  extra={<p className='daterange'>{daterangeContent}</p>}
+                >
+                  <h1>暂无数据</h1>
+                </Card>
+              </div>
             </Col>
           </Row>
         </div>
