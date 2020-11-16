@@ -75,7 +75,7 @@ function TransformTrend({
       keyState = selectOptions[0].value
     }
 
-    if (elements && selectOptions[0].value !== 0) {
+    if (elements && selectOptions[0].value !== '0') {
       const cardConent = []
       const titleList = ['访问次数', '访客数（UV）', '转化次数', '转化率']
       const todayData = [
@@ -256,7 +256,7 @@ function TransformTrend({
           </Row>
         </div>
       )
-    } else if (elements && selectOptions[0].value === 0) {
+    } else if (elements && selectOptions[0].value === '0') {
       const cardConent = []
       const titleList = ['访问次数', '访客数（UV）', '转化次数', '转化率']
       const todayData = [
