@@ -11,9 +11,10 @@ type Options = {
 interface Props {
   url: string
   options: Options
+  isHomePageVersion?: boolean
 }
 
-function OrgSummary({ url, options }: Props) {
+function OrgSummary({ url, options, isHomePageVersion = false }: Props) {
   const period = options.period
   const startDate = options.dateRange[0]
   const endDate = options.dateRange[1]
@@ -53,22 +54,39 @@ function OrgSummary({ url, options }: Props) {
       }
     }
 
-    return (
-      <div className={styles.orgSummary}>
-        <Card>
+    if (isHomePageVersion === true) {
+      return (
+        <div className={styles.orgSummary}>
           <Row>
             {cardConent.map((e, i) => {
               return (
-                <Col span={5} offset={1} key={i}>
+                <Col span={10} offset={2} key={i}>
                   <p>{e.titleList}</p>
                   <h1>{e.dataList}</h1>
                 </Col>
               )
             })}
           </Row>
-        </Card>
-      </div>
-    )
+        </div>
+      )
+    } else {
+      return (
+        <div className={styles.orgSummary}>
+          <Card>
+            <Row>
+              {cardConent.map((e, i) => {
+                return (
+                  <Col span={5} offset={1} key={i}>
+                    <p>{e.titleList}</p>
+                    <h1>{e.dataList}</h1>
+                  </Col>
+                )
+              })}
+            </Row>
+          </Card>
+        </div>
+      )
+    }
   } else {
     return (
       <div>

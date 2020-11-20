@@ -5,10 +5,11 @@ import {
   Filter,
   // CaseDetail,
   // OrgSummary,
-  TransformTrend
-  // Trend,
+  // TransformTrend
+  // HomePageTrend,
   // TrendDetailFilter,
-  // // EchartsMap,
+  EchartsMap,
+  HomePageCard
   // Barchart
   // Detail
   // InstallButton,
@@ -44,6 +45,23 @@ const TestOptions = () => {
       </Row>
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
+          <HomePageTrend
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/visits/'
+            options={options}
+          />
+        </Col>
+      </Row> */}
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <HomePageCard
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/visits/'
+            options={options}
+          />
+        </Col>
+      </Row>
+
+      {/* <Row gutter={[16, 16]}>
+        <Col span={24}>
           <CaseDetail
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/top10/'
             options={options}
@@ -53,8 +71,9 @@ const TestOptions = () => {
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <OrgSummary
-            url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/visits/'
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/visits/'
             options={options}
+            isHomePageVersion
           />
         </Col>
       </Row> */}
@@ -78,6 +97,9 @@ const TestOptions = () => {
             isOrgVersion
           />
         </Col>
+      </Row> */}
+      {/* 
+      <Row gutter={[16, 16]}>
         <Col span={12}>
           <Barchart
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/campaign/'
@@ -100,7 +122,7 @@ const TestOptions = () => {
         </Col>
       </Row> */}
 
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <TransformTrend
             summaryUrl='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/transform/'
@@ -110,9 +132,9 @@ const TestOptions = () => {
             extra={[]}
           />
         </Col>
-      </Row>
+      </Row> */}
 
-      {/* <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]}>
         <Col span={24}>
           <EchartsMap
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/map/'
@@ -124,7 +146,7 @@ const TestOptions = () => {
             createTime={createTime}
           />
         </Col>
-      </Row> */}
+      </Row>
 
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>
@@ -149,17 +171,6 @@ const TestOptions = () => {
             />
           </Col>
       </Row> */}
-
-      {/* <Row gutter={[16, 16]}>
-          <Col span={24}>
-            <Detail
-              url="url"
-              options={options}
-              detailType="barchart"
-              create_time ={create_time}
-            />
-          </Col>
-        </Row> */}
     </div>
   )
 }

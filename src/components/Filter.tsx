@@ -8,9 +8,10 @@ const { TabPane } = Tabs
 
 interface Props {
   isOrgVersion?: boolean
+  isHomePageVersion?: boolean
 }
 
-function Filter({ isOrgVersion = false }: Props) {
+function Filter({ isOrgVersion = false, isHomePageVersion = false }: Props) {
   const { state: options, dispatch } = useContext(AppContext)
 
   const filter = (key: string) => {
@@ -51,6 +52,23 @@ function Filter({ isOrgVersion = false }: Props) {
           <TabPane tab='近15日' key='last15' />
           <TabPane tab='近30日' key='last30' />
           <TabPane tab='近一年' key='last365' />
+        </Tabs>
+      </div>
+    )
+  } else if (isHomePageVersion === true) {
+    return (
+      <div className={styles.homePageFilter}>
+        <Tabs
+          defaultActiveKey='today'
+          activeKey={options.period}
+          tabBarExtraContent={<SelectPeriod />}
+          onChange={filter}
+        >
+          <TabPane tab='今日' key='today' />
+          <TabPane tab='昨日' key='yesterday' />
+          <TabPane tab='近7日' key='last7' />
+          <TabPane tab='近15日' key='last15' />
+          <TabPane tab='近30日' key='last30' />
         </Tabs>
       </div>
     )
