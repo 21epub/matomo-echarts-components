@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7-alpha.33](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.32...v0.1.7-alpha.33) (2020-11-20)
+
+
+### Features
+
+* 🎸 add HomePageCard ([93b6b96](https://github.com/21epub/matomo-echarts-components/commit/93b6b96e55e634fd079225f838d76135e85de881))
+
 ### [0.1.7-alpha.32](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.31...v0.1.7-alpha.32) (2020-11-16)
 
 
