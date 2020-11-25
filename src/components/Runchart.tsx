@@ -57,12 +57,7 @@ function Runchart({ url, options }: Props) {
           symbolSize: 6,
           itemStyle: {
             normal: {
-              color: '#7CA1F5',
-              label: {
-                show: true,
-                position: 'top',
-                color: '#000000 '
-              }
+              color: '#7CA1F5'
             }
           }
         }

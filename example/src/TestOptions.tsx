@@ -13,9 +13,9 @@ import {
   OpeBarchart,
   // ContentByTime,
   ContentByOrg,
-  OpeSummary
+  OpeSummary,
   // Detail
-  // Runchart,
+  Runchart
   // OpeDetail
   // Barchart
   // Detail
@@ -74,12 +74,12 @@ const TestOptions = () => {
           />
         </Col>
       </Row>
-      {/* <Col span={24}>
-          <Runchart 
-          url="https://yapi.epub360.com/mock/111/v3/api/yunying/login/time/visits/" 
+      <Col span={24}>
+        <Runchart
+          url='https://yapi.epub360.com/mock/111/v3/api/yunying/login/time/visits/'
           options={options}
-          />
-        </Col> */}
+        />
+      </Col>
       {/* <Col span={24}>
           <OpeDetail 
           url="https://yapi.epub360.com/mock/111/v3/api/yunying/login/org/" 
