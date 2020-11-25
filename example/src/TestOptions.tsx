@@ -10,11 +10,11 @@ import {
   // TrendDetailFilter,
   EchartsMap,
   // HomePageCard,
-  // OpeBarchart,
+  OpeBarchart,
   // ContentByTime,
   ContentByOrg,
-  Resource,
-  Detail
+  OpeSummary
+  // Detail
   // Runchart,
   // OpeDetail
   // Barchart
@@ -50,26 +50,29 @@ const TestOptions = () => {
           <OpeFilter isTongjiSelection />
         </Col>
         <Col span={24}>
+          <OpeSummary url='https://yapi.epub360.com/mock/111/v3/api/yunying/epub360/login/time/summary/' />
+        </Col>
+        <Col span={24}>
           <ContentByOrg
             url='https://yapi.epub360.com/mock/111/v3/api/yunying/content/org/'
             year='2020'
           />
         </Col>
-        <Col span={24}>
+        {/* <Col span={24}>
           <Resource
             url='https://yapi.epub360.com/mock/111/v3/api/yunying/resources/'
             year='2020'
           />
-        </Col>
+        </Col> */}
         {/* <Col span={24}>
           <OpeFilter isOrgSelection />
-        </Col>
+        </Col>*/}
         <Col span={24}>
-          <OpeBarchart 
-          url="https://yapi.epub360.com/mock/111/v3/api/yunying/login/org/" 
-          options={options}
+          <OpeBarchart
+            url='https://yapi.epub360.com/mock/111/v3/api/yunying/login/org/'
+            options={options}
           />
-        </Col> */}
+        </Col>
       </Row>
       {/* <Col span={24}>
           <Runchart 
@@ -202,7 +205,7 @@ const TestOptions = () => {
             />
           </Col>
       </Row> */}
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <Detail
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/map/'
@@ -212,7 +215,7 @@ const TestOptions = () => {
             extra={[]}
           />
         </Col>
-      </Row>
+      </Row> */}
     </div>
   )
 }

@@ -60,7 +60,7 @@ function OpeFilter({
     )
   } else if (isPeriodSelection === true) {
     return (
-      <div className={styles.filter}>
+      <div className={styles.periodFilter}>
         <Tabs activeKey={options.selection} onChange={filter}>
           <TabPane tab='当天' key='day' />
           <TabPane tab='当月' key='month' />

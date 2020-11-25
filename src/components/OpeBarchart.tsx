@@ -2,6 +2,7 @@ import React from 'react'
 import useSWR from 'swr'
 import { Card, Spin } from 'antd'
 import ReactEcharts from 'echarts-for-react'
+import OpeFilter from './OpeFilter'
 // import styles from './index.module.less'
 
 interface Options {
@@ -69,7 +70,7 @@ function OpeBarchart({ url, options }: Props) {
 
     return (
       <div>
-        <Card>
+        <Card extra={<OpeFilter isPeriodSelection />}>
           <ReactEcharts option={content} />
         </Card>
       </div>
