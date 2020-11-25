@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7-alpha.34](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.33...v0.1.7-alpha.34) (2020-11-25)
+
+
+### Features
+
+* 🎸 add ope tongji component ([b946d63](https://github.com/21epub/matomo-echarts-components/commit/b946d636ea4ec76e513afbeea54b64b8c6831869))
+
 ### [0.1.7-alpha.33](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.32...v0.1.7-alpha.33) (2020-11-20)
 
 
