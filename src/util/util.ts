@@ -114,7 +114,7 @@ function dataFormat(elements: Array<any>, mapDetail = false) {
       dataList[i] = {
         label: area,
         nb_visits: elements[i].nb_visits,
-        rate: `${elements[i].rate}%`
+        rate: `${elements[i].rate}`
       }
     } else {
       dataList[i] = {
@@ -163,6 +163,14 @@ function titleTranslate(title: any) {
       return '渠道名'
     case 'promotenb_visits':
       return '访问数量'
+    case 'byTimelabel':
+      return '日期'
+    case 'byTimevisits':
+      return '登录人次'
+    case 'byOrglabel':
+      return '机构'
+    case 'byOrgvisits':
+      return '登录人次'
     default:
       return 'null'
   }
@@ -175,5 +183,21 @@ function compare(p: string) {
     return b - a
   }
 }
+
+// function getAllLeaf(data: Array<Object>) {
+//   const result: string[] = []
+//   function getLeaf(arr: any) {
+//     arr.forEach((item: {children: any; key: string}) => {
+//       if (!item.children) {
+//         result.push(item.key)
+//       } else {
+//         getLeaf(item.children)
+//       }
+//     })
+//   }
+//   getLeaf(data)
+//   console.log(result.length)
+//   return result.length
+// }
 
 export { dataFormat, titleTranslate, compare }

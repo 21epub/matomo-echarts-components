@@ -4,10 +4,12 @@ import { keyToRange } from './dateCompute'
 
 const date = keyToRange('last30')
 
-type Options = {
+interface Options {
   dateRange: string[]
   period: string
   source?: string
+  selection?: string
+  org?: string
 }
 
 const options = {
@@ -22,9 +24,10 @@ const options = {
     'range' ||
     'last365',
   source:
-    'allSource' || 'direct' || 'search' || 'website' || 'social' || 'campaign'
+    'allSource' || 'direct' || 'search' || 'website' || 'social' || 'campaign',
+  selection: 'day' || 'month' || 'year',
+  org: 'branch' || 'total'
 }
-
 const AppContext = createContext<{
   state: Options
   dispatch: React.Dispatch<any>
