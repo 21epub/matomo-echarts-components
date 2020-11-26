@@ -13,9 +13,10 @@ import {
   OpeBarchart,
   // ContentByTime,
   ContentByOrg,
-  OpeSummary,
+  // OpeSummary,
   // Detail
-  Runchart
+  Runchart,
+  SelectYear
   // OpeDetail
   // Barchart
   // Detail
@@ -50,12 +51,15 @@ const TestOptions = () => {
           <OpeFilter isTongjiSelection />
         </Col>
         <Col span={24}>
-          <OpeSummary url='https://yapi.epub360.com/mock/111/v3/api/yunying/epub360/login/time/summary/' />
+          <SelectYear />
         </Col>
+        {/* <Col span={24}>
+          <OpeSummary url='https://yapi.epub360.com/mock/111/v3/api/yunying/epub360/login/time/summary/' />
+        </Col> */}
         <Col span={24}>
           <ContentByOrg
             url='https://yapi.epub360.com/mock/111/v3/api/yunying/content/org/'
-            year='2020'
+            options={options}
           />
         </Col>
         {/* <Col span={24}>

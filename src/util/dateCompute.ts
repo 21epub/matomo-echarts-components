@@ -3,6 +3,9 @@ import moment from 'moment'
 function getToday() {
   return moment(new Date())
 }
+function getThisYear() {
+  return moment(new Date()).format('YYYY')
+}
 
 function getPastedDay(day: number) {
   return moment(new Date()).subtract(day, 'days')
@@ -92,4 +95,4 @@ function keyToRange(key: string) {
   }
 }
 
-export { getToday, checkPeriod, keyToRange }
+export { getToday, checkPeriod, keyToRange, getThisYear }

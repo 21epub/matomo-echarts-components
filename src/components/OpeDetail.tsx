@@ -20,11 +20,7 @@ interface Props {
 
 // operation tongji detail
 function OpeDetail({ url, options, detailType }: Props) {
-  let newUrl
-  if (detailType === 'byTime') newUrl = `${url}?period=${options.selection}`
-  else {
-    newUrl = `${url}?date=${options.selection}&bank=${options.org}`
-  }
+  const newUrl = `${url}?date=${options.selection}`
 
   const swrOptions = {
     refreshInterval: 0

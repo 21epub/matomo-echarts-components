@@ -1,6 +1,6 @@
 import React, { createContext, useReducer } from 'react'
 import reducers from './reducers'
-import { keyToRange } from './dateCompute'
+import { getThisYear, keyToRange } from './dateCompute'
 
 const date = keyToRange('last30')
 
@@ -10,6 +10,7 @@ interface Options {
   source?: string
   selection?: string
   org?: string
+  year?: string
 }
 
 const options = {
@@ -26,7 +27,8 @@ const options = {
   source:
     'allSource' || 'direct' || 'search' || 'website' || 'social' || 'campaign',
   selection: 'day' || 'month' || 'year',
-  org: 'branch' || 'total'
+  org: 'branch' || 'total',
+  year: getThisYear()
 }
 const AppContext = createContext<{
   state: Options

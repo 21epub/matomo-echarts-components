@@ -1,16 +1,25 @@
 import React from 'react'
-import { Table, Card, Spin } from 'antd'
+import { Table, Card, Spin, Row, Col } from 'antd'
 import useSWR from 'swr'
+import SelectYear from './SelectYear'
 // import styles from './index.module.less'
+
+interface Options {
+  dateRange: string[]
+  period: string
+  source?: string
+  selection?: string
+  year?: string
+}
 
 interface Props {
   url: string
-  year: string
+  options: Options
 }
 
 // operation tongji detail
-function ContentByOrg({ url, year }: Props) {
-  const newUrl = `${url}?year=${year}`
+function ContentByOrg({ url, options }: Props) {
+  const newUrl = `${url}?year=${options.year}`
 
   const swrOptions = {
     refreshInterval: 0
@@ -29,22 +38,22 @@ function ContentByOrg({ url, year }: Props) {
         align: 'center' as 'center'
       },
       {
-        title: '创意模版',
+        title: 'H5创意案例',
         dataIndex: 'template',
         key: 'template',
         align: 'center' as 'center',
         children: [
           {
             title: '制作数量',
-            dataIndex: 'template_make_number',
-            key: 'template_make_number',
+            dataIndex: 'h5_count',
+            key: 'h5_count',
             width: `${100 / 6}%`,
             align: 'center' as 'center'
           },
           {
             title: '发布数量',
-            dataIndex: 'template_release_number',
-            key: 'template_release_number',
+            dataIndex: 'h5_release_count',
+            key: 'h5_release_count',
             width: `${100 / 6}%`,
             align: 'center' as 'center'
           },
@@ -65,9 +74,9 @@ function ContentByOrg({ url, year }: Props) {
         ]
       },
       {
-        title: '海报图片数量',
-        dataIndex: 'poster_number',
-        key: 'poster_number',
+        title: '海报创意案例',
+        dataIndex: 'poster_count',
+        key: 'poster_count',
         width: `${100 / 6}%`,
         align: 'center' as 'center'
       }
@@ -83,8 +92,16 @@ function ContentByOrg({ url, year }: Props) {
     return (
       <div style={{ textAlign: 'right' }}>
         <Card>
-          <p>年份： {year}</p>
-          <Table columns={columns} dataSource={data} bordered />
+          <Row gutter={[16, 16]}>
+            <Col span={24}>
+              <SelectYear />
+            </Col>
+          </Row>
+          <Row>
+            <Col span={24}>
+              <Table columns={columns} dataSource={data} bordered />
+            </Col>
+          </Row>
         </Card>
       </div>
     )

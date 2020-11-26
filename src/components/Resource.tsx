@@ -1,16 +1,24 @@
 import React from 'react'
-import { Table, Card, Spin } from 'antd'
+import { Table, Card, Spin, Col, Row } from 'antd'
 import useSWR from 'swr'
+import SelectYear from './SelectYear'
 // import styles from './index.module.less'
 
+interface Options {
+  dateRange: string[]
+  period: string
+  source?: string
+  selection?: string
+  year?: string
+}
 interface Props {
   url: string
-  year: string
+  options: Options
 }
 
 // operation tongji detail
-function Resource({ url, year }: Props) {
-  const newUrl = `${url}?year=${year}`
+function Resource({ url, options }: Props) {
+  const newUrl = `${url}?year=${options.year}`
 
   const swrOptions = {
     refreshInterval: 0
@@ -26,7 +34,7 @@ function Resource({ url, year }: Props) {
         dataIndex: 'label',
         key: 'label',
         align: 'center' as 'center',
-        width: `${100 / 5}%`
+        width: `${100 / 3}%`
       },
       {
         title: '模版',
@@ -38,32 +46,32 @@ function Resource({ url, year }: Props) {
             title: '使用情况',
             dataIndex: 'template_usage',
             key: 'template_usage',
-            width: `${100 / 5}%`,
+            width: `${100 / 3}%`,
             align: 'center' as 'center'
           },
           {
             title: '产生访问量',
             dataIndex: 'total_visits',
             key: 'total_visits',
-            width: `${100 / 5}%`,
+            width: `${100 / 3}%`,
             align: 'center' as 'center'
           }
         ]
-      },
-      {
-        title: '图片素材使用（次）',
-        dataIndex: 'image_usage',
-        key: 'image_usage',
-        align: 'center' as 'center',
-        width: `${100 / 5}%`
-      },
-      {
-        title: '二维码链接库',
-        dataIndex: 'code_usage',
-        key: 'code_usage',
-        align: 'center' as 'center',
-        width: `${100 / 5}%`
       }
+      // {
+      //   title: '图片素材使用（次）',
+      //   dataIndex: 'image_usage',
+      //   key: 'image_usage',
+      //   align: 'center' as 'center',
+      //   width: `${100 / 5}%`
+      // },
+      // {
+      //   title: '二维码链接库',
+      //   dataIndex: 'code_usage',
+      //   key: 'code_usage',
+      //   align: 'center' as 'center',
+      //   width: `${100 / 5}%`
+      // }
     ]
 
     const data = []
@@ -76,8 +84,16 @@ function Resource({ url, year }: Props) {
     return (
       <div style={{ textAlign: 'right' }}>
         <Card>
-          <p>单位： 次</p>
-          <Table columns={columns} dataSource={data} bordered />
+          <Row gutter={[16, 16]}>
+            <Col span={24}>
+              <SelectYear />
+            </Col>
+          </Row>
+          <Row>
+            <Col span={24}>
+              <Table columns={columns} dataSource={data} bordered />
+            </Col>
+          </Row>
         </Card>
       </div>
     )
