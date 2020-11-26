@@ -29,7 +29,8 @@ function OpeDetail({ url, options, detailType }: Props) {
   const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
 
   if (elements && elements.length !== 0) {
-    const keylist = Object.keys(elements[0])
+    const keys = Object.keys(elements[0])
+    const keylist = keys.reverse()
     const columns = []
     for (let i = 0; i < keylist.length; i++) {
       columns[i] = {

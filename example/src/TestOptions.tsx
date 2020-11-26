@@ -16,7 +16,8 @@ import {
   // OpeSummary,
   // Detail
   Runchart,
-  SelectYear
+  SelectYear,
+  Resource
   // OpeDetail
   // Barchart
   // Detail
@@ -62,12 +63,12 @@ const TestOptions = () => {
             options={options}
           />
         </Col>
-        {/* <Col span={24}>
+        <Col span={24}>
           <Resource
             url='https://yapi.epub360.com/mock/111/v3/api/yunying/resources/'
-            year='2020'
+            options={options}
           />
-        </Col> */}
+        </Col>
         {/* <Col span={24}>
           <OpeFilter isOrgSelection />
         </Col>*/}

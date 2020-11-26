@@ -34,7 +34,7 @@ function Resource({ url, options }: Props) {
         dataIndex: 'label',
         key: 'label',
         align: 'center' as 'center',
-        width: `${100 / 3}%`
+        width: `20%`
       },
       {
         title: '模版',
@@ -44,16 +44,16 @@ function Resource({ url, options }: Props) {
         children: [
           {
             title: '使用情况',
-            dataIndex: 'template_usage',
-            key: 'template_usage',
-            width: `${100 / 3}%`,
+            dataIndex: 'h5_count',
+            key: 'h5_count',
+            width: `40%`,
             align: 'center' as 'center'
           },
           {
             title: '产生访问量',
             dataIndex: 'total_visits',
             key: 'total_visits',
-            width: `${100 / 3}%`,
+            width: `40%`,
             align: 'center' as 'center'
           }
         ]

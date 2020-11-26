@@ -36,12 +36,12 @@ function OpeBarchart({ url, options }: Props) {
     elements = JSON.parse(
       JSON.stringify(elements).replace(/visits/g, '登录人次')
     )
-    const keylist = Object.keys(elements[0])
+    // const keylist = Object.keys(elements[0])
 
     const content = {
       tooltip: {},
       dataset: {
-        dimensions: keylist,
+        dimensions: ['机构', '登录人次'],
         source: elements
       },
       xAxis: { type: 'category' },
