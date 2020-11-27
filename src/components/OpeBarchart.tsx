@@ -22,7 +22,7 @@ function OpeBarchart({ url, options }: Props) {
   const selection = options.selection
   // const org = options.org
 
-  const newUrl = `${url}?period=${selection}`
+  const newUrl = `${url}?date=${selection}`
 
   const swrOptions = {
     refreshInterval: 0
