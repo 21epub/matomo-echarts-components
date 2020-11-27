@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7-alpha.40](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.39...v0.1.7-alpha.40) (2020-11-27)
+
+
+### Bug Fixes
+
+* 🐛 fix opeBarchart ([970aa88](https://github.com/21epub/matomo-echarts-components/commit/970aa889fe9cc07eacc3d682403cdd9aee03a487))
+
 ### [0.1.7-alpha.39](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.38...v0.1.7-alpha.39) (2020-11-27)
 
 
