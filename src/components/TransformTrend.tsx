@@ -26,7 +26,7 @@ function TransformTrend({
   options,
   extra
 }: Props) {
-  let [keyState, setKeyState] = useState('0')
+  const [keyState, setKeyState] = useState('0')
 
   const handleChange = (value: string) => {
     setKeyState(value)
@@ -72,7 +72,7 @@ function TransformTrend({
       JSON.stringify(selectOptions).replace(/name/g, 'label')
     )
     if (keyState === '0') {
-      keyState = selectOptions[0].value
+      setKeyState(selectOptions[0].value)
     }
 
     if (elements && selectOptions[0].value !== '0') {
