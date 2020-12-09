@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7-alpha.42](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.41...v0.1.7-alpha.42) (2020-12-09)
+
+
+### Bug Fixes
+
+* 🐛 fix time format and add equipment components ([b9e6a3c](https://github.com/21epub/matomo-echarts-components/commit/b9e6a3c522229242e1c99272e625afec60fdc44b))
+
 ### [0.1.7-alpha.41](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.40...v0.1.7-alpha.41) (2020-12-03)
 
 
