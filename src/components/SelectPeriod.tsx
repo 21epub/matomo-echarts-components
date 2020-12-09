@@ -27,13 +27,21 @@ function SelectPeriod() {
   }
 
   if (options.period === 'all') {
-    return <RangePicker format={dateFormat} onChange={selectPeriod} />
+    return (
+      <RangePicker
+        format={dateFormat}
+        onChange={selectPeriod}
+        disabledDate={disabledDate}
+        allowClear={false}
+      />
+    )
   } else {
     return (
       <RangePicker
         format={dateFormat}
         disabledDate={disabledDate}
         onChange={selectPeriod}
+        allowClear={false}
         value={[
           moment(options.dateRange[0], dateFormat),
           moment(options.dateRange[1], dateFormat)

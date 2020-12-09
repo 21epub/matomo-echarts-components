@@ -171,6 +171,22 @@ function titleTranslate(title: any) {
       return '机构'
     case 'byOrgvisits':
       return '登录人次'
+    case 'Adlabel':
+      return '广告活动'
+    case 'Adnb_visits':
+      return '访客数'
+    case 'brandlabel':
+      return '品牌'
+    case 'brandnb_visits':
+      return '访客数'
+    case 'systemlabel':
+      return '操作系统版本'
+    case 'systemnb_visits':
+      return '访客数'
+    case 'deviceTypelabel':
+      return '类型'
+    case 'deviceTypenb_visits':
+      return '访客数'
     default:
       return 'null'
   }

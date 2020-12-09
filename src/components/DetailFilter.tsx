@@ -3,8 +3,8 @@ import { AppContext } from '../util/context'
 import SelectPeriod from './SelectPeriod'
 import { keyToRange } from '../util/dateCompute'
 import styles from './index.module.less'
-import { DownOutlined } from '@ant-design/icons'
-import { Space, Tabs, Dropdown, Menu } from 'antd'
+// import { DownOutlined } from '@ant-design/icons'
+import { Space, Tabs } from 'antd'
 const { TabPane } = Tabs
 
 type Options = {
@@ -15,25 +15,25 @@ type Options = {
 interface Props {
   totalOptions?: Options
 }
-const menu = (
-  <Menu>
-    <Menu.Item>
-      <a target='_blank' rel='noopener noreferrer' href='#'>
-        1st menu item
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target='_blank' rel='noopener noreferrer' href='#'>
-        2nd menu item
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target='_blank' rel='noopener noreferrer' href='#'>
-        3rd menu item
-      </a>
-    </Menu.Item>
-  </Menu>
-)
+// const menu = (
+//   <Menu>
+//     <Menu.Item>
+//       <a target='_blank' rel='noopener noreferrer' href='#'>
+//         1st menu item
+//       </a>
+//     </Menu.Item>
+//     <Menu.Item>
+//       <a target='_blank' rel='noopener noreferrer' href='#'>
+//         2nd menu item
+//       </a>
+//     </Menu.Item>
+//     <Menu.Item>
+//       <a target='_blank' rel='noopener noreferrer' href='#'>
+//         3rd menu item
+//       </a>
+//     </Menu.Item>
+//   </Menu>
+// )
 
 function DetailFilter({ totalOptions }: Props) {
   const { state: options, dispatch } = useContext(AppContext)
@@ -85,7 +85,7 @@ function DetailFilter({ totalOptions }: Props) {
           <Space>
             <SelectPeriod />
 
-            <Dropdown overlay={menu} placement='bottomRight'>
+            {/* <Dropdown overlay={menu} placement='bottomRight'>
               <a
                 className='ant-dropdown-link'
                 onClick={(e) => e.preventDefault()}
@@ -93,7 +93,7 @@ function DetailFilter({ totalOptions }: Props) {
                 展开
                 <DownOutlined />
               </a>
-            </Dropdown>
+            </Dropdown> */}
           </Space>
         }
         onChange={filter}

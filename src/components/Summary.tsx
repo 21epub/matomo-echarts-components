@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, Row, Col, Spin } from 'antd'
 import useSWR from 'swr'
+import { secondToTime } from '../util/dateCompute'
 
 interface Props {
   url: string
@@ -33,21 +34,21 @@ function Summary({ url, createTime }: Props) {
       elements.today.nb_hits,
       elements.today.nb_uniq_visitors,
       elements.today.forwarding_number,
-      elements.today.avg_time_on_page,
+      secondToTime(elements.today.avg_time_on_page),
       elements.today.bounce_rate
     ]
     const yesterdayData = [
       elements.yesterday.nb_hits,
       elements.yesterday.nb_uniq_visitors,
       elements.yesterday.forwarding_number,
-      elements.yesterday.avg_time_on_page,
+      secondToTime(elements.yesterday.avg_time_on_page),
       elements.yesterday.bounce_rate
     ]
     const totalData = [
       elements.total.nb_hits,
       elements.total.nb_uniq_visitors,
       elements.total.forwarding_number,
-      elements.total.avg_time_on_page,
+      secondToTime(elements.total.avg_time_on_page),
       elements.total.bounce_rate
     ]
     for (let i = 0; i < 5; i++) {

@@ -15,6 +15,10 @@ function getPastedYear(year: number) {
   return moment(new Date()).subtract(year, 'years')
 }
 
+function secondToTime(second: number) {
+  return moment('2000-01-01 00:00:00').add(second, 'seconds').format('HH:mm:ss')
+}
+
 function checkPeriod(_startDate: string, _endDate: string) {
   const startDate = _startDate
   const endDate = _endDate
@@ -95,4 +99,4 @@ function keyToRange(key: string) {
   }
 }
 
-export { getToday, checkPeriod, keyToRange, getThisYear }
+export { getToday, checkPeriod, keyToRange, getThisYear, secondToTime }

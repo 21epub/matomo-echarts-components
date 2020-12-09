@@ -26,53 +26,54 @@ function Resource({ url, options }: Props) {
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
   const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
 
+  const columns = [
+    {
+      title: '月份',
+      dataIndex: 'label',
+      key: 'label',
+      align: 'center' as 'center',
+      width: `20%`
+    },
+    {
+      title: '模版',
+      dataIndex: 'template',
+      key: 'template',
+      align: 'center' as 'center',
+      children: [
+        {
+          title: '使用情况',
+          dataIndex: 'h5_count',
+          key: 'h5_count',
+          width: `40%`,
+          align: 'center' as 'center'
+        },
+        {
+          title: '产生访问量',
+          dataIndex: 'total_visits',
+          key: 'total_visits',
+          width: `40%`,
+          align: 'center' as 'center'
+        }
+      ]
+    }
+    // {
+    //   title: '图片素材使用（次）',
+    //   dataIndex: 'image_usage',
+    //   key: 'image_usage',
+    //   align: 'center' as 'center',
+    //   width: `${100 / 5}%`
+    // },
+    // {
+    //   title: '二维码链接库',
+    //   dataIndex: 'code_usage',
+    //   key: 'code_usage',
+    //   align: 'center' as 'center',
+    //   width: `${100 / 5}%`
+    // }
+  ]
+
   if (elements && elements.length !== 0) {
     // const keylist = Object.keys(elements[0])
-    const columns = [
-      {
-        title: '月份',
-        dataIndex: 'label',
-        key: 'label',
-        align: 'center' as 'center',
-        width: `20%`
-      },
-      {
-        title: '模版',
-        dataIndex: 'template',
-        key: 'template',
-        align: 'center' as 'center',
-        children: [
-          {
-            title: '使用情况',
-            dataIndex: 'h5_count',
-            key: 'h5_count',
-            width: `40%`,
-            align: 'center' as 'center'
-          },
-          {
-            title: '产生访问量',
-            dataIndex: 'total_visits',
-            key: 'total_visits',
-            width: `40%`,
-            align: 'center' as 'center'
-          }
-        ]
-      }
-      // {
-      //   title: '图片素材使用（次）',
-      //   dataIndex: 'image_usage',
-      //   key: 'image_usage',
-      //   align: 'center' as 'center',
-      //   width: `${100 / 5}%`
-      // },
-      // {
-      //   title: '二维码链接库',
-      //   dataIndex: 'code_usage',
-      //   key: 'code_usage',
-      //   align: 'center' as 'center',
-      //   width: `${100 / 5}%`
-      // }
-    ]
 
     const data = []
 
@@ -101,7 +102,16 @@ function Resource({ url, options }: Props) {
     return (
       <div>
         <Card>
-          <h1>暂无数据</h1>
+          <Row gutter={[16, 16]}>
+            <Col span={24}>
+              <SelectYear />
+            </Col>
+          </Row>
+          <Row>
+            <Col span={24}>
+              <Table columns={columns} bordered />
+            </Col>
+          </Row>
         </Card>
       </div>
     )
