@@ -4,7 +4,7 @@ import { Card, Spin, Space } from 'antd'
 import { RightOutlined } from '@ant-design/icons'
 import ReactEcharts from 'echarts-for-react'
 import styles from './index.module.less'
-
+import { clone } from 'ramda'
 type Options = {
   dateRange: string[]
   period: string
@@ -18,6 +18,7 @@ interface Props {
   isDetailVersion?: boolean
   createTime?: string
   isPicVersion?: boolean
+  pre?: string
 }
 
 function HorizontalBarchart({
@@ -27,28 +28,29 @@ function HorizontalBarchart({
   cardTitle,
   isDetailVersion = false,
   createTime,
-  isPicVersion = false
+  isPicVersion = false,
+  pre
 }: Props) {
   const startDate = options.dateRange[0]
   const endDate = options.dateRange[1]
   const period = options.period
 
-  let newUrl = ''
+  let newUrls = ''
   if (period !== 'all' && startDate && endDate) {
-    newUrl = `${url}?period=${period}&start_time=${startDate.replace(
+    newUrls = `${url}?period=${period}&start_time=${startDate.replace(
       /\//g,
       '-'
     )}&end_time=${endDate.replace(/\//g, '-')}`
   } else if (createTime !== '') {
-    newUrl = `${url}?period=${period}&start_time=${createTime}`
+    newUrls = `${url}?period=${period}&start_time=${createTime}`
   }
 
   const swrOptions = {
     refreshInterval: 0
   }
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
-  let { data: elements } = useSWR(newUrl, fetcher, swrOptions)
-
+  const { data: element } = useSWR(newUrls, fetcher, swrOptions)
+  let elements = clone(element)
   const bigVersion = styles.bigVersion
   const smallVersion = styles.smallVersion
 
@@ -70,7 +72,7 @@ function HorizontalBarchart({
         elements[i] = {
           label: id,
           nb_visits: elements[i].nb_visits,
-          logo: elements[i].logo
+          logo: `${pre}${elements[i].logo}`
         }
       }
 
@@ -110,13 +112,14 @@ function HorizontalBarchart({
           type: 'category',
           data: labelList,
           axisLabel: {
-            margin: 110,
+            margin: 200,
             textStyle: {
               align: 'left'
             },
             formatter: function (value: string) {
               // value默认为label的值，如果yAxis定义了data，则为data中的值
               const label = labelMap.get(value)
+              console.log(value, label, labelRich, labelMap)
               return `{${value}|} {value|${label}}`
             },
             rich: labelRich
@@ -124,7 +127,7 @@ function HorizontalBarchart({
         },
         grid: {
           top: '0%',
-          left: '-60px',
+          left: '0px',
           bottom: '0%',
           containLabel: true
         },

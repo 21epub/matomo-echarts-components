@@ -2,6 +2,7 @@ import React from 'react'
 import { Table, Card, Space, Spin } from 'antd'
 import { titleTranslate } from '../util/util'
 import useSWR from 'swr'
+import { clone } from 'ramda'
 import styles from './index.module.less'
 
 type Options = {
@@ -15,6 +16,7 @@ interface Props {
   detailType: string
   createTime?: string
   extra?: React.ReactNode[]
+  pre?: string
 }
 
 function EquipmentDetail({
@@ -22,7 +24,8 @@ function EquipmentDetail({
   options,
   detailType,
   createTime,
-  extra
+  extra,
+  pre
 }: Props) {
   const period = options.period
   const startDate = options.dateRange[0]
@@ -43,25 +46,26 @@ function EquipmentDetail({
   }
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
   const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
-
+  const ele = clone(elements)
   let daterangeContent = `${startDate}-${endDate}`
   if (period === 'all') {
     daterangeContent = ''
   }
 
-  if (elements && elements.length !== 0) {
-    for (let i = 0; i < elements.length; i++) {
-      Object.defineProperty(elements[i], 'label', {
+  if (ele && ele.length !== 0) {
+    for (let i = 0; i < ele.length; i++) {
+      Object.defineProperty(ele[i], 'label', {
         value: (
           <div>
-            <img src={elements[i].logo} style={{ height: '15px' }} />{' '}
-            {elements[i].label}
+            <img src={`${pre}${ele[i].logo}`} style={{ height: '15px' }} />
+            {'  '}
+            {ele[i].label}
           </div>
         )
       })
     }
 
-    // const keylist = Object.keys(elements[0])
+    // const keylist = Object.keys(ele[0])
     const keylist = ['label', 'nb_visits']
 
     const columns = []
@@ -74,9 +78,9 @@ function EquipmentDetail({
     }
 
     const data = []
-    for (let i = 0; i < elements.length; i++) {
-      Object.defineProperty(elements[i], 'key', { value: i })
-      data[i] = elements[i]
+    for (let i = 0; i < ele.length; i++) {
+      Object.defineProperty(ele[i], 'key', { value: i })
+      data[i] = ele[i]
     }
 
     return (
@@ -94,7 +98,7 @@ function EquipmentDetail({
         </Card>
       </div>
     )
-  } else if (elements && elements.length === 0) {
+  } else if (ele && ele.length === 0) {
     return (
       <div className={styles.noDataTrendDetail}>
         <Card

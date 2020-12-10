@@ -27,8 +27,8 @@ function SelectSource() {
       <Option value='direct'>直接链接</Option>
       <Option value='search'>搜索引擎</Option>
       <Option value='website'>网站</Option>
-      <Option value='social'>社交网络</Option>
-      <Option value='campaign'>广告活动</Option>
+      {/* <Option value='social'>社交网络</Option>
+      <Option value='campaign'>广告活动</Option> */}
     </Select>
   )
 }

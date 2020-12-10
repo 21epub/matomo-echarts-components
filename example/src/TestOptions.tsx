@@ -12,11 +12,11 @@ import {
   // HomePageCard,
   // OpeBarchart,
   // ContentByTime,
-  ContentByOrg,
+  // ContentByOrg,
   // OpeSummary,
   // Detail
   // Runchart,
-  SelectPeriod,
+  // SelectPeriod,
   // Resource
   // OpeDetail
   // Barchart
@@ -43,7 +43,7 @@ const TestOptions = () => {
   useEffect(() => {
     setTimeout(() => {
       setCreateTime('2020-10-20')
-    }, 100)
+    }, 10)
   }, [])
 
   // const extra = [<div>test1</div>]
@@ -54,32 +54,20 @@ const TestOptions = () => {
         {/* <Col span={24}>
           <OpeFilter isTongjiSelection />
         </Col> */}
-        <Col span={24}>
+        {/* <Col span={24}>
           <SelectPeriod />
-        </Col>
+        </Col> */}
         {/* <Col span={24}>
           <OpeSummary url='https://yapi.epub360.com/mock/111/v3/api/yunying/epub360/login/time/summary/' />
         </Col> */}
-        <Col span={24}>
+        {/* <Col span={24}>
           <ContentByOrg
             url='https://yapi.epub360.com/mock/111/v3/api/yunying/content/org/'
             options={options}
           />
-        </Col>
+        </Col> */}
       </Row>
-      <Row gutter={[16, 16]}>
-        <Col span={12}>
-          <HorizontalBarchart
-            //isPicVersion
-            // url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/brand/'
-            url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/campaign/'
-            options={options}
-            detailLink='#'
-            cardTitle='#'
-            createTime={createTime}
-          />
-        </Col>
-      </Row>
+
       {/* <Col span={24}>
           <Resource
             url='https://yapi.epub360.com/mock/111/v3/api/yunying/resources/'
@@ -238,6 +226,32 @@ const TestOptions = () => {
           />
         </Col>
       </Row> */}
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <HorizontalBarchart
+            isPicVersion
+            // url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/brand/'
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/brand/'
+            options={options}
+            detailLink='#'
+            cardTitle='#'
+            createTime={createTime}
+          />
+        </Col>
+      </Row>
+      <Row gutter={[16, 16]}>
+        <Col span={12}>
+          <HorizontalBarchart
+            isPicVersion
+            // url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/brand/'
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/brand/'
+            options={options}
+            detailLink='#'
+            cardTitle='#'
+            createTime={createTime}
+          />
+        </Col>
+      </Row>
       <Row gutter={[16, 16]}>
         <Col span={24}>
           <EquipmentDetail
