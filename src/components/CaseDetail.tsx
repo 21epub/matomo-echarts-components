@@ -62,7 +62,11 @@ function CaseDetail({ url, options, extra }: Props) {
     for (let i = 0; i < elements.length; i++) {
       Object.defineProperty(elements[i], 'key', { value: i })
       Object.defineProperty(elements[i], 'label', {
-        value: <a href={elements[i].url}>{elements[i].label}</a>
+        value: (
+          <a href={`/v3/h5/works/${elements[i].label}/tongji/basic/`}>
+            {elements[i].label}
+          </a>
+        )
       })
       data[i] = elements[i]
     }

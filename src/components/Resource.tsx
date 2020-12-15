@@ -32,7 +32,7 @@ function Resource({ url, options }: Props) {
       dataIndex: 'label',
       key: 'label',
       align: 'center' as 'center',
-      width: `20%`
+      width: `25%`
     },
     {
       title: '模版',
@@ -41,17 +41,24 @@ function Resource({ url, options }: Props) {
       align: 'center' as 'center',
       children: [
         {
-          title: '使用情况',
+          title: 'H5模版使用情况',
           dataIndex: 'h5_count',
           key: 'h5_count',
-          width: `40%`,
+          width: `25%`,
+          align: 'center' as 'center'
+        },
+        {
+          title: '海报模版使用情况',
+          dataIndex: 'poster_count',
+          key: 'poster_count',
+          width: `25%`,
           align: 'center' as 'center'
         },
         {
           title: '产生访问量',
           dataIndex: 'total_visits',
           key: 'total_visits',
-          width: `40%`,
+          width: `25%`,
           align: 'center' as 'center'
         }
       ]
