@@ -119,7 +119,7 @@ function HorizontalBarchart({
             formatter: function (value: string) {
               // value默认为label的值，如果yAxis定义了data，则为data中的值
               const label = labelMap.get(value)
-              console.log(value, label, labelRich, labelMap)
+              // console.log(value, label, labelRich, labelMap)
               return `{${value}|} {value|${label}}`
             },
             rich: labelRich
