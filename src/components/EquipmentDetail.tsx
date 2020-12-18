@@ -52,7 +52,7 @@ function EquipmentDetail({
     daterangeContent = ''
   }
 
-  if (ele && ele.length !== 0 && ele.length !== undefined) {
+  if (ele?.length && ele?.length !== 0) {
     for (let i = 0; i < ele.length; i++) {
       Object.defineProperty(ele[i], 'label', {
         value: (
@@ -98,7 +98,7 @@ function EquipmentDetail({
         </Card>
       </div>
     )
-  } else if (ele && ele.length === 0) {
+  } else if (ele?.length === 0) {
     return (
       <div className={styles.noDataTrendDetail}>
         <Card

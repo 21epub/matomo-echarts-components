@@ -39,7 +39,7 @@ function CaseDetail({ url, options, extra }: Props) {
     daterangeContent = ''
   }
 
-  if (elements && elements.length !== 0 && elements.length !== undefined) {
+  if (elements?.length && elements?.length !== 0) {
     const keylist = [
       'label',
       'nb_hits',
@@ -86,7 +86,7 @@ function CaseDetail({ url, options, extra }: Props) {
         </Card>
       </div>
     )
-  } else if (elements && elements.length === 0) {
+  } else if (elements?.length === 0) {
     return (
       <div className={styles.noDataTrendDetail}>
         <Card

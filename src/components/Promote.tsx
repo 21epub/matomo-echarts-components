@@ -55,7 +55,7 @@ function Promote({
     daterangeContent = ''
   }
 
-  if (elements && elements.length !== 0 && elements.length !== undefined) {
+  if (elements?.length && elements?.length !== 0) {
     // 饼图不知为什么显示的标题是反的，所以这样写
     elements = JSON.parse(
       JSON.stringify(elements).replace(/label/g, '访问数量')
@@ -116,7 +116,7 @@ function Promote({
         </Card>
       </div>
     )
-  } else if (elements && elements.length === 0) {
+  } else if (elements?.length === 0) {
     return (
       <div className={isDetailVersion ? bigVersion : smallVersion}>
         <Card

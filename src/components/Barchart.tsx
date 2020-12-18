@@ -55,7 +55,7 @@ function Barchart({
     daterangeContent = ''
   }
 
-  if (elements && elements.length !== 0 && elements.length !== undefined) {
+  if (elements?.length && elements?.length !== 0) {
     elements = JSON.parse(JSON.stringify(elements).replace(/label/g, '渠道名'))
     elements = JSON.parse(
       JSON.stringify(elements).replace(/nb_visits/g, '访问数量')
@@ -109,7 +109,7 @@ function Barchart({
         </Card>
       </div>
     )
-  } else if (elements && elements.length === 0) {
+  } else if (elements?.length === 0) {
     return (
       <div className={isDetailVersion ? bigVersion : smallVersion}>
         <Card

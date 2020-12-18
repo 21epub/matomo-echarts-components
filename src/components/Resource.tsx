@@ -79,7 +79,7 @@ function Resource({ url, options }: Props) {
     // }
   ]
 
-  if (elements && elements.length !== 0 && elements.length !== undefined) {
+  if (elements?.length && elements?.length !== 0) {
     // const keylist = Object.keys(elements[0])
 
     const data = []
@@ -105,7 +105,7 @@ function Resource({ url, options }: Props) {
         </Card>
       </div>
     )
-  } else if (elements && elements.length === 0) {
+  } else if (elements?.length === 0) {
     return (
       <div>
         <Card>

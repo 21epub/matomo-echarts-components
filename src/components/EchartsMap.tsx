@@ -70,7 +70,7 @@ function EchartsMap({
     daterangeContent = ''
   }
 
-  if (elements && elements.length !== 0 && elements.length !== undefined) {
+  if (elements?.length && elements?.length !== 0) {
     const data = dataFormat(elements)
     var content = {
       title: {
@@ -165,7 +165,7 @@ function EchartsMap({
         </Card>
       </div>
     )
-  } else if (elements && elements.length === 0) {
+  } else if (elements?.length === 0) {
     return (
       <div className={isDetailVersion ? bigVersion : smallVersion}>
         <Card

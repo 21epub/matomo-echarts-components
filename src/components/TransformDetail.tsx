@@ -60,7 +60,7 @@ function TransformDetail({
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
   const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
 
-  if (elements && elements.length !== 0 && elements.length !== undefined) {
+  if (elements?.length && elements?.length !== 0) {
     let keylist = Object.keys(elements)
     keylist = keylist.filter(
       (item) =>
@@ -108,7 +108,7 @@ function TransformDetail({
         </Card>
       </div>
     )
-  } else if (elements && elements.length === 0) {
+  } else if (elements?.length === 0) {
     return (
       <div className={styles.noDataTrendDetail}>
         <Card
