@@ -62,7 +62,7 @@ function TrendDetail({
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
   const { data: ele } = useSWR(newUrl, fetcher, swrOptions)
 
-  if (ele && ele.length !== 0) {
+  if (ele && ele.length !== 0 && ele.length !== undefined) {
     const { total, ...elements } = ele
     const keylist = Object.keys(elements)
     const titleTransformed = titleTranslate(keyState)

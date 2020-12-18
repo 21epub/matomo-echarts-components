@@ -79,7 +79,7 @@ function Resource({ url, options }: Props) {
     // }
   ]
 
-  if (elements && elements.length !== 0) {
+  if (elements && elements.length !== 0 && elements.length !== undefined) {
     // const keylist = Object.keys(elements[0])
 
     const data = []

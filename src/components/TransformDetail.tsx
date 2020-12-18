@@ -60,7 +60,7 @@ function TransformDetail({
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
   const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
 
-  if (elements && elements.length !== 0) {
+  if (elements && elements.length !== 0 && elements.length !== undefined) {
     let keylist = Object.keys(elements)
     keylist = keylist.filter(
       (item) =>

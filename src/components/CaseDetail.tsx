@@ -39,7 +39,7 @@ function CaseDetail({ url, options, extra }: Props) {
     daterangeContent = ''
   }
 
-  if (elements && elements.length !== 0) {
+  if (elements && elements.length !== 0 && elements.length !== undefined) {
     const keylist = [
       'label',
       'nb_hits',

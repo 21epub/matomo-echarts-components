@@ -14,7 +14,7 @@ function OpeSummary({ url }: Props) {
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
   const { data: elements } = useSWR(url, fetcher, swrOptions)
 
-  if (elements && elements.length !== 0) {
+  if (elements && elements.length !== 0 && elements.length !== undefined) {
     const cardConent = []
     const titleList = ['今日登录', '本周登录', '本月登录', '本年登录']
 

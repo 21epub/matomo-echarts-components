@@ -30,7 +30,7 @@ function OpeDetail({ url, options, detailType }: Props) {
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
   const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
 
-  if (elements && elements.length !== 0) {
+  if (elements && elements.length !== 0 && elements.length !== undefined) {
     const keys = Object.keys(elements[0])
     const keylist = keys.reverse()
     const columns = []

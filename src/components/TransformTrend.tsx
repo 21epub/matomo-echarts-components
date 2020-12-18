@@ -75,7 +75,11 @@ function TransformTrend({
       setKeyState(selectOptions[0].value)
     }
 
-    if (elements && selectOptions[0].value !== '0') {
+    if (
+      elements &&
+      selectOptions[0].value !== '0' &&
+      elements.length !== undefined
+    ) {
       const cardConent = []
       const titleList = ['访问次数', '访客数（UV）', '转化次数', '转化率']
       const todayData = [

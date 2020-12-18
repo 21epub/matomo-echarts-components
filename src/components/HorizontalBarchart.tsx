@@ -59,7 +59,7 @@ function HorizontalBarchart({
     daterangeContent = ''
   }
 
-  if (elements && elements.length !== 0) {
+  if (elements && elements.length !== 0 && elements.length !== undefined) {
     let content
     if (isPicVersion === true) {
       // 如果修改坐标轴data,data的值必须保证和label的值一致，不能使用中文、uuid，格式会有问题

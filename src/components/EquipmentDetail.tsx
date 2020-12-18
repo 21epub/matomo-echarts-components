@@ -52,7 +52,7 @@ function EquipmentDetail({
     daterangeContent = ''
   }
 
-  if (ele && ele.length !== 0) {
+  if (ele && ele.length !== 0 && ele.length !== undefined) {
     for (let i = 0; i < ele.length; i++) {
       Object.defineProperty(ele[i], 'label', {
         value: (

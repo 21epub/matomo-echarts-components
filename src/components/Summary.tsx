@@ -20,7 +20,7 @@ function Summary({ url, createTime }: Props) {
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
   const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
 
-  if (elements && elements.length !== 0) {
+  if (elements && elements.length !== 0 && elements.length !== undefined) {
     const content = []
     const spanList = [5, 5, 5, 4, 3]
     const titleList = [
