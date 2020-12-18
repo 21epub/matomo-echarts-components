@@ -33,7 +33,7 @@ function OrgSummary({ url, options, isHomePageVersion = false }: Props) {
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
   const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
 
-  if (elements && elements.length !== 0) {
+  if (elements && elements.length !== 0 && elements.length !== undefined) {
     const cardConent = []
     const titleList = [
       '新增浏览量（PV）',

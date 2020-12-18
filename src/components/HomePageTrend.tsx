@@ -56,7 +56,7 @@ function HomePageTrend({ url, options }: Props) {
     </Tabs>
   )
 
-  if (ele && ele.length !== 0) {
+  if (ele && ele.length !== 0 && ele.length !== undefined) {
     const { total, ...elements } = ele
     const keylist = Object.keys(elements)
     const elementsValue = []
