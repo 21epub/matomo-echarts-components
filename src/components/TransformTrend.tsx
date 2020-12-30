@@ -64,7 +64,9 @@ function TransformTrend({
 
   const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
 
-  if (selectOptions) {
+  /* eslint-disable */
+  if (selectOptions && elements?.nb_visits) {
+    /* eslint-enable */
     selectOptions = JSON.parse(
       JSON.stringify(selectOptions).replace(/idgoal/g, 'value')
     )
@@ -74,9 +76,7 @@ function TransformTrend({
     if (keyState === '0') {
       setKeyState(selectOptions[0].value)
     }
-    /* eslint-disable */
-    if (elements?.nb_visits && selectOptions[0].value !== '0') {
-      /* eslint-enable */
+    if (selectOptions[0].value !== '0') {
       const cardConent = []
       const titleList = ['访问次数', '访客数（UV）', '转化次数', '转化率']
       const todayData = [

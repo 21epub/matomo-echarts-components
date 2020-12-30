@@ -70,7 +70,9 @@ function VisitorsList({ url, options, extra, pre }: Props) {
           {/* <Table columns={columns} dataSource={data} /> */}
           <Pagination
             showSizeChanger
+            defaultCurrent={1}
             pageSizeOptions={['10', '20', '30', '50']}
+            total={30}
           />
         </Card>
       </div>

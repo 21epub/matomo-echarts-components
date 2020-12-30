@@ -21,13 +21,14 @@ import {
   // OpeDetail
   // Barchart,
   // Detail,
-  HorizontalBarchart,
-  EquipmentDetail,
+  // HorizontalBarchart,
+  // EquipmentDetail,
   // Trend
   // InstallButton,
   // Promote,
   // Summary,
-  VisitorsList
+  VisitorsList,
+  Funnel
 } from '@21epub/matomo-echarts-components'
 import '@21epub/matomo-echarts-components/dist/index.css'
 import 'antd/dist/antd.css'
@@ -254,13 +255,24 @@ const TestOptions = () => {
       </Row> */}
       <Row gutter={[16, 16]}>
         <Col span={24}>
+          <Funnel
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/brand/'
+            options={options}
+            detailLink='#'
+            cardTitle='#'
+            createTime={createTime}
+          />
+        </Col>
+      </Row>
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
           <VisitorsList
             options={options}
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/visitors/'
           />
         </Col>
       </Row>
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={12}>
           <HorizontalBarchart
             isPicVersion
@@ -272,8 +284,8 @@ const TestOptions = () => {
             createTime={createTime}
           />
         </Col>
-      </Row>
-      <Row gutter={[16, 16]}>
+      </Row> */}
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <EquipmentDetail
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/brand/'
@@ -283,7 +295,7 @@ const TestOptions = () => {
             extra={[]}
           />
         </Col>
-      </Row>
+      </Row> */}
     </div>
   )
 }
