@@ -26,7 +26,7 @@ function ContentByTime({ url, options }: Props) {
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
   const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
 
-  if (elements?.length && elements?.length !== 0) {
+  if (elements?.length) {
     // const keylist = Object.keys(elements[0])
     const columns = [
       {

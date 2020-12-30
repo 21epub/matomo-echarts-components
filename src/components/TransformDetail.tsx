@@ -59,8 +59,9 @@ function TransformDetail({
   }
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
   const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
-
-  if (elements?.length && elements?.length !== 0) {
+  /* eslint-disable */
+  if (elements?.total_conversion_rate) {
+    /* eslint-enable */
     let keylist = Object.keys(elements)
     keylist = keylist.filter(
       (item) =>
@@ -108,17 +109,17 @@ function TransformDetail({
         </Card>
       </div>
     )
-  } else if (elements?.length === 0) {
-    return (
-      <div className={styles.noDataTrendDetail}>
-        <Card
-          title='详细数据列表'
-          extra={<p className='daterange'>{daterangeContent}</p>}
-        >
-          <h1>暂无数据</h1>
-        </Card>
-      </div>
-    )
+    // } else if (!elements?.total_conversion_rate) {
+    //   return (
+    //     <div className={styles.noDataTrendDetail}>
+    //       <Card
+    //         title='详细数据列表'
+    //         extra={<p className='daterange'>{daterangeContent}</p>}
+    //       >
+    //         <h1>暂无数据</h1>
+    //       </Card>
+    //     </div>
+    //   )
   } else {
     return (
       <div>

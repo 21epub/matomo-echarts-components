@@ -5,6 +5,8 @@ import { RightOutlined } from '@ant-design/icons'
 import ReactEcharts from 'echarts-for-react'
 import styles from './index.module.less'
 import { clone } from 'ramda'
+import { compare } from '../util/util'
+
 type Options = {
   dateRange: string[]
   period: string
@@ -59,7 +61,13 @@ function HorizontalBarchart({
     daterangeContent = ''
   }
 
-  if (elements?.length && elements?.length !== 0) {
+  if (elements?.length) {
+    // 倒序
+    for (let i = 0; i < elements.length; i++) {
+      Object.defineProperty(elements[i], 'key', { value: i })
+    }
+    elements.sort(compare('key'))
+
     let content
     if (isPicVersion === true) {
       // 如果修改坐标轴data,data的值必须保证和label的值一致，不能使用中文、uuid，格式会有问题
@@ -149,6 +157,12 @@ function HorizontalBarchart({
         ]
       }
     } else {
+      // 倒序
+      for (let i = 0; i < elements.length; i++) {
+        Object.defineProperty(elements[i], 'key', { value: i })
+      }
+      elements.sort(compare('key'))
+
       elements = JSON.parse(JSON.stringify(elements).replace(/label/g, '品牌'))
       elements = JSON.parse(
         JSON.stringify(elements).replace(/nb_visits/g, '访客数')
@@ -213,7 +227,7 @@ function HorizontalBarchart({
         </Card>
       </div>
     )
-  } else if (elements && elements.length === 0) {
+  } else if (elements?.length === 0) {
     return (
       <div className={isDetailVersion ? bigVersion : smallVersion}>
         <Card

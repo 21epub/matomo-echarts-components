@@ -55,7 +55,7 @@ function Promote({
     daterangeContent = ''
   }
 
-  if (elements?.length && elements?.length !== 0) {
+  if (elements?.length) {
     // 饼图不知为什么显示的标题是反的，所以这样写
     elements = JSON.parse(
       JSON.stringify(elements).replace(/label/g, '访问数量')

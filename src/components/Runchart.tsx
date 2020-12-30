@@ -29,7 +29,7 @@ function Runchart({ url, options }: Props) {
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
   let { data: elements } = useSWR(newUrl, fetcher, swrOptions)
 
-  if (elements?.length && elements?.length !== 0) {
+  if (elements?.length) {
     elements = JSON.parse(JSON.stringify(elements).replace(/label/g, '时间'))
     elements = JSON.parse(
       JSON.stringify(elements).replace(/visits/g, '登录人次')

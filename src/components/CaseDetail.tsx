@@ -39,7 +39,7 @@ function CaseDetail({ url, options, extra }: Props) {
     daterangeContent = ''
   }
 
-  if (elements?.length && elements?.length !== 0) {
+  if (elements?.length) {
     const keylist = [
       'label',
       'nb_hits',
@@ -63,7 +63,11 @@ function CaseDetail({ url, options, extra }: Props) {
       Object.defineProperty(elements[i], 'key', { value: i })
       Object.defineProperty(elements[i], 'label', {
         value: (
-          <a href={`/v3/h5/works/${elements[i].label}/tongji/basic/`}>
+          <a
+            href={`/v3/h5/works/${elements[i].label}/tongji/basic/`}
+            target='_blank'
+            rel='noreferrer'
+          >
             {elements[i].label}
           </a>
         )

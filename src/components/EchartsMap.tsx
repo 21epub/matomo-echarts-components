@@ -70,7 +70,7 @@ function EchartsMap({
     daterangeContent = ''
   }
 
-  if (elements?.length && elements?.length !== 0) {
+  if (elements?.length) {
     const data = dataFormat(elements)
     var content = {
       title: {

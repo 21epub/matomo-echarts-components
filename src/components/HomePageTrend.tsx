@@ -56,7 +56,7 @@ function HomePageTrend({ url, options }: Props) {
     </Tabs>
   )
 
-  if (ele?.length && ele?.length !== 0) {
+  if (ele?.total) {
     const { total, ...elements } = ele
     const keylist = Object.keys(elements)
     const elementsValue = []
@@ -115,7 +115,7 @@ function HomePageTrend({ url, options }: Props) {
       ]
     }
 
-    if (elements && elements.length === 0) {
+    if (!ele?.total) {
       return (
         <div className={styles.homePageTrend}>
           <Row align='middle' style={{ height: '15px' }}>

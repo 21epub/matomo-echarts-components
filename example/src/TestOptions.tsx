@@ -6,7 +6,7 @@ import {
   // CaseDetail,
   // OrgSummary,
   // TransformTrend
-  // HomePageTrend,
+  HomePageTrend,
   // TrendDetailFilter,
   // EchartsMap,
   // HomePageCard,
@@ -19,13 +19,15 @@ import {
   // SelectPeriod,
   // Resource
   // OpeDetail
-  Barchart,
+  // Barchart,
   // Detail,
   HorizontalBarchart,
-  EquipmentDetail
+  EquipmentDetail,
+  // Trend
   // InstallButton,
   // Promote,
-  // Summary
+  // Summary,
+  VisitorsList
 } from '@21epub/matomo-echarts-components'
 import '@21epub/matomo-echarts-components/dist/index.css'
 import 'antd/dist/antd.css'
@@ -50,34 +52,34 @@ const TestOptions = () => {
 
   return (
     <div>
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={12}>
           <Barchart
-            url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/channel/'
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/channel/'
             options={options}
             detailLink='#'
             cardTitle='#'
             createTime={createTime}
           />
         </Col>
-      </Row>
-      <Row gutter={[16, 16]}>
-        {/* <Col span={24}>
+      </Row> */}
+      {/* <Row gutter={[16, 16]}> */}
+      {/* <Col span={24}>
           <OpeFilter isTongjiSelection />
         </Col> */}
-        {/* <Col span={24}>
+      {/* <Col span={24}>
           <SelectPeriod />
         </Col> */}
-        {/* <Col span={24}>
+      {/* <Col span={24}>
           <OpeSummary url='https://yapi.epub360.com/mock/111/v3/api/yunying/epub360/login/time/summary/' />
         </Col> */}
-        {/* <Col span={24}>
+      {/* <Col span={24}>
           <ContentByOrg
             url='https://yapi.epub360.com/mock/111/v3/api/yunying/content/org/'
             options={options}
           />
         </Col> */}
-      </Row>
+      {/* </Row> */}
 
       {/* <Col span={24}>
           <Resource
@@ -109,14 +111,14 @@ const TestOptions = () => {
           />
         </Col>
       </Row> */}
-      {/* <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]}>
         <Col span={24}>
           <HomePageTrend
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/visits/'
             options={options}
           />
         </Col>
-      </Row> */}
+      </Row>
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <HomePageCard
@@ -157,7 +159,7 @@ const TestOptions = () => {
       {/* <Row gutter={[16, 16]}>
         <Col span={12}>
           <Trend
-            url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/visits/'
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/visits/'
             options={options}
             cardTitle='test'
             isOrgVersion
@@ -237,7 +239,7 @@ const TestOptions = () => {
           />
         </Col>
       </Row> */}
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <HorizontalBarchart
             isPicVersion
@@ -249,13 +251,21 @@ const TestOptions = () => {
             createTime={createTime}
           />
         </Col>
+      </Row> */}
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <VisitorsList
+            options={options}
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/visitors/'
+          />
+        </Col>
       </Row>
       <Row gutter={[16, 16]}>
         <Col span={12}>
           <HorizontalBarchart
             isPicVersion
             // url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/brand/'
-            url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/brand/'
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/type/'
             options={options}
             detailLink='#'
             cardTitle='#'

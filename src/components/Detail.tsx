@@ -56,7 +56,7 @@ function Detail({ url, options, detailType, createTime, extra }: Props) {
     daterangeContent = ''
   }
 
-  if (elements?.length && elements?.length !== 0) {
+  if (elements?.length) {
     const keylist = Object.keys(elements[0])
     const columns = []
     for (let i = 0; i < keylist.length; i++) {

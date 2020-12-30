@@ -30,7 +30,7 @@ function OpeDetail({ url, options, detailType }: Props) {
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
   const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
 
-  if (elements?.length && elements?.length !== 0) {
+  if (elements?.length) {
     const keys = Object.keys(elements[0])
     const keylist = keys.reverse()
     const columns = []
@@ -62,7 +62,7 @@ function OpeDetail({ url, options, detailType }: Props) {
         </Card>
       </div>
     )
-  } else if (elements && elements.length === 0) {
+  } else if (elements?.length === 0) {
     return (
       <div>
         <Card>

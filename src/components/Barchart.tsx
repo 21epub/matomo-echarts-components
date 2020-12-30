@@ -44,6 +44,13 @@ function Barchart({
   const swrOptions = {
     refreshInterval: 0
   }
+  // const fetcher = (url: string) => fetch(url).then((r) =>{
+  //   if(r.status === 200)
+  //   return r.json()
+  //   else
+  //   return "err"
+  // } )
+
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
   let { data: elements } = useSWR(newUrl, fetcher, swrOptions)
 
@@ -55,7 +62,7 @@ function Barchart({
     daterangeContent = ''
   }
 
-  if (elements?.length && elements?.length !== 0) {
+  if (elements?.length) {
     elements = JSON.parse(JSON.stringify(elements).replace(/label/g, '渠道名'))
     elements = JSON.parse(
       JSON.stringify(elements).replace(/nb_visits/g, '访问数量')

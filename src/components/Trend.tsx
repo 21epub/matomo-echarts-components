@@ -120,7 +120,7 @@ function Trend({
 
   const tab = isOrgVersion ? orgTab : workTab
 
-  if (ele?.length && ele?.length !== 0) {
+  if (ele && Object.keys(ele)?.length) {
     const { total, ...elements } = ele
     const keylist = Object.keys(elements)
     const elementsValue = []
@@ -214,7 +214,7 @@ function Trend({
           </Row>
         </div>
       )
-    } else if (elements && elements.length === 0) {
+    } else if (ele && Object.keys(ele)?.length === 0) {
       return (
         <div className={isDetailVersion ? bigVersion : smallVersion}>
           <Card

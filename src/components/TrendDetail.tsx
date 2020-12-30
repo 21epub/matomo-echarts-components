@@ -62,7 +62,7 @@ function TrendDetail({
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
   const { data: ele } = useSWR(newUrl, fetcher, swrOptions)
 
-  if (ele?.length && ele?.length !== 0) {
+  if (ele && Object.keys(ele)?.length) {
     const { total, ...elements } = ele
     const keylist = Object.keys(elements)
     const titleTransformed = titleTranslate(keyState)
@@ -104,7 +104,7 @@ function TrendDetail({
         </Card>
       </div>
     )
-  } else if (ele?.length === 0) {
+  } else if (ele && Object.keys(ele)?.length === 0) {
     return (
       <div className={styles.noDataTrendDetail}>
         <Card
