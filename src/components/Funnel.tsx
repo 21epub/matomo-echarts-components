@@ -70,7 +70,7 @@ function Funnel({
       JSON.stringify(elements).replace(/nb_visits/g, '访客数')
     )
     const keylist = Object.keys(elements[0])
-    console.log(keylist)
+
     const content = {
       tooltip: {},
       dataset: {
@@ -80,10 +80,10 @@ function Funnel({
       xAxis: { type: 'value', show: false },
       yAxis: {
         type: 'category',
-        axisTick: {
+        axisLine: {
           show: false
         },
-        axisLine: {
+        axisTick: {
           show: false
         },
         axisLabel: {

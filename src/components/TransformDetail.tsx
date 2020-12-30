@@ -60,7 +60,10 @@ function TransformDetail({
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
   const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
   /* eslint-disable */
-  if (elements?.total_conversion_rate) {
+  if (
+    elements?.total_conversion_rate ||
+    elements?.total_conversion_rate === 0
+  ) {
     /* eslint-enable */
     let keylist = Object.keys(elements)
     keylist = keylist.filter(

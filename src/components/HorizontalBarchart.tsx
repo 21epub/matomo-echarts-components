@@ -157,12 +157,6 @@ function HorizontalBarchart({
         ]
       }
     } else {
-      // 倒序
-      for (let i = 0; i < elements.length; i++) {
-        Object.defineProperty(elements[i], 'key', { value: i })
-      }
-      elements.sort(compare('key'))
-
       elements = JSON.parse(JSON.stringify(elements).replace(/label/g, '品牌'))
       elements = JSON.parse(
         JSON.stringify(elements).replace(/nb_visits/g, '访客数')

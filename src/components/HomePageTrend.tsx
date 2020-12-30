@@ -56,7 +56,7 @@ function HomePageTrend({ url, options }: Props) {
     </Tabs>
   )
 
-  if (ele?.total) {
+  if (ele?.total || ele?.total === 0) {
     const { total, ...elements } = ele
     const keylist = Object.keys(elements)
     const elementsValue = []
@@ -115,47 +115,26 @@ function HomePageTrend({ url, options }: Props) {
       ]
     }
 
-    if (!ele?.total) {
-      return (
-        <div className={styles.homePageTrend}>
-          <Row align='middle' style={{ height: '15px' }}>
-            <Col span={2} offset={2}>
-              <div className='homePageTrendTitle'>趋势图</div>
-            </Col>
-            <Col span={6}>
-              <p className='daterange'>{daterangeContent}</p>
-            </Col>
-            <Col span={8} offset={6}>
-              {tab}
-            </Col>
-          </Row>
-          <Row>
-            <h1>暂无数据</h1>
-          </Row>
-        </div>
-      )
-    } else {
-      return (
-        <div className={styles.homePageTrend}>
-          <Row align='middle' style={{ height: '15px' }}>
-            <Col span={2} offset={2}>
-              <div className='homePageTrendTitle'>趋势图</div>
-            </Col>
-            <Col span={6}>
-              <p className='daterange'>{daterangeContent}</p>
-            </Col>
-            <Col span={8} offset={6}>
-              {tab}
-            </Col>
-          </Row>
-          <Row>
-            <Col span={24}>
-              <ReactEcharts option={content} />
-            </Col>
-          </Row>
-        </div>
-      )
-    }
+    return (
+      <div className={styles.homePageTrend}>
+        <Row align='middle' style={{ height: '15px' }}>
+          <Col span={2} offset={2}>
+            <div className='homePageTrendTitle'>趋势图</div>
+          </Col>
+          <Col span={6}>
+            <p className='daterange'>{daterangeContent}</p>
+          </Col>
+          <Col span={8} offset={6}>
+            {tab}
+          </Col>
+        </Row>
+        <Row>
+          <Col span={24}>
+            <ReactEcharts option={content} />
+          </Col>
+        </Row>
+      </div>
+    )
   } else {
     return (
       <div>

@@ -65,7 +65,7 @@ function TransformTrend({
   const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
 
   /* eslint-disable */
-  if (selectOptions && elements?.nb_visits) {
+  if (selectOptions && (elements?.nb_visits || elements?.nb_visits === 0)) {
     /* eslint-enable */
     selectOptions = JSON.parse(
       JSON.stringify(selectOptions).replace(/idgoal/g, 'value')
@@ -258,7 +258,10 @@ function TransformTrend({
         </div>
       )
       /* eslint-disable */
-    } else if (elements?.nb_visits && selectOptions[0].value === '0') {
+    } else if (
+      (elements?.nb_visits || elements?.nb_visits === 0) &&
+      selectOptions[0].value === '0'
+    ) {
       /* eslint-enable */
       const cardConent = []
       const titleList = ['访问次数', '访客数（UV）', '转化次数', '转化率']

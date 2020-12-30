@@ -21,7 +21,7 @@ import {
   // OpeDetail
   // Barchart,
   // Detail,
-  // HorizontalBarchart,
+  HorizontalBarchart,
   // EquipmentDetail,
   // Trend
   // InstallButton,
@@ -254,9 +254,9 @@ const TestOptions = () => {
         </Col>
       </Row> */}
       <Row gutter={[16, 16]}>
-        <Col span={24}>
+        <Col span={12}>
           <Funnel
-            url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/brand/'
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/type/'
             options={options}
             detailLink='#'
             cardTitle='#'
@@ -272,10 +272,10 @@ const TestOptions = () => {
           />
         </Col>
       </Row>
-      {/* <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]}>
         <Col span={12}>
           <HorizontalBarchart
-            isPicVersion
+            // isPicVersion
             // url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/brand/'
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/type/'
             options={options}
@@ -284,7 +284,7 @@ const TestOptions = () => {
             createTime={createTime}
           />
         </Col>
-      </Row> */}
+      </Row>
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <EquipmentDetail
