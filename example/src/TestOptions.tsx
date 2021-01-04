@@ -256,12 +256,12 @@ const TestOptions = () => {
       </Row> */}
 
       <Row gutter={[16, 16]}>
-        <Col span={24}>
+        <Col span={12}>
           <Funnel
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/funnel/'
             options={options}
             detailLink='#'
-            cardTitle='#'
+            cardTitle='作品按钮点击事件触发次数'
             createTime={createTime}
             isDetailVersion
           />

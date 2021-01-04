@@ -49,8 +49,8 @@ function Funnel({
   const fetcher = (url: string) => fetch(url).then((r) => r.json())
   const { data: element } = useSWR(newUrls, fetcher, swrOptions)
   let elements = clone(element)
-  const bigVersion = styles.bigVersion
-  const smallVersion = styles.smallVersion
+  const bigVersion = styles.funnelBigVersion
+  const smallVersion = styles.funnelSmallVersion
 
   let daterangeContent = `${startDate}-${endDate}`
   if (period === 'all') {

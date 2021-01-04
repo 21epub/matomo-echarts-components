@@ -21,6 +21,29 @@
   }
 }
 
+.funnelBigVersion {
+  :global {
+    .ant-card-head {
+      position: relative;
+
+      .ant-card-head-title {
+        position: absolute;
+        bottom: 5px;
+      }
+
+      .daterange {
+        position: absolute;
+        left: 24px;
+        color: grey;
+      }
+
+      .detailLink {
+        display: none;
+      }
+    }
+  }
+}
+
 .smallVersion {
   :global {
     .ant-card-head {
@@ -30,6 +53,24 @@
         position: absolute;
         bottom: 3px;
         left: 140px;
+        color: grey;
+      }
+      .detailLink {
+        display: block;
+      }
+    }
+  }
+}
+
+.funnelSmallVersion {
+  :global {
+    .ant-card-head {
+      position: relative;
+
+      .daterange {
+        position: absolute;
+        bottom: 3px;
+        left: 230px;
         color: grey;
       }
       .detailLink {
@@ -520,7 +561,38 @@
       }
 
       .paginationEnd {
+        margin-top: 10px;
+        text-align: right;
+
         .ant-pagination-next {
+          display: none;
+        }
+
+        .ant-pagination-item {
+          display: none;
+        }
+
+        .ant-pagination-item-container {
+          display: none;
+        }
+
+        .ant-pagination-item-link {
+          display: none;
+        }
+
+        .ant-pagination-jump-next {
+          display: none;
+        }
+
+        .ant-pagination-jump-next-custom-icon {
+          display: none;
+        }
+
+        .ant-pagination-jump-prev {
+          display: none;
+        }
+
+        .ant-pagination-jump-prev-custom-icon {
           display: none;
         }
       }

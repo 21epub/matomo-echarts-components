@@ -234,7 +234,6 @@ function VisitorsList({ url, options, extra, pre }: Props) {
           })}
           <Pagination
             showSizeChanger
-            defaultCurrent={1}
             pageSizeOptions={['10', '20', '50', '100']}
             total={1000}
             onShowSizeChange={onShowSizeChange}
@@ -268,7 +267,6 @@ function VisitorsList({ url, options, extra, pre }: Props) {
             <h1>没有更多数据了</h1>
             <Pagination
               showSizeChanger
-              defaultCurrent={1}
               pageSizeOptions={['10', '20', '50', '100']}
               total={1000}
               onShowSizeChange={onShowSizeChange}
