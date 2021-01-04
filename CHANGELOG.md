@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7-alpha.52](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.51...v0.1.7-alpha.52) (2021-01-04)
+
+
+### Features
+
+* 🎸 add funnel component add visitorList ([965c38e](https://github.com/21epub/matomo-echarts-components/commit/965c38e6399ddfe050c87c3ada78b3c4500dfbcc))
+
 ### [0.1.7-alpha.51](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.50...v0.1.7-alpha.51) (2020-12-30)
 
 
