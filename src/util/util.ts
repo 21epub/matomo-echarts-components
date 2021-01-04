@@ -187,6 +187,10 @@ function titleTranslate(title: any) {
       return '类型'
     case 'deviceTypenb_visits':
       return '访客数'
+    case 'funnellabel':
+      return '页面'
+    case 'funnelnb_events':
+      return '访客数'
     default:
       return 'null'
   }

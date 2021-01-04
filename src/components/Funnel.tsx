@@ -61,15 +61,16 @@ function Funnel({
     // 倒序
     for (let i = 0; i < elements.length; i++) {
       Object.defineProperty(elements[i], 'key', { value: i })
+      elements[i].label = `页面${elements[i].label}`
     }
 
     elements.sort(compare('key'))
 
-    elements = JSON.parse(JSON.stringify(elements).replace(/label/g, '品牌'))
+    elements = JSON.parse(JSON.stringify(elements).replace(/label/g, '页面'))
     elements = JSON.parse(
-      JSON.stringify(elements).replace(/nb_visits/g, '访客数')
+      JSON.stringify(elements).replace(/nb_events/g, '访客数')
     )
-    const keylist = Object.keys(elements[0])
+    const keylist = ['页面', '访客数']
 
     const content = {
       tooltip: {},
@@ -87,7 +88,7 @@ function Funnel({
           show: false
         },
         axisLabel: {
-          margin: 110,
+          margin: 70,
           textStyle: {
             align: 'left'
           }
@@ -95,7 +96,7 @@ function Funnel({
       },
       grid: {
         top: '0%',
-        left: '-60px',
+        left: '-20px',
         bottom: '0%',
         containLabel: true
       },
