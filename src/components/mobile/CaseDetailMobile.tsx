@@ -1,7 +1,7 @@
 import React from 'react'
 import { Table, Card, Space, Spin } from 'antd'
 import useSWR from 'swr'
-import styles from './index.module.less'
+import styles from '../index.module.less'
 
 type Options = {
   dateRange: string[]
@@ -12,9 +12,15 @@ interface Props {
   url: string
   options: Options
   extra?: React.ReactNode[]
+  pre?: string
 }
 
-function CaseDetail({ url, options, extra }: Props) {
+function CaseDetailMobile({
+  url,
+  options,
+  extra,
+  pre = '/v3/mobile/h5/works/'
+}: Props) {
   const period = options.period
   const startDate = options.dateRange[0]
   const endDate = options.dateRange[1]
@@ -64,8 +70,7 @@ function CaseDetail({ url, options, extra }: Props) {
       Object.defineProperty(elements[i], 'label', {
         value: (
           <a
-            href={`/v3/h5/works/${elements[i].label}/tongji/basic/`}
-            target='_blank'
+            href={`${pre}${elements[i].label}/tongji/basic/`}
             rel='noreferrer'
             key={`work${i}`}
           >
@@ -112,4 +117,4 @@ function CaseDetail({ url, options, extra }: Props) {
   }
 }
 
-export default CaseDetail
+export default CaseDetailMobile

@@ -3,9 +3,9 @@ import useSWR from 'swr'
 import { Card, Spin, Space } from 'antd'
 import { RightOutlined } from '@ant-design/icons'
 import ReactEcharts from 'echarts-for-react'
-import styles from './index.module.less'
+import styles from '../index.module.less'
 import { clone } from 'ramda'
-import { compare } from '../util/util'
+import { compare } from '../../util/util'
 
 type Options = {
   dateRange: string[]
@@ -23,7 +23,7 @@ interface Props {
   pre?: string
 }
 
-function HorizontalBarchart({
+function HorizontalBarchartMobile({
   url,
   options,
   detailLink = '#',
@@ -128,7 +128,7 @@ function HorizontalBarchart({
             show: false
           },
           axisLabel: {
-            margin: 200,
+            margin: 70,
             textStyle: {
               align: 'left'
             },
@@ -142,9 +142,10 @@ function HorizontalBarchart({
           }
         },
         grid: {
-          top: '0%',
-          left: '0px',
-          bottom: '0%',
+          top: '0',
+          left: '-10',
+          right: '10',
+          bottom: '0',
           containLabel: true
         },
         series: [
@@ -265,4 +266,4 @@ function HorizontalBarchart({
   }
 }
 
-export default HorizontalBarchart
+export default HorizontalBarchartMobile

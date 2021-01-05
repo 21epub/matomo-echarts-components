@@ -61,7 +61,7 @@ function Summary({ url, createTime }: Props) {
       }
     }
     return (
-      <Card title='今日'>
+      <Card title='基本信息'>
         <Row align='bottom'>
           <Col span={2}>
             <br />

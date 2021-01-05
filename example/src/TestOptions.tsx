@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 
 import {
   AppContext,
+  // EchartsMapMobile,
   // OpeFilter,
   // CaseDetail,
   // OrgSummary,
@@ -21,14 +22,20 @@ import {
   // OpeDetail
   // Barchart,
   // Detail,
-  HorizontalBarchart,
+  // HorizontalBarchart,
+  HorizontalBarchartMobile
   // EquipmentDetail,
   // Trend
   // InstallButton,
   // Promote,
   // Summary,
-  VisitorsList,
-  Funnel
+  // VisitorsList,
+  // Funnel,
+  // CaseDetail,
+  // CaseDetailMobile,
+  // TransformTrendMobile,
+  // TrendMobile,
+  // SummaryMobile
   // FunnelDetail,
 } from '@21epub/matomo-echarts-components'
 import '@21epub/matomo-echarts-components/dist/index.css'
@@ -254,7 +261,7 @@ const TestOptions = () => {
           />
         </Col>
       </Row> */}
-
+      {/* 
       <Row gutter={[16, 16]}>
         <Col span={12}>
           <Funnel
@@ -266,7 +273,7 @@ const TestOptions = () => {
             isDetailVersion
           />
         </Col>
-      </Row>
+      </Row> */}
 
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
@@ -280,7 +287,7 @@ const TestOptions = () => {
         </Col>
       </Row> */}
 
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <VisitorsList
             options={options}
@@ -288,8 +295,8 @@ const TestOptions = () => {
             pre='/v3/matomo/'
           />
         </Col>
-      </Row>
-      <Row gutter={[16, 16]}>
+      </Row> */}
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <HorizontalBarchart
             // isPicVersion
@@ -302,7 +309,7 @@ const TestOptions = () => {
             isDetailVersion
           />
         </Col>
-      </Row>
+      </Row> */}
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <EquipmentDetail
@@ -314,6 +321,73 @@ const TestOptions = () => {
           />
         </Col>
       </Row> */}
+      {/* <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <CaseDetailMobile
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/top10/'
+            options={options}
+          />
+        </Col>
+      </Row> */}
+
+      {/* <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <TransformTrendMobile
+            summaryUrl='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/transform/'
+            optionsUrl='https://yapi.epub360.com/mock/76/v3/api/tongji/idgoal/'
+            createTime={createTime}
+            options={options}
+            extra={[]}
+          />
+        </Col>
+      </Row> */}
+
+      {/* <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <TrendMobile
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/visits/'
+            options={options}
+            cardTitle='test'
+            createTime={createTime}
+          />
+        </Col>
+      </Row>  */}
+
+      {/* <Row gutter={[16, 16]}>
+          <Col span={24}>
+            <SummaryMobile url="https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/summary/" createTime={createTime}/>
+          </Col>
+      </Row> */}
+
+      {/* <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <EchartsMapMobile
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/map/'
+            options={options}
+            detailLink='#'
+            cardTitle='#'
+            isDetailVersion
+            isOrgVersion
+            createTime={createTime}
+          />
+        </Col>
+      </Row> */}
+
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <HorizontalBarchartMobile
+            // isPicVersion
+            // url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/brand/'
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/type/'
+            options={options}
+            detailLink='#'
+            cardTitle='#'
+            createTime={createTime}
+            isDetailVersion
+            // isPicVersion
+          />
+        </Col>
+      </Row>
     </div>
   )
 }

@@ -236,6 +236,7 @@ function VisitorsList({ url, options, extra, pre }: Props) {
             showSizeChanger
             pageSizeOptions={['10', '20', '50', '100']}
             total={1000}
+            pageSize={page.pageSize}
             onShowSizeChange={onShowSizeChange}
             onChange={onChange}
             current={page.current}
@@ -266,11 +267,11 @@ function VisitorsList({ url, options, extra, pre }: Props) {
           >
             <h1>没有更多数据了</h1>
             <Pagination
-              showSizeChanger
               pageSizeOptions={['10', '20', '50', '100']}
               total={1000}
               onShowSizeChange={onShowSizeChange}
               onChange={onChange}
+              pageSize={page.pageSize}
               current={page.current}
               className='paginationEnd'
               itemRender={itemRender}

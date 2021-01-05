@@ -217,46 +217,6 @@
   }
 }
 
-// .periodFilter {
-//   :global {
-//     .ant-tabs-nav-wrap {
-//       position: relative;
-//       margin-top: -10px;
-//       & > .ant-tabs-nav-list {
-//         position: absolute;
-//         left: 20px;
-//       }
-//     }
-
-//     .ant-tabs {
-//       height: 46px;
-//       // background-color: white;
-
-//       .ant-tabs-nav::before {
-//         border-bottom: 0;
-//       }
-//       .ant-tabs-extra-content {
-//         position: relative;
-//         right: 10px;
-//       }
-
-//       .ant-tabs-tab-btn:focus {
-//         color: #1890ff;
-//       }
-//     }
-
-//     .ant-tabs-nav::before {
-//       border-bottom: 0;
-//     }
-
-//     .ant-tabs-ink-bar {
-//       &.ant-tabs-ink-bar-animated {
-//         display: none;
-//       }
-//     }
-//   }
-// }
-
 .trendDetail {
   :global {
     .ant-card-head {
@@ -520,6 +480,12 @@
         display: none;
       }
 
+      @media only screen and (max-width: 576px) {
+        .ant-pagination-options {
+          display: inline;
+        }
+      }
+
       .ant-pagination-item-container {
         display: none;
       }
@@ -559,41 +525,93 @@
         left: 24px;
         color: grey;
       }
+    }
 
-      .paginationEnd {
-        margin-top: 10px;
-        text-align: right;
+    .paginationEnd {
+      margin-top: 10px;
+      text-align: right;
 
-        .ant-pagination-next {
-          display: none;
+      .ant-pagination-next {
+        display: none;
+      }
+
+      .ant-pagination-item {
+        display: none;
+      }
+
+      .ant-pagination-item-container {
+        display: none;
+      }
+
+      .ant-pagination-item-link {
+        display: none;
+      }
+
+      .ant-pagination-jump-next {
+        display: none;
+      }
+
+      .ant-pagination-jump-next-custom-icon {
+        display: none;
+      }
+
+      .ant-pagination-jump-prev {
+        display: none;
+      }
+
+      .ant-pagination-jump-prev-custom-icon {
+        display: none;
+      }
+
+      .ant-pagination-options {
+        display: none;
+      }
+    }
+  }
+}
+
+.smallTrendMobileVersion {
+  :global {
+    .ant-card-head {
+      position: relative;
+
+      .ant-card-head-title {
+        position: absolute;
+        bottom: 5px;
+      }
+
+      .daterange {
+        position: absolute;
+        left: 24px;
+        color: grey;
+      }
+    }
+
+    .ant-card-body {
+      position: relative;
+      height: 348px;
+      .ant-tabs {
+        background-color: transparent;
+
+        &.ant-tabs-top {
+          position: absolute;
+          left: 45%;
+          z-index: 10;
+          width: 100%;
         }
 
-        .ant-pagination-item {
-          display: none;
+        .ant-tabs-nav::before {
+          border-bottom: 0;
         }
 
-        .ant-pagination-item-container {
-          display: none;
+        .ant-tabs-ink-bar {
+          &.ant-tabs-ink-bar-animated {
+            display: none;
+          }
         }
 
-        .ant-pagination-item-link {
-          display: none;
-        }
-
-        .ant-pagination-jump-next {
-          display: none;
-        }
-
-        .ant-pagination-jump-next-custom-icon {
-          display: none;
-        }
-
-        .ant-pagination-jump-prev {
-          display: none;
-        }
-
-        .ant-pagination-jump-prev-custom-icon {
-          display: none;
+        .ant-tabs-tab-btn:focus {
+          color: #1890ff;
         }
       }
     }
