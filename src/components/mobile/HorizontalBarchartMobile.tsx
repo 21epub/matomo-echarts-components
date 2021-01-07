@@ -128,7 +128,7 @@ function HorizontalBarchartMobile({
             show: false
           },
           axisLabel: {
-            margin: 70,
+            margin: 110,
             textStyle: {
               align: 'left'
             },
@@ -143,7 +143,7 @@ function HorizontalBarchartMobile({
         },
         grid: {
           top: '0',
-          left: '-30',
+          left: '-40',
           right: '20',
           bottom: '0',
           containLabel: true
