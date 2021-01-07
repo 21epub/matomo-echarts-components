@@ -3,6 +3,7 @@ import { Card, Col, Pagination, Row, Space, Spin } from 'antd'
 import useSWR from 'swr'
 import { clone } from 'ramda'
 import styles from './index.module.less'
+import { translatePlaceName } from '../util/util'
 
 type Options = {
   dateRange: string[]
@@ -116,8 +117,11 @@ function VisitorsList({ url, options, extra, pre }: Props) {
                       />
                       <ul className='itemHover'>
                         <li>{item.country && `国家：${item.country}`}</li>
-                        <li>{item.region && `地区：${item.region}`}</li>
-                        <li>{item.city && `城市：${item.city}`}</li>
+                        <li>
+                          {item.region &&
+                            `省市：${translatePlaceName(item.region)}`}
+                        </li>
+                        {/* <li>{item.city && `城市：${item.city}`}</li> */}
                         <li>{item.visitIp && `IP：${item.visitIp}`}</li>
                       </ul>
                     </div>
@@ -235,7 +239,7 @@ function VisitorsList({ url, options, extra, pre }: Props) {
           <Pagination
             showSizeChanger
             pageSizeOptions={['10', '20', '50', '100']}
-            total={1000}
+            total={100000}
             pageSize={page.pageSize}
             onShowSizeChange={onShowSizeChange}
             onChange={onChange}

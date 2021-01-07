@@ -143,8 +143,8 @@ function HorizontalBarchartMobile({
         },
         grid: {
           top: '0',
-          left: '-10',
-          right: '10',
+          left: '-30',
+          right: '20',
           bottom: '0',
           containLabel: true
         },
@@ -199,6 +199,7 @@ function HorizontalBarchartMobile({
         grid: {
           top: '0%',
           left: '-20px',
+          right: 10,
           bottom: '0%',
           containLabel: true
         },

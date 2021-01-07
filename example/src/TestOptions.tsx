@@ -23,7 +23,8 @@ import {
   // Barchart,
   // Detail,
   // HorizontalBarchart,
-  HorizontalBarchartMobile
+  HorizontalBarchartMobile,
+  VisitorsList
   // EquipmentDetail,
   // Trend
   // InstallButton,
@@ -287,7 +288,7 @@ const TestOptions = () => {
         </Col>
       </Row> */}
 
-      {/* <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]}>
         <Col span={24}>
           <VisitorsList
             options={options}
@@ -295,7 +296,7 @@ const TestOptions = () => {
             pre='/v3/matomo/'
           />
         </Col>
-      </Row> */}
+      </Row>
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <HorizontalBarchart
@@ -384,7 +385,7 @@ const TestOptions = () => {
             cardTitle='#'
             createTime={createTime}
             isDetailVersion
-            // isPicVersion
+            isPicVersion
           />
         </Col>
       </Row>

@@ -129,6 +129,82 @@ function dataFormat(elements: Array<any>, mapDetail = false) {
   return data
 }
 
+function translatePlaceName(placeName: string) {
+  const area: string = placeName.split(' ')[0]
+  switch (area) {
+    case 'Anhui':
+      return '安徽' // 1
+    case 'Beijing':
+      return '北京' // 2
+    case 'Fujian':
+      return '福建' // 3
+    case 'Gansu':
+      return '甘肃' // 4
+    case 'Guangdong':
+      return '广东' // 5
+    case 'Guangxi':
+      return '广西' // 6
+    case 'Guizhou':
+      return '贵州' // 7
+    case 'Hainan':
+      return '海南' // 8
+    case 'Hebei':
+      return '河北' // 9
+    case 'Henan':
+      return '河南' // 10
+    case 'Heilongjiang':
+      return '黑龙江' // 11
+    case 'Hubei':
+      return '湖北' // 12
+    case 'Hunan':
+      return '湖南' // 13
+    case 'Jilin':
+      return '吉林' // 14
+    case 'Jiangsu':
+      return '江苏' // 15
+    case 'Jiangxi':
+      return '江西' // 16
+    case 'Liaoning':
+      return '辽宁' // 17
+    case 'Inner':
+      return '内蒙古' // 18
+    case 'Ningxia':
+      return '宁夏' // 19
+    case 'Qinghai':
+      return '青海' // 20
+    case 'Shandong':
+      return '山东' // 21
+    case 'Shanxi':
+      return '山西' // 22
+    case 'Shaanxi':
+      return '陕西' // 23
+    case 'Shanghai':
+      return '上海' // 24
+    case 'Sichuan':
+      return '四川' // 25
+    case 'Tianjing':
+      return '天津' // 26
+    case 'Tibet':
+      return '西藏' // 27
+    case 'Xinjiang':
+      return '新疆' // 28
+    case 'Yunnan':
+      return '云南' // 29
+    case 'Zhejiang':
+      return '浙江' // 30
+    case 'Chongqing':
+      return '重庆' // 31
+    case 'Macao':
+      return '澳门' // 32
+    case 'Hong':
+      return '香港' // 33
+    case 'Taiwan':
+      return '台湾' // 34
+    default:
+      return 'err'
+  }
+}
+
 function titleTranslate(title: any) {
   switch (title) {
     case 'nb_hits':
@@ -220,4 +296,4 @@ function compare(p: string) {
 //   return result.length
 // }
 
-export { dataFormat, titleTranslate, compare }
+export { dataFormat, titleTranslate, compare, translatePlaceName }
