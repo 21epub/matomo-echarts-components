@@ -13,7 +13,7 @@ import {
   // HomePageCard,
   // OpeBarchart,
   // ContentByTime,
-  // ContentByOrg,
+  ContentByOrg,
   // OpeSummary,
   // Detail
   // Runchart,
@@ -83,12 +83,13 @@ const TestOptions = () => {
       {/* <Col span={24}>
           <OpeSummary url='https://yapi.epub360.com/mock/111/v3/api/yunying/epub360/login/time/summary/' />
         </Col> */}
-      {/* <Col span={24}>
-          <ContentByOrg
-            url='https://yapi.epub360.com/mock/111/v3/api/yunying/content/org/'
-            options={options}
-          />
-        </Col> */}
+      <Col span={24}>
+        <ContentByOrg
+          url='https://yapi.epub360.com/mock/111/v3/api/yunying/content/org/'
+          options={options}
+          extra={<div>测试啊啊啊是</div>}
+        />
+      </Col>
       {/* </Row> */}
 
       {/* <Col span={24}>

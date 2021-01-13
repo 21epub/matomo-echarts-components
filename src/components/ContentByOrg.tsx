@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Card, Spin, Row, Col } from 'antd'
+import { Table, Card, Spin, Row, Col, Space } from 'antd'
 import useSWR from 'swr'
 import SelectYear from './SelectYear'
 // import styles from './index.module.less'
@@ -15,10 +15,11 @@ interface Options {
 interface Props {
   url: string
   options: Options
+  extra?: any
 }
 
 // operation tongji detail
-function ContentByOrg({ url, options }: Props) {
+function ContentByOrg({ url, options, extra }: Props) {
   const newUrl = `${url}?year=${options.year}`
 
   const swrOptions = {
@@ -94,7 +95,10 @@ function ContentByOrg({ url, options }: Props) {
         <Card>
           <Row gutter={[16, 16]}>
             <Col span={24}>
-              <SelectYear />
+              <Space size='large'>
+                <div className='extraContent'>{extra}</div>
+                <SelectYear />
+              </Space>
             </Col>
           </Row>
           <Row>
