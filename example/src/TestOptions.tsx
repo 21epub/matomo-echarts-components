@@ -9,11 +9,11 @@ import {
   // TransformTrend
   // HomePageTrend,
   // TrendDetailFilter,
-  // EchartsMap,
+  EchartsMap,
   // HomePageCard,
   // OpeBarchart,
   // ContentByTime,
-  ContentByOrg,
+  // ContentByOrg,
   // OpeSummary,
   // Detail
   // Runchart,
@@ -23,8 +23,8 @@ import {
   // Barchart,
   // Detail,
   // HorizontalBarchart,
-  HorizontalBarchartMobile,
-  VisitorsList
+  // HorizontalBarchartMobile,
+  VisitorsList,
   // EquipmentDetail,
   // Trend
   // InstallButton,
@@ -33,7 +33,7 @@ import {
   // VisitorsList,
   // Funnel,
   // CaseDetail,
-  // CaseDetailMobile,
+  CaseDetailMobile
   // TransformTrendMobile,
   // TrendMobile,
   // SummaryMobile
@@ -45,7 +45,7 @@ import { Col, Row } from 'antd'
 
 const TestOptions = () => {
   const { state: options } = useContext(AppContext)
-
+  // const test = "北京"
   // const detailLink: string = '#'
   // // const mapTitle:string = '地域分布';
   // const barchartTitle: string = '扩展渠道'
@@ -83,13 +83,13 @@ const TestOptions = () => {
       {/* <Col span={24}>
           <OpeSummary url='https://yapi.epub360.com/mock/111/v3/api/yunying/epub360/login/time/summary/' />
         </Col> */}
-      <Col span={24}>
+      {/* <Col span={24}>
         <ContentByOrg
           url='https://yapi.epub360.com/mock/111/v3/api/yunying/content/org/'
           options={options}
           extra={<div>测试啊啊啊是</div>}
         />
-      </Col>
+      </Col> */}
       {/* </Row> */}
 
       {/* <Col span={24}>
@@ -213,7 +213,7 @@ const TestOptions = () => {
         </Col>
       </Row> */}
 
-      {/* <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]}>
         <Col span={24}>
           <EchartsMap
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/map/'
@@ -225,7 +225,7 @@ const TestOptions = () => {
             createTime={createTime}
           />
         </Col>
-      </Row> */}
+      </Row>
 
       {/* <Row gutter={[16, 16]}>
           <Col span={24}>
@@ -323,14 +323,15 @@ const TestOptions = () => {
           />
         </Col>
       </Row> */}
-      {/* <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]}>
         <Col span={24}>
           <CaseDetailMobile
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/top10/'
             options={options}
+            // end={`?org=${test}`}
           />
         </Col>
-      </Row> */}
+      </Row>
 
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
@@ -375,7 +376,7 @@ const TestOptions = () => {
         </Col>
       </Row> */}
 
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <HorizontalBarchartMobile
             // isPicVersion
@@ -389,7 +390,7 @@ const TestOptions = () => {
             isPicVersion
           />
         </Col>
-      </Row>
+      </Row> */}
     </div>
   )
 }

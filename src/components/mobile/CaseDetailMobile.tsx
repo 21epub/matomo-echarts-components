@@ -13,13 +13,15 @@ interface Props {
   options: Options
   extra?: React.ReactNode[]
   pre?: string
+  end?: string
 }
 
 function CaseDetailMobile({
   url,
   options,
   extra,
-  pre = '/v3/mobile/h5/works/'
+  pre = '/v3/mobile/h5/works/',
+  end = ''
 }: Props) {
   const period = options.period
   const startDate = options.dateRange[0]
@@ -70,7 +72,7 @@ function CaseDetailMobile({
       Object.defineProperty(elements[i], 'label', {
         value: (
           <a
-            href={`${pre}${elements[i].label}/tongji/basic/`}
+            href={`${pre}${elements[i].label}/tongji/basic/${end}`}
             rel='noreferrer'
             key={`work${i}`}
           >
