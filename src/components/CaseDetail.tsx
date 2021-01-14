@@ -69,7 +69,7 @@ function CaseDetail({ url, options, extra }: Props) {
             rel='noreferrer'
             key={`work${i}`}
           >
-            {elements[i].label}
+            {elements[i].title}
           </a>
         )
       })

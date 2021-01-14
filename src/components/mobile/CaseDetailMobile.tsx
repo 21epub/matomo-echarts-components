@@ -76,7 +76,7 @@ function CaseDetailMobile({
             rel='noreferrer'
             key={`work${i}`}
           >
-            {elements[i].label}
+            {elements[i].title}
           </a>
         )
       })
