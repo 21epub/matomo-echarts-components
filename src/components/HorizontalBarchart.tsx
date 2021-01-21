@@ -128,7 +128,7 @@ function HorizontalBarchart({
             show: false
           },
           axisLabel: {
-            margin: 200,
+            margin: 100,
             textStyle: {
               align: 'left'
             },
@@ -143,7 +143,7 @@ function HorizontalBarchart({
         },
         grid: {
           top: '0%',
-          left: '0px',
+          left: '-20px',
           bottom: '0%',
           containLabel: true
         },
