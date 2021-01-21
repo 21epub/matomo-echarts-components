@@ -66,7 +66,7 @@ function EchartsMap({
   const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
 
   let daterangeContent = `${startDate}-${endDate}`
-  if (period === 'all') {
+  if (period === 'all' || period === 'total') {
     daterangeContent = ''
   }
 

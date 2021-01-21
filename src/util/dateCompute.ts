@@ -15,6 +15,10 @@ function getPastedYear(year: number) {
   return moment(new Date()).subtract(year, 'years')
 }
 
+function getThisYearFirstDay() {
+  return moment().year(moment().year()).startOf('year')
+}
+
 function secondToTime(second: number) {
   return moment('2000-01-01 00:00:00').add(second, 'seconds').format('HH:mm:ss')
 }
@@ -67,6 +71,7 @@ function keyToRange(key: string) {
   const last15Date = getPastedDay(14).format('YYYY/MM/DD')
   const last30Date = getPastedDay(29).format('YYYY/MM/DD')
   const lastYear = getPastedYear(1).format('YYYY/MM/DD')
+  const thisYearFirstDay = getThisYearFirstDay().format('YYYY/MM/DD')
 
   let newdate = []
   switch (key) {
@@ -94,9 +99,24 @@ function keyToRange(key: string) {
       newdate = [lastYear, todayDate]
       return newdate
     }
+    case 'thisyear': {
+      newdate = [thisYearFirstDay, todayDate]
+      return newdate
+    }
+    case 'total': {
+      newdate = ['2020/09/25', todayDate]
+      return newdate
+    }
     default:
       return ['undefined', 'undefined']
   }
 }
 
-export { getToday, checkPeriod, keyToRange, getThisYear, secondToTime }
+export {
+  getToday,
+  checkPeriod,
+  keyToRange,
+  getThisYear,
+  secondToTime,
+  getThisYearFirstDay
+}

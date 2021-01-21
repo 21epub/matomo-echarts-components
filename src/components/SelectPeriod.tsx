@@ -26,7 +26,7 @@ function SelectPeriod() {
     return current > moment().endOf('day')
   }
 
-  if (options.period === 'all') {
+  if (options.period === 'all' || options.period === 'total') {
     return (
       <RangePicker
         format={dateFormat}

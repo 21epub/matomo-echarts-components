@@ -8,9 +8,9 @@ import {
   // OrgSummary,
   // TransformTrend
   // HomePageTrend,
-  // TrendDetailFilter,
+  TrendDetailFilter,
   EchartsMap,
-  // HomePageCard,
+  HomePageCard,
   // OpeBarchart,
   // ContentByTime,
   // ContentByOrg,
@@ -20,7 +20,7 @@ import {
   // SelectPeriod,
   // Resource
   // OpeDetail
-  // Barchart,
+  Barchart,
   // Detail,
   // HorizontalBarchart,
   // HorizontalBarchartMobile,
@@ -33,11 +33,12 @@ import {
   // VisitorsList,
   // Funnel,
   // CaseDetail,
-  CaseDetailMobile
+  CaseDetailMobile,
   // TransformTrendMobile,
   // TrendMobile,
   // SummaryMobile
   // FunnelDetail,
+  Filter
 } from '@21epub/matomo-echarts-components'
 import '@21epub/matomo-echarts-components/dist/index.css'
 import 'antd/dist/antd.css'
@@ -62,7 +63,10 @@ const TestOptions = () => {
 
   return (
     <div>
-      {/* <Row gutter={[16, 16]}>
+      <Col span={24}>
+        <Filter isOrgVersion />
+      </Col>
+      <Row gutter={[16, 16]}>
         <Col span={12}>
           <Barchart
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/channel/'
@@ -72,7 +76,7 @@ const TestOptions = () => {
             createTime={createTime}
           />
         </Col>
-      </Row> */}
+      </Row>
       {/* <Row gutter={[16, 16]}> */}
       {/* <Col span={24}>
           <OpeFilter isTongjiSelection />
@@ -130,14 +134,14 @@ const TestOptions = () => {
           />
         </Col>
       </Row> */}
-      {/* <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]}>
         <Col span={24}>
           <HomePageCard
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/visits/'
             options={options}
           />
         </Col>
-      </Row> */}
+      </Row>
 
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
@@ -162,11 +166,11 @@ const TestOptions = () => {
           </Col>
       </Row> */}
       {/* <InstallButton downloadUrl='testurl' /> */}
-      {/* <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]}>
         <Col span={24}>
           <TrendDetailFilter />
         </Col>
-      </Row> */}
+      </Row>
       {/* <Row gutter={[16, 16]}>
         <Col span={12}>
           <Trend

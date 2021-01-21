@@ -13,17 +13,20 @@ interface Options {
   year?: string
 }
 
+// all为作品成效，total为机构+首页；all只传startTime,即作品create_time；total与range的逻辑一样，只是不展示
 const options = {
   dateRange: date,
   period:
-    'last30' ||
+    'thisyear' ||
     'all' ||
     'today' ||
     'yesterday' ||
     'last7' ||
     'last15' ||
+    'last30' ||
     'range' ||
-    'last365',
+    'last365' ||
+    'total',
   source:
     'allSource' || 'direct' || 'search' || 'website' || 'social' || 'campaign',
   selection: 'day' || 'month' || 'year',

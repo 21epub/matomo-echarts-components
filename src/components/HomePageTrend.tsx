@@ -39,7 +39,10 @@ function HomePageTrend({ url, options }: Props) {
     setKeyState(key)
   }
 
-  const daterangeContent = `${startDate}-${endDate}`
+  let daterangeContent = `${startDate}-${endDate}`
+  if (period === 'all' || period === 'total') {
+    daterangeContent = ''
+  }
 
   // <Col xs={{ span: 25 }}></Col>
   const tab = (

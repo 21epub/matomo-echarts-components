@@ -53,7 +53,7 @@ function Funnel({
   const smallVersion = styles.funnelSmallVersion
 
   let daterangeContent = `${startDate}-${endDate}`
-  if (period === 'all') {
+  if (period === 'all' || period === 'total') {
     daterangeContent = ''
   }
 

@@ -40,7 +40,7 @@ function FunnelDetail({ url, options, detailType, createTime, extra }: Props) {
   const { data: elements } = useSWR(newUrl, fetcher, swrOptions)
   const ele = clone(elements)
   let daterangeContent = `${startDate}-${endDate}`
-  if (period === 'all') {
+  if (period === 'all' || period === 'total') {
     daterangeContent = ''
   }
 

@@ -18,7 +18,6 @@ interface Props {
   options: Options
   detailLink?: string
   cardTitle: string
-  isDetailVersion?: boolean
   isOrgVersion?: boolean
   createTime?: string
 }
@@ -27,7 +26,6 @@ function TrendMobile({
   url,
   options,
   cardTitle,
-  isDetailVersion = false,
   isOrgVersion = false,
   createTime
 }: Props) {
@@ -70,7 +68,7 @@ function TrendMobile({
   }
 
   let daterangeContent = `${startDate}-${endDate}`
-  if (period === 'all') {
+  if (period === 'all' || period === 'total') {
     daterangeContent = ''
   }
 
