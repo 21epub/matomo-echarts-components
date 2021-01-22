@@ -22,7 +22,7 @@ import {
   // OpeDetail
   Barchart,
   // Detail,
-  // HorizontalBarchart,
+  HorizontalBarchart,
   // HorizontalBarchartMobile,
   VisitorsList,
   // EquipmentDetail,
@@ -302,20 +302,19 @@ const TestOptions = () => {
           />
         </Col>
       </Row>
-      {/* <Row gutter={[16, 16]}>
-        <Col span={24}>
+      <Row gutter={[16, 16]}>
+        <Col span={10}>
           <HorizontalBarchart
             // isPicVersion
-            // url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/brand/'
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/type/'
             options={options}
             detailLink='#'
             cardTitle='#'
             createTime={createTime}
-            isDetailVersion
+            // isDetailVersion
           />
         </Col>
-      </Row> */}
+      </Row>
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <EquipmentDetail

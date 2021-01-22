@@ -189,7 +189,7 @@ function HorizontalBarchart({
             show: false
           },
           axisLabel: {
-            margin: 70,
+            margin: 180,
             textStyle: {
               align: 'left'
             }
@@ -197,7 +197,7 @@ function HorizontalBarchart({
         },
         grid: {
           top: '0%',
-          left: '-20px',
+          left: '-120px',
           bottom: '0%',
           containLabel: true
         },
