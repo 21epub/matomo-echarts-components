@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7-alpha.62](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.61...v0.1.7-alpha.62) (2021-01-22)
+
+
+### Bug Fixes
+
+* 🐛 fix horizonBarchart style ([338921a](https://github.com/21epub/matomo-echarts-components/commit/338921a20d4d09307487ea15f5211498a977b5e4))
+
 ### [0.1.7-alpha.61](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.60...v0.1.7-alpha.61) (2021-01-21)
 
 
