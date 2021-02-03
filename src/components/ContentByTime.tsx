@@ -91,7 +91,7 @@ function ContentByTime({ url, options, extra }: Props) {
             )}&end_time=${transformMonthEndTime(
               elements[i].label
             )}&review_state=1`}
-            target='_blank'
+            // target='_blank'
             rel='noreferrer'
             // key={`time${i}`}
           >

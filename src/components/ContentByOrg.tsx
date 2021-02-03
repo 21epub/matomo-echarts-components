@@ -99,7 +99,7 @@ function ContentByOrg({ url, options, extra }: Props) {
             }&start_time=${transformYearStartTime(
               options.year
             )}&end_time=${transformYearEndTime(options.year)}&review_state=1`}
-            target='_blank'
+            // target='_blank'
             rel='noreferrer'
             key={`release${i}`}
           >
@@ -115,7 +115,7 @@ function ContentByOrg({ url, options, extra }: Props) {
             }&start_time=${transformYearStartTime(
               options.year
             )}&end_time=${transformYearEndTime(options.year)}`}
-            target='_blank'
+            // target='_blank'
             rel='noreferrer'
             key={`publish${i}`}
           >

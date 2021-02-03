@@ -143,7 +143,7 @@ function transformYearStartTime(year: any) {
 function transformYearEndTime(year: any) {
   let endTime
 
-  if (year === getThisYear()) endTime = getToday().format('YYYY/MM/DD')
+  if (year === getThisYear()) endTime = getToday().format('YYYY-MM-DD')
   else endTime = getYearEndDay(year)
 
   return endTime
