@@ -2,6 +2,10 @@ import React from 'react'
 import { Table, Card, Spin, Row, Col, Space } from 'antd'
 import useSWR from 'swr'
 import SelectYear from './SelectYear'
+import {
+  transformMonthEndTime,
+  transformMonthStartTime
+} from '../util/dateCompute'
 
 interface Options {
   dateRange: string[]
@@ -20,7 +24,7 @@ interface Props {
 // operation tongji detail
 function ContentByTime({ url, options, extra }: Props) {
   const newUrl = `${url}?year=${options.year}`
-
+  // console.log("options.year",options.year)
   const swrOptions = {
     refreshInterval: 0
   }
@@ -79,6 +83,22 @@ function ContentByTime({ url, options, extra }: Props) {
 
     for (let i = 0; i < elements.length; i++) {
       Object.defineProperty(elements[i], 'key', { value: i })
+      Object.defineProperty(elements[i], 'h5_count', {
+        value: (
+          <a
+            href={`/v3/admin/tongji/h5?start_time=${transformMonthStartTime(
+              elements[i].label
+            )}&end_time=${transformMonthEndTime(
+              elements[i].label
+            )}&review_state=1`}
+            target='_blank'
+            rel='noreferrer'
+            // key={`time${i}`}
+          >
+            {elements[i].h5_count}
+          </a>
+        )
+      })
       data[i] = elements[i]
     }
 

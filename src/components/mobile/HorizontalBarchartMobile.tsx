@@ -190,17 +190,17 @@ function HorizontalBarchartMobile({
             show: false
           },
           axisLabel: {
-            margin: 70,
+            margin: 180,
             textStyle: {
               align: 'left'
             }
           }
         },
         grid: {
-          top: '0%',
-          left: '-20px',
-          right: 10,
-          bottom: '0%',
+          top: 0,
+          left: '-120px',
+          right: 0,
+          bottom: 0,
           containLabel: true
         },
         series: [

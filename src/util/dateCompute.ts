@@ -3,6 +3,7 @@ import moment from 'moment'
 function getToday() {
   return moment(new Date())
 }
+
 function getThisYear() {
   return moment(new Date()).format('YYYY')
 }
@@ -17,6 +18,18 @@ function getPastedYear(year: number) {
 
 function getThisYearFirstDay() {
   return moment().year(moment().year()).startOf('year')
+}
+
+function getYearStartDay(year: any) {
+  return moment(year).startOf('year').format('YYYY-MM-DD')
+}
+
+function getYearEndDay(year: any) {
+  return moment(year).endOf('year').format('YYYY-MM-DD')
+}
+
+function getNextMonth(month: any) {
+  return moment(month).add(1, 'months').startOf('month').format('YYYY-MM-DD')
 }
 
 function secondToTime(second: number) {
@@ -112,11 +125,39 @@ function keyToRange(key: string) {
   }
 }
 
+function transformMonthStartTime(month: string) {
+  const startTime = `${month}-01`
+  return startTime
+}
+
+function transformMonthEndTime(month: string) {
+  const endTime = getNextMonth(month)
+  return endTime
+}
+
+function transformYearStartTime(year: any) {
+  const startTime = getYearStartDay(year)
+  return startTime
+}
+
+function transformYearEndTime(year: any) {
+  let endTime
+
+  if (year === getThisYear()) endTime = getToday().format('YYYY/MM/DD')
+  else endTime = getYearEndDay(year)
+
+  return endTime
+}
+
 export {
   getToday,
   checkPeriod,
   keyToRange,
   getThisYear,
   secondToTime,
-  getThisYearFirstDay
+  getThisYearFirstDay,
+  transformMonthStartTime,
+  transformMonthEndTime,
+  transformYearStartTime,
+  transformYearEndTime
 }

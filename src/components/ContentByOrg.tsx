@@ -2,6 +2,10 @@ import React from 'react'
 import { Table, Card, Spin, Row, Col, Space } from 'antd'
 import useSWR from 'swr'
 import SelectYear from './SelectYear'
+import {
+  transformYearEndTime,
+  transformYearStartTime
+} from '../util/dateCompute'
 // import styles from './index.module.less'
 
 interface Options {
@@ -87,6 +91,38 @@ function ContentByOrg({ url, options, extra }: Props) {
 
     for (let i = 0; i < elements.length; i++) {
       Object.defineProperty(elements[i], 'key', { value: i })
+      Object.defineProperty(elements[i], 'h5_release_count', {
+        value: (
+          <a
+            href={`/v3/admin/tongji/h5?org_id=${
+              elements[i].org_id
+            }&start_time=${transformYearStartTime(
+              options.year
+            )}&end_time=${transformYearEndTime(options.year)}&review_state=1`}
+            target='_blank'
+            rel='noreferrer'
+            key={`release${i}`}
+          >
+            {elements[i].h5_release_count}
+          </a>
+        )
+      })
+      Object.defineProperty(elements[i], 'h5_count', {
+        value: (
+          <a
+            href={`/v3/admin/tongji/h5?org_id=${
+              elements[i].org_id
+            }&start_time=${transformYearStartTime(
+              options.year
+            )}&end_time=${transformYearEndTime(options.year)}`}
+            target='_blank'
+            rel='noreferrer'
+            key={`publish${i}`}
+          >
+            {elements[i].h5_count}
+          </a>
+        )
+      })
       data[i] = elements[i]
     }
 
