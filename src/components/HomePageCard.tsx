@@ -13,13 +13,14 @@ type Options = {
 interface Props {
   url: string
   options: Options
+  title: any
 }
 
-function HomePageCard({ url, options }: Props) {
+function HomePageCard({ url, options, title }: Props) {
   const extra = <Filter isHomePageVersion />
   return (
     <div className={styles.homePageCard}>
-      <Card title='成效统计' extra={extra}>
+      <Card title={title} extra={extra}>
         <Row align='middle'>
           <Col span={8}>
             <OrgSummary url={url} options={options} isHomePageVersion />

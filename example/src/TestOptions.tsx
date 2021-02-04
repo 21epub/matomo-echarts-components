@@ -147,6 +147,7 @@ const TestOptions = () => {
           <HomePageCard
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/visits/'
             options={options}
+            title='Aaa'
           />
         </Col>
       </Row>
