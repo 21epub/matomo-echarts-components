@@ -32,6 +32,10 @@ function getNextMonth(month: any) {
   return moment(month).add(1, 'months').startOf('month').format('YYYY-MM-DD')
 }
 
+function getMonthEndDay(month: any) {
+  return moment(month).endOf('month').format('YYYY-MM-DD')
+}
+
 function secondToTime(second: number) {
   return moment('2000-01-01 00:00:00').add(second, 'seconds').format('HH:mm:ss')
 }
@@ -131,7 +135,7 @@ function transformMonthStartTime(month: string) {
 }
 
 function transformMonthEndTime(month: string) {
-  const endTime = getNextMonth(month)
+  const endTime = getMonthEndDay(month)
   return endTime
 }
 
@@ -159,5 +163,6 @@ export {
   transformMonthStartTime,
   transformMonthEndTime,
   transformYearStartTime,
-  transformYearEndTime
+  transformYearEndTime,
+  getNextMonth
 }
