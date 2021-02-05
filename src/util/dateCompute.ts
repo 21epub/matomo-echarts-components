@@ -135,7 +135,13 @@ function transformMonthStartTime(month: string) {
 }
 
 function transformMonthEndTime(month: string) {
-  const endTime = getMonthEndDay(month)
+  const thisMonth = getToday().format('YYYY-MM')
+
+  let endTime
+
+  if (month === thisMonth) endTime = getToday().format('YYYY-MM-DD')
+  else endTime = getMonthEndDay(month)
+
   return endTime
 }
 
