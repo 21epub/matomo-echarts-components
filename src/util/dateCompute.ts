@@ -134,6 +134,11 @@ function transformMonthStartTime(month: string) {
   return startTime
 }
 
+function getMonthStartTime(month: string) {
+  const startTime = moment(month).startOf('month').format('YYYY-MM-DD')
+  return startTime
+}
+
 function transformMonthEndTime(month: string) {
   const thisMonth = getToday().format('YYYY-MM')
 
@@ -170,5 +175,6 @@ export {
   transformMonthEndTime,
   transformYearStartTime,
   transformYearEndTime,
-  getNextMonth
+  getNextMonth,
+  getMonthStartTime
 }

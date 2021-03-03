@@ -19,7 +19,8 @@ import {
   // Runchart,
   // SelectPeriod,
   // Resource
-  // OpeDetail
+  // OpeDetail,
+  // SelectMonth,
   Barchart
   // Detail,
   // HorizontalBarchart,
@@ -84,6 +85,9 @@ const TestOptions = () => {
         </Col> */}
       {/* <Col span={24}>
           <SelectPeriod />
+        </Col> */}
+      {/* <Col span={24}>
+          <SelectMonth />
         </Col> */}
       {/* <Col span={24}>
           <OpeSummary url='https://yapi.epub360.com/mock/111/v3/api/yunying/epub360/login/time/summary/' />

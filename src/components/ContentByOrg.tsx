@@ -3,10 +3,11 @@ import { Table, Card, Spin, Row, Col, Space } from 'antd'
 import useSWR from 'swr'
 import SelectYear from './SelectYear'
 import {
+  getMonthStartTime,
   transformYearEndTime,
   transformYearStartTime
 } from '../util/dateCompute'
-// import styles from './index.module.less'
+// import SelectMonth from './SelectMonth'
 
 interface Options {
   dateRange: string[]
@@ -14,6 +15,7 @@ interface Options {
   source?: string
   selection?: string
   year?: string
+  month?: number
 }
 
 interface Props {
@@ -24,7 +26,14 @@ interface Props {
 
 // operation tongji detail
 function ContentByOrg({ url, options, extra }: Props) {
-  const newUrl = `${url}?year=${options.year}`
+  const newUrl = `${url}?start_time=${options.year}`
+
+  if (options.month === 0 || options.month === null) console.log('all')
+  else {
+    const date = `${options.year}-${options.month}`
+    console.log('date', date)
+    console.log(getMonthStartTime(date))
+  }
 
   const swrOptions = {
     refreshInterval: 0
@@ -39,7 +48,7 @@ function ContentByOrg({ url, options, extra }: Props) {
         title: '机构',
         dataIndex: 'label',
         key: 'label',
-        width: `${100 / 6}%`,
+        width: `${100 / 9}%`,
         align: 'center' as 'center'
       },
       {
@@ -52,28 +61,28 @@ function ContentByOrg({ url, options, extra }: Props) {
             title: '制作数量',
             dataIndex: 'h5_count',
             key: 'h5_count',
-            width: `${100 / 6}%`,
+            width: `${100 / 9}%`,
             align: 'center' as 'center'
           },
           {
             title: '发布数量',
             dataIndex: 'h5_release_count',
             key: 'h5_release_count',
-            width: `${100 / 6}%`,
+            width: `${100 / 9}%`,
             align: 'center' as 'center'
           },
           {
             title: '总访问量',
             dataIndex: 'total_visits',
             key: 'total_visits',
-            width: `${100 / 6}%`,
+            width: `${100 / 9}%`,
             align: 'center' as 'center'
           },
           {
             title: '平均访问量',
             dataIndex: 'ave_visits',
             key: 'ave_visits',
-            width: `${100 / 6}%`,
+            width: `${100 / 9}%`,
             align: 'center' as 'center'
           }
         ]
@@ -82,8 +91,37 @@ function ContentByOrg({ url, options, extra }: Props) {
         title: '海报创意案例',
         dataIndex: 'poster_count',
         key: 'poster_count',
-        width: `${100 / 6}%`,
+        width: `${100 / 9}%`,
         align: 'center' as 'center'
+      },
+      {
+        title: '一物一码',
+        dataIndex: 'qrcode',
+        key: 'qrcode',
+        align: 'center' as 'center',
+        children: [
+          {
+            title: '制作数量',
+            dataIndex: 'qrcode_count',
+            key: 'qrcode_count',
+            width: `${100 / 9}%`,
+            align: 'center' as 'center'
+          },
+          {
+            title: '总访问量',
+            dataIndex: 'qrcode_total_visits',
+            key: 'qrcode_total_visits',
+            width: `${100 / 9}%`,
+            align: 'center' as 'center'
+          },
+          {
+            title: '平均访问量',
+            dataIndex: 'qrcode_avg_visits',
+            key: 'qrcode_avg_visits',
+            width: `${100 / 9}%`,
+            align: 'center' as 'center'
+          }
+        ]
       }
     ]
 
@@ -123,6 +161,21 @@ function ContentByOrg({ url, options, extra }: Props) {
           </a>
         )
       })
+      Object.defineProperty(elements[i], 'qrcode_count', {
+        value: (
+          <a
+            href={`/v3/review/referralUrl?tab=qrcode&org_id=${
+              elements[i].org_id
+            }&start_time=${transformYearStartTime(
+              options.year
+            )}&end_time=${transformYearEndTime(options.year)}`}
+            rel='noreferrer'
+            key={`qrcode${i}`}
+          >
+            {elements[i].qrcode_count}
+          </a>
+        )
+      })
       data[i] = elements[i]
     }
 
@@ -134,6 +187,7 @@ function ContentByOrg({ url, options, extra }: Props) {
               <Space size='large'>
                 <div className='extraContent'>{extra}</div>
                 <SelectYear />
+                {/* <SelectMonth /> */}
               </Space>
             </Col>
           </Row>

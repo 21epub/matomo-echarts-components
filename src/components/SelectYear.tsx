@@ -1,22 +1,20 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { DatePicker, Space } from 'antd'
 import moment from 'moment'
 import { AppContext } from '../util/context'
 
 function SelectYear() {
   const { state: options, dispatch } = useContext(AppContext)
-  const [date, setDate] = useState(options.year)
 
   const selectPeriod = (date: any, dateString: string) => {
     const year = dateString
 
-    setDate(year)
     if (year.length !== 0 && date !== null) {
       const newSate = {
         year: year
       }
       dispatch({
-        type: 'selectPeriod',
+        type: 'selectYear',
         payload: newSate
       })
     }
@@ -26,7 +24,7 @@ function SelectYear() {
     return current < moment('2020') || current > moment().endOf('day')
   }
 
-  if (date?.length === 0) {
+  if (options.year?.length === 0) {
     return (
       <Space size='middle'>
         <h4 className='year' style={{ fontSize: '15px' }}>
@@ -50,7 +48,8 @@ function SelectYear() {
           picker='year'
           disabledDate={disabledDate}
           onChange={selectPeriod}
-          value={moment(date)}
+          value={moment(options.year)}
+          allowClear={false}
           style={{ width: '90px' }}
         />
       </Space>

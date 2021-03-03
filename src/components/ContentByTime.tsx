@@ -6,6 +6,7 @@ import {
   transformMonthEndTime,
   transformMonthStartTime
 } from '../util/dateCompute'
+// import SelectMonth from './SelectMonth'
 
 interface Options {
   dateRange: string[]
@@ -38,7 +39,7 @@ function ContentByTime({ url, options, extra }: Props) {
         title: '月份',
         dataIndex: 'label',
         key: 'label',
-        width: `${100 / 5}%`,
+        width: `${100 / 8}%`,
         align: 'center' as 'center'
       },
       {
@@ -51,21 +52,21 @@ function ContentByTime({ url, options, extra }: Props) {
             title: '发布数量',
             dataIndex: 'h5_count',
             key: 'h5_count',
-            width: `${100 / 5}%`,
+            width: `${100 / 8}%`,
             align: 'center' as 'center'
           },
           {
             title: '总访问量',
             dataIndex: 'total_visits',
             key: 'total_visits',
-            width: `${100 / 5}%`,
+            width: `${100 / 8}%`,
             align: 'center' as 'center'
           },
           {
             title: '平均访问量',
             dataIndex: 'ave_visits',
             key: 'ave_visits',
-            width: `${100 / 5}%`,
+            width: `${100 / 8}%`,
             align: 'center' as 'center'
           }
         ]
@@ -74,8 +75,37 @@ function ContentByTime({ url, options, extra }: Props) {
         title: '海报创意案例',
         dataIndex: 'poster_count',
         key: 'poster_count',
-        width: `${100 / 5}%`,
+        width: `${100 / 8}%`,
         align: 'center' as 'center'
+      },
+      {
+        title: '一物一码',
+        dataIndex: 'qrcode',
+        key: 'qrcode',
+        align: 'center' as 'center',
+        children: [
+          {
+            title: '制作数量',
+            dataIndex: 'qrcode_count',
+            key: 'qrcode_count',
+            width: `${100 / 8}%`,
+            align: 'center' as 'center'
+          },
+          {
+            title: '总访问量',
+            dataIndex: 'qrcode_total_visits',
+            key: 'qrcode_total_visits',
+            width: `${100 / 8}%`,
+            align: 'center' as 'center'
+          },
+          {
+            title: '平均访问量',
+            dataIndex: 'qrcode_avg_visits',
+            key: 'qrcode_avg_visits',
+            width: `${100 / 8}%`,
+            align: 'center' as 'center'
+          }
+        ]
       }
     ]
 
@@ -93,12 +123,24 @@ function ContentByTime({ url, options, extra }: Props) {
             )}&review_state=1`}
             // target='_blank'
             rel='noreferrer'
-            // key={`time${i}`}
           >
             {elements[i].h5_count}
           </a>
         )
       })
+      Object.defineProperty(elements[i], 'qrcode_count', {
+        value: (
+          <a
+            href={`/v3/review/referralUrl?tab=qrcode&start_time=${transformMonthStartTime(
+              elements[i].label
+            )}&end_time=${transformMonthEndTime(elements[i].label)}`}
+            rel='noreferrer'
+          >
+            {elements[i].qrcode_count}
+          </a>
+        )
+      })
+
       data[i] = elements[i]
     }
 
@@ -110,6 +152,7 @@ function ContentByTime({ url, options, extra }: Props) {
               <Space size='large'>
                 <div className='extraContent'>{extra}</div>
                 <SelectYear />
+                {/* <SelectMonth /> */}
               </Space>
             </Col>
           </Row>

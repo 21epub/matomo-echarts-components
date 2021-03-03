@@ -9,6 +9,14 @@ const reducer = (state: any, action: any) => {
       const { payload } = action
       return { ...state, ...payload }
     }
+    case 'selectYear': {
+      const { payload } = action
+      return { ...state, ...payload }
+    }
+    case 'selectMonth': {
+      const { payload } = action
+      return { ...state, ...payload }
+    }
     case 'filter': {
       const { payload } = action
       return { ...state, ...payload }
