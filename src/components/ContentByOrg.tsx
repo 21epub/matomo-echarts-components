@@ -3,7 +3,7 @@ import { Table, Card, Spin, Row, Col, Space } from 'antd'
 import useSWR from 'swr'
 import SelectYear from './SelectYear'
 import {
-  getMonthStartTime,
+  // getMonthStartTime,
   transformYearEndTime,
   transformYearStartTime
 } from '../util/dateCompute'
@@ -26,14 +26,14 @@ interface Props {
 
 // operation tongji detail
 function ContentByOrg({ url, options, extra }: Props) {
-  const newUrl = `${url}?start_time=${options.year}`
+  const newUrl = `${url}?year=${options.year}`
 
-  if (options.month === 0 || options.month === null) console.log('all')
-  else {
-    const date = `${options.year}-${options.month}`
-    console.log('date', date)
-    console.log(getMonthStartTime(date))
-  }
+  // if (options.month === 0 || options.month === null) console.log('all')
+  // else {
+  //   const date = `${options.year}-${options.month}`
+  //   console.log('date', date)
+  //   console.log(getMonthStartTime(date))
+  // }
 
   const swrOptions = {
     refreshInterval: 0
