@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7-alpha.68](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.67...v0.1.7-alpha.68) (2021-03-03)
+
+
+### Features
+
+* 🎸 add qrcode tongji ([5e2e006](https://github.com/21epub/matomo-echarts-components/commit/5e2e006256420680a1c4c0380831b3ba84bb5c9a))
+
 ### [0.1.7-alpha.67](https://github.com/21epub/matomo-echarts-components/compare/v0.1.7-alpha.66...v0.1.7-alpha.67) (2021-02-05)
 
 
