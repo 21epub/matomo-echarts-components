@@ -197,7 +197,7 @@ function HorizontalBarchart({
         },
         grid: {
           top: '0%',
-          left: '-120px',
+          left: '0px',
           bottom: '0%',
           containLabel: true
         },

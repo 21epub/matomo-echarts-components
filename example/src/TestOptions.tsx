@@ -8,12 +8,12 @@ import {
   // OrgSummary,
   // TransformTrend
   // HomePageTrend,
-  TrendDetailFilter,
+  // TrendDetailFilter,
   EchartsMap,
-  HomePageCard,
+  // HomePageCard,
   // OpeBarchart,
   ContentByTime,
-  ContentByOrg,
+  ContentByOrg
   // OpeSummary,
   // Detail
   // Runchart,
@@ -21,9 +21,12 @@ import {
   // Resource
   // OpeDetail,
   // SelectMonth,
-  Barchart
+  // Barchart,
   // Detail,
   // HorizontalBarchart,
+  // CampaignChart,
+  // CampaignDetail,
+  // CampaignChartMobile
   // HorizontalBarchartMobile,
   // VisitorsList,
   // EquipmentDetail,
@@ -68,7 +71,7 @@ const TestOptions = () => {
         <Filter isOrgVersion />
         </Card>
       </Col> */}
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={12}>
           <Barchart
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/org/%7Borg_id%7D/channel/'
@@ -78,7 +81,7 @@ const TestOptions = () => {
             createTime={createTime}
           />
         </Col>
-      </Row>
+      </Row> */}
       {/* <Row gutter={[16, 16]}> */}
       {/* <Col span={24}>
           <OpeFilter isTongjiSelection />
@@ -146,7 +149,7 @@ const TestOptions = () => {
           />
         </Col>
       </Row> */}
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <HomePageCard
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/visits/'
@@ -154,7 +157,7 @@ const TestOptions = () => {
             title='Aaa'
           />
         </Col>
-      </Row>
+      </Row> */}
 
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
@@ -179,11 +182,11 @@ const TestOptions = () => {
           </Col>
       </Row> */}
       {/* <InstallButton downloadUrl='testurl' /> */}
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <TrendDetailFilter />
         </Col>
-      </Row>
+      </Row> */}
       {/* <Row gutter={[16, 16]}>
         <Col span={12}>
           <Trend
@@ -258,8 +261,9 @@ const TestOptions = () => {
       </Row> */}
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
-          <Detail
+          <CampaignDetail
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/campaign/'
+            labelUrl="https://yapi.epub360.com/mock/36/v3/api/works/%7Bbook_slug%7D/channel/"
             options={options}
             createTime={createTime}
             detailType='Ad'
@@ -268,15 +272,39 @@ const TestOptions = () => {
         </Col>
       </Row> */}
       {/* <Row gutter={[16, 16]}>
-        <Col span={24}>
-          <HorizontalBarchart
-            isPicVersion
-            // url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/brand/'
-            url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/device/brand/'
+        <Col span={12}>
+          <CampaignChart
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/campaign/'
+            labelUrl="https://yapi.epub360.com/mock/36/v3/api/works/%7Bbook_slug%7D/channel/"
             options={options}
             detailLink='#'
-            cardTitle='#'
+            cardTitle='广告活动'
             createTime={createTime}
+            // isOrg
+          />
+        </Col>
+      </Row> */}
+      {/* <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <CampaignChart
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/campaign/'
+            labelUrl="https://yapi.epub360.com/mock/36/v3/api/works/%7Bbook_slug%7D/channel/"
+            options={options}
+            cardTitle='广告活动'
+            createTime={createTime}
+            isDetailVersion
+          />
+        </Col>
+      </Row> */}
+      {/* <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <CampaignChartMobile
+            url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/campaign/'
+            labelUrl="https://yapi.epub360.com/mock/36/v3/api/works/%7Bbook_slug%7D/channel/"
+            options={options}
+            cardTitle='广告活动手机'
+            createTime={createTime}
+            isDetailVersion
           />
         </Col>
       </Row> */}
