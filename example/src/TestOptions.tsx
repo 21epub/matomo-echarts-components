@@ -13,7 +13,7 @@ import {
   // HomePageCard,
   // OpeBarchart,
   ContentByTime,
-  ContentByOrg
+  ContentByOrg,
   // OpeSummary,
   // Detail
   // Runchart,
@@ -24,8 +24,8 @@ import {
   // Barchart,
   // Detail,
   // HorizontalBarchart,
-  // CampaignChart,
-  // CampaignDetail,
+  CampaignChart,
+  CampaignDetail
   // CampaignChartMobile
   // HorizontalBarchartMobile,
   // VisitorsList,
@@ -259,23 +259,24 @@ const TestOptions = () => {
             />
           </Col>
       </Row> */}
-      {/* <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]}>
         <Col span={24}>
           <CampaignDetail
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/campaign/'
-            labelUrl="https://yapi.epub360.com/mock/36/v3/api/works/%7Bbook_slug%7D/channel/"
+            // labelUrl="https://yapi.epub360.com/mock/36/v3/api/works/%7Bbook_slug%7D/channel/"
             options={options}
             createTime={createTime}
             detailType='Ad'
             extra={[]}
+            isOrg
           />
         </Col>
-      </Row> */}
-      {/* <Row gutter={[16, 16]}>
-        <Col span={12}>
+      </Row>
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
           <CampaignChart
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/campaign/'
-            labelUrl="https://yapi.epub360.com/mock/36/v3/api/works/%7Bbook_slug%7D/channel/"
+            labelUrl='https://yapi.epub360.com/mock/36/v3/api/works/%7Bbook_slug%7D/channel/'
             options={options}
             detailLink='#'
             cardTitle='广告活动'
@@ -283,7 +284,7 @@ const TestOptions = () => {
             // isOrg
           />
         </Col>
-      </Row> */}
+      </Row>
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <CampaignChart

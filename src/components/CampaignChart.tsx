@@ -14,7 +14,7 @@ type Options = {
 
 interface Props {
   url: string
-  labelUrl: string
+  labelUrl?: string
   options: Options
   detailLink?: string
   cardTitle: string
@@ -54,8 +54,12 @@ function CampaignChart({
   const { data: element } = useSWR(newUrls, fetcher, swrOptions)
   let elements = clone(element)
 
-  const { data: res } = useSWR(labelUrl, fetcher, swrOptions)
-  const labelList = res?.data?.results
+  let res
+  let labelList: any
+  if (!isOrg && labelUrl) {
+    res = useSWR(labelUrl, fetcher, swrOptions).data
+    labelList = res?.data?.results
+  }
 
   const bigVersion = styles.bigVersion
   const smallVersion = styles.smallVersion
@@ -70,94 +74,114 @@ function CampaignChart({
   if (elements?.length && labelList?.length) {
     const getLabelName = (labelId: string) => {
       const labelItem = labelList.filter((item: any) => item.id === labelId)
-      return labelItem[0].name
+      if (labelItem.length) return labelItem[0].name
+      else return null
     }
 
-    elements = elements.map((it: any) => {
+    let data: any = []
+    elements = elements.forEach((it: any) => {
       const labelId = String(it.label).substr(0, String(it.label).length - 1)
       const labelName = getLabelName(labelId)
-      return { label: labelName, nb_visits: it.nb_visits }
+      if (labelName) data.push({ label: labelName, nb_visits: it.nb_visits })
     })
 
-    // 倒序
-    for (let i = 0; i < elements.length; i++) {
-      Object.defineProperty(elements[i], 'key', { value: i })
-    }
-    elements.sort(compare('key'))
+    if (data?.length) {
+      // 倒序
+      for (let i = 0; i < data.length; i++) {
+        Object.defineProperty(data[i], 'key', { value: i })
+      }
+      data.sort(compare('key'))
 
-    elements = JSON.parse(JSON.stringify(elements).replace(/label/g, '品牌'))
-    elements = JSON.parse(
-      JSON.stringify(elements).replace(/nb_visits/g, '访客数')
-    )
-    const keylist = Object.keys(elements[0])
+      data = JSON.parse(JSON.stringify(data).replace(/label/g, '品牌'))
+      data = JSON.parse(JSON.stringify(data).replace(/nb_visits/g, '访客数'))
+      const keylist = Object.keys(data[0])
 
-    const content = {
-      tooltip: {},
-      dataset: {
-        dimensions: keylist,
-        source: elements
-      },
-      xAxis: {
-        type: 'value',
-        axisTick: {
-          show: false
-        }
-      },
-      yAxis: {
-        type: 'category',
-        axisTick: {
-          show: false
+      const content = {
+        tooltip: {},
+        dataset: {
+          dimensions: keylist,
+          source: data
         },
-        axisLabel: {
-          margin: 170,
-          textStyle: {
-            align: 'left'
+        xAxis: {
+          type: 'value',
+          axisTick: {
+            show: false
           }
-        }
-      },
-      grid: {
-        top: '0%',
-        left: '-140px',
-        right: '20px',
-        bottom: '0%',
-        containLabel: true
-      },
-      series: [
-        {
-          type: 'bar',
-          itemStyle: {
-            normal: {
-              color: '#7CA1F5',
-              label: {
-                show: true,
-                position: 'right',
-                color: '#000000 '
-              }
-            }
+        },
+        yAxis: {
+          type: 'category',
+          axisTick: {
+            show: false
           },
-          barMaxWidth: 30
-        }
-      ]
-    }
-
-    return (
-      <div className={isDetailVersion ? bigVersion : smallVersion}>
-        <Card
-          title={cardTitle}
-          extra={
-            <Space size='large'>
-              <p className='daterange'>{daterangeContent}</p>
-              <a className='detailLink' href={detailLink}>
-                <RightOutlined style={{ color: 'grey' }} />
-              </a>
-            </Space>
+          axisLabel: {
+            margin: 160,
+            textStyle: {
+              align: 'left'
+            }
           }
-        >
-          <ReactEcharts option={content} />
-        </Card>
-      </div>
-    )
-  } else if (elements?.length === 0) {
+        },
+        grid: {
+          top: '0%',
+          left: '0px',
+          right: '20px',
+          bottom: '0%',
+          containLabel: true
+        },
+        series: [
+          {
+            type: 'bar',
+            itemStyle: {
+              normal: {
+                color: '#7CA1F5',
+                label: {
+                  show: true,
+                  position: 'right',
+                  color: '#000000 '
+                }
+              }
+            },
+            barMaxWidth: 30
+          }
+        ]
+      }
+
+      return (
+        <div className={isDetailVersion ? bigVersion : smallVersion}>
+          <Card
+            title={cardTitle}
+            extra={
+              <Space size='large'>
+                <p className='daterange'>{daterangeContent}</p>
+                <a className='detailLink' href={detailLink}>
+                  <RightOutlined style={{ color: 'grey' }} />
+                </a>
+              </Space>
+            }
+          >
+            <ReactEcharts option={content} />
+          </Card>
+        </div>
+      )
+    } else {
+      return (
+        <div className={isDetailVersion ? bigVersion : smallVersion}>
+          <Card
+            title={cardTitle}
+            extra={
+              <Space size='large'>
+                <p className='daterange'>{daterangeContent}</p>
+                <a className='detailLink' href={detailLink}>
+                  <RightOutlined style={{ color: 'grey' }} />
+                </a>
+              </Space>
+            }
+          >
+            <h1>暂无数据</h1>
+          </Card>
+        </div>
+      )
+    }
+  } else if (elements?.length === 0 || labelList?.length === 0) {
     return (
       <div className={isDetailVersion ? bigVersion : smallVersion}>
         <Card

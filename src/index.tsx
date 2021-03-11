@@ -38,4 +38,3 @@ export { default as EchartsMapMobile } from './components/mobile/EchartsMapMobil
 export { default as HorizontalBarchartMobile } from './components/mobile/HorizontalBarchartMobile'
 export { default as CampaignChart } from './components/CampaignChart'
 export { default as CampaignDetail } from './components/CampaignDetail'
-export { default as CampaignChartMobile } from './components/mobile/CampaignChartMobile'
