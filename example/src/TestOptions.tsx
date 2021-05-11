@@ -25,7 +25,7 @@ import {
   // Detail,
   // HorizontalBarchart,
   CampaignChart,
-  CampaignDetail
+  CampaignDetail,
   // CampaignChartMobile
   // HorizontalBarchartMobile,
   // VisitorsList,
@@ -41,7 +41,7 @@ import {
   // TrendMobile,
   // SummaryMobile
   // FunnelDetail,
-  // Filter
+  Filter
 } from '@21epub/matomo-echarts-components'
 import '@21epub/matomo-echarts-components/dist/index.css'
 import 'antd/dist/antd.css'
@@ -66,6 +66,7 @@ const TestOptions = () => {
 
   return (
     <div>
+      <Filter isOrgVersion />
       {/* <Col span={24}>
         <Card style={{backgroundColor:"grey"}}>
         <Filter isOrgVersion />

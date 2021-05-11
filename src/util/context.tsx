@@ -34,13 +34,13 @@ interface Options {
 const options = {
   dateRange: date,
   period:
+    'last30' ||
     'thisyear' ||
     'all' ||
     'today' ||
     'yesterday' ||
     'last7' ||
     'last15' ||
-    'last30' ||
     'range' ||
     'last365' ||
     'total',
