@@ -12,8 +12,8 @@ import {
   EchartsMap,
   // HomePageCard,
   // OpeBarchart,
-  ContentByTime,
-  ContentByOrg,
+  // ContentByTime,
+  // ContentByOrg,
   // OpeSummary,
   // Detail
   // Runchart,
@@ -24,8 +24,8 @@ import {
   // Barchart,
   // Detail,
   // HorizontalBarchart,
-  CampaignChart,
-  CampaignDetail,
+  // CampaignChart,
+  // CampaignDetail,
   // CampaignChartMobile
   // HorizontalBarchartMobile,
   // VisitorsList,
@@ -41,7 +41,8 @@ import {
   // TrendMobile,
   // SummaryMobile
   // FunnelDetail,
-  Filter
+  Filter,
+  HomeReachCard
 } from '@21epub/matomo-echarts-components'
 import '@21epub/matomo-echarts-components/dist/index.css'
 import 'antd/dist/antd.css'
@@ -96,7 +97,7 @@ const TestOptions = () => {
       {/* <Col span={24}>
           <OpeSummary url='https://yapi.epub360.com/mock/111/v3/api/yunying/epub360/login/time/summary/' />
         </Col> */}
-      <Col span={24}>
+      {/* <Col span={24}>
         <ContentByOrg
           url='https://yapi.epub360.com/mock/111/v3/api/yunying/content/org/'
           options={options}
@@ -109,7 +110,7 @@ const TestOptions = () => {
           options={options}
           extra={<div>aaa</div>}
         />
-      </Col>
+      </Col> */}
       {/* </Row> */}
 
       {/* <Col span={24}>
@@ -159,6 +160,16 @@ const TestOptions = () => {
           />
         </Col>
       </Row> */}
+
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <HomeReachCard
+            url='https://yapi.epub360.com/mock/36/v3/api/plugins/visits/reach/'
+            options={options}
+            title='数字内容成效'
+          />
+        </Col>
+      </Row>
 
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
@@ -260,7 +271,7 @@ const TestOptions = () => {
             />
           </Col>
       </Row> */}
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <CampaignDetail
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/campaign/'
@@ -272,8 +283,8 @@ const TestOptions = () => {
             isOrg
           />
         </Col>
-      </Row>
-      <Row gutter={[16, 16]}>
+      </Row> */}
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <CampaignChart
             url='https://yapi.epub360.com/mock/76/v3/api/tongji/%7Bbook_slug%7D/campaign/'
@@ -285,7 +296,7 @@ const TestOptions = () => {
             // isOrg
           />
         </Col>
-      </Row>
+      </Row> */}
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <CampaignChart

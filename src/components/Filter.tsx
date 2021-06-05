@@ -63,15 +63,15 @@ function Filter({ isOrgVersion = false, isHomePageVersion = false }: Props) {
         <Tabs
           defaultActiveKey='today'
           activeKey={options.period}
-          tabBarExtraContent={<SelectPeriod />}
+          // tabBarExtraContent={<SelectPeriod />}
           onChange={filter}
         >
-          <TabPane tab='今日' key='today' />
-          <TabPane tab='昨日' key='yesterday' />
+          {/* <TabPane tab='今日' key='today' />
+          <TabPane tab='昨日' key='yesterday' /> */}
           <TabPane tab='近7日' key='last7' />
           <TabPane tab='近15日' key='last15' />
           <TabPane tab='近30日' key='last30' />
-          <TabPane tab='本年' key='thisyear' />
+          {/* <TabPane tab='本年' key='thisyear' /> */}
           <TabPane tab='全部' key='total' />
         </Tabs>
       </div>
