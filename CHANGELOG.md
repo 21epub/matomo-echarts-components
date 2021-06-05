@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8-alpha.4](https://github.com/21epub/matomo-echarts-components/compare/v0.1.8-alpha.3...v0.1.8-alpha.4) (2021-06-05)
+
+
+### Features
+
+* 🎸 add home page reach card ([cdc015c](https://github.com/21epub/matomo-echarts-components/commit/cdc015cb089bef925f1150f6fceea81fed9e3a55))
+
 ### [0.1.8-alpha.3](https://github.com/21epub/matomo-echarts-components/compare/v0.1.8-alpha.2...v0.1.8-alpha.3) (2021-05-11)
 
 
