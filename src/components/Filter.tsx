@@ -59,7 +59,7 @@ function Filter({ isOrgVersion = false, isHomePageVersion = false }: Props) {
     )
   } else if (isHomePageVersion === true) {
     return (
-      <div className={styles.homePageFilter}>
+      <div className={styles.reachFilter}>
         <Tabs
           defaultActiveKey='today'
           activeKey={options.period}
@@ -72,7 +72,7 @@ function Filter({ isOrgVersion = false, isHomePageVersion = false }: Props) {
           <TabPane tab='近15日' key='last15' />
           <TabPane tab='近30日' key='last30' />
           {/* <TabPane tab='本年' key='thisyear' /> */}
-          <TabPane tab='全部' key='total' />
+          <TabPane tab='全部' key='all' />
         </Tabs>
       </div>
     )

@@ -49,7 +49,7 @@ function ReachSummary({ url, options }: Props) {
           {cardConent.map((e, i) => {
             return (
               <Col span={10} offset={2} key={i}>
-                <p>{e.titleList}</p>
+                <p style={{ fontSize: '1.5em' }}>{e.titleList}</p>
                 <h1>{e.dataList}</h1>
               </Col>
             )
