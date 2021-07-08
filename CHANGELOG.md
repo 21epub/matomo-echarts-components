@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8-alpha.6](https://github.com/21epub/matomo-echarts-components/compare/v0.1.8-alpha.5...v0.1.8-alpha.6) (2021-07-08)
+
+
+### Bug Fixes
+
+* 🐛 fix reach card unit ([f6d7ea1](https://github.com/21epub/matomo-echarts-components/commit/f6d7ea131db0338617e9508fb81499af2535da93))
+
 ### [0.1.8-alpha.5](https://github.com/21epub/matomo-echarts-components/compare/v0.1.8-alpha.4...v0.1.8-alpha.5) (2021-06-07)
 
 
