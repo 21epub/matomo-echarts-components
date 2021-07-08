@@ -118,7 +118,7 @@ function ReachTrend({ url, options }: Props) {
           <Col span={6}>
             <p className='daterange'>{daterangeContent}</p>
           </Col>
-          <Col offset={5}>{tab}</Col>
+          <Col offset={2}>{tab}</Col>
         </Row>
         <Row>
           <Col span={24}>
