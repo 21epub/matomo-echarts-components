@@ -284,20 +284,26 @@ function compare(p: string) {
   }
 }
 
-// function getAllLeaf(data: Array<Object>) {
-//   const result: string[] = []
-//   function getLeaf(arr: any) {
-//     arr.forEach((item: {children: any; key: string}) => {
-//       if (!item.children) {
-//         result.push(item.key)
-//       } else {
-//         getLeaf(item.children)
-//       }
-//     })
-//   }
-//   getLeaf(data)
-//   console.log(result.length)
-//   return result.length
-// }
+export const getFormatedNumber = (data: number, type: string) => {
+  switch (type) {
+    case 'exposure':
+      return Math.floor((data / 100000000) * 100) / 100
+    case 'click':
+      return Math.floor((data / 10000) * 100) / 100
+    default:
+      return data
+  }
+}
+
+export function getUnit(keyState: string) {
+  switch (keyState) {
+    case 'exposure':
+      return '亿人次'
+    case 'click':
+      return '万人次'
+    default:
+      return ''
+  }
+}
 
 export { dataFormat, titleTranslate, compare, translatePlaceName }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import useSWR from 'swr'
 import { Spin, Tabs, Col, Row } from 'antd'
-import { titleTranslate } from '../util/util'
+import { getFormatedNumber, titleTranslate, getUnit } from '../util/util'
 import ReactEcharts from 'echarts-for-react'
 import styles from './index.module.less'
 
@@ -52,8 +52,8 @@ function ReachTrend({ url, options }: Props) {
       onChange={getKey}
       className='homePageTabs'
     >
-      <TabPane tab='曝光量' key='exposure' />
-      <TabPane tab='点击量' key='click' />
+      <TabPane tab='曝光量（亿人次）' key='exposure' />
+      <TabPane tab='点击量（万人次）' key='click' />
     </Tabs>
   )
 
@@ -65,7 +65,7 @@ function ReachTrend({ url, options }: Props) {
       const name = titleTranslate(keyState)
       elementsValue[i] = {
         date: keylist[i],
-        [name]: elements[keylist[i]][keyState]
+        [name]: getFormatedNumber(elements[keylist[i]][keyState], keyState)
       }
     }
     const name = titleTranslate(keyState)
@@ -78,7 +78,7 @@ function ReachTrend({ url, options }: Props) {
           const date = params.data.date
           const key = params.dimensionNames[1]
           const value = params.data[key]
-          return key + '<br/>' + date + ':  ' + value
+          return key + '<br/>' + date + ':  ' + value + ' ' + getUnit(keyState)
         }
       },
       dataset: {
@@ -118,9 +118,7 @@ function ReachTrend({ url, options }: Props) {
           <Col span={6}>
             <p className='daterange'>{daterangeContent}</p>
           </Col>
-          <Col span={6} offset={8}>
-            {tab}
-          </Col>
+          <Col offset={5}>{tab}</Col>
         </Row>
         <Row>
           <Col span={24}>
