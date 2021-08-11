@@ -1,8 +1,9 @@
 import React from 'react'
-import { Table, Card, Spin, Col, Row } from 'antd'
+import { Table, Card, Spin, Row, Col, Space, Typography } from 'antd'
 import useSWR from 'swr'
 import SelectYear from './SelectYear'
 // import styles from './index.module.less'
+const { Text } = Typography
 
 interface Options {
   dateRange: string[]
@@ -14,10 +15,11 @@ interface Options {
 interface Props {
   url: string
   options: Options
+  extra?: any
 }
 
 // operation tongji detail
-function Resource({ url, options }: Props) {
+function Resource({ url, options, extra }: Props) {
   const newUrl = `${url}?year=${options.year}`
 
   const swrOptions = {
@@ -94,12 +96,50 @@ function Resource({ url, options }: Props) {
         <Card>
           <Row gutter={[16, 16]}>
             <Col span={24}>
-              <SelectYear />
+              <Space size='large'>
+                <div className='extraContent'>{extra}</div>
+                <SelectYear />
+              </Space>
             </Col>
-          </Row>
+          </Row>          
           <Row>
             <Col span={24}>
-              <Table columns={columns} dataSource={data} bordered />
+              <Table 
+                columns={columns}
+                dataSource={data}
+                bordered 
+                summary={(data) => {
+                  let h5CountSum = 0
+                  let posterSum = 0
+                  let h5TotalVisits = 0
+                  /* eslint-disable */
+                  data.forEach(
+                    ({ h5_count, total_visits, poster_count }) => {
+                      h5CountSum += h5_count
+                      h5TotalVisits += total_visits
+                      posterSum += poster_count
+                    }
+                  )
+                  /* eslint-enable */
+
+                  return (
+                    <Table.Summary.Row style={{ textAlign: 'center' }}>
+                      <Table.Summary.Cell index={0}>
+                        <Text strong>总计</Text>
+                      </Table.Summary.Cell>
+                      <Table.Summary.Cell index={1}>
+                        <Text strong>{h5CountSum}</Text>
+                      </Table.Summary.Cell>
+                      <Table.Summary.Cell index={2}>
+                        <Text strong>{posterSum}</Text>
+                      </Table.Summary.Cell>
+                      <Table.Summary.Cell index={3}>
+                        <Text strong>{h5TotalVisits}</Text>
+                      </Table.Summary.Cell>
+                    </Table.Summary.Row>
+                  )
+                }}
+              />
             </Col>
           </Row>
         </Card>
