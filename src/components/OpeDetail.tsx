@@ -1,8 +1,9 @@
 import React from 'react'
-import { Table, Card, Spin } from 'antd'
+import { Table, Card, Spin, Typography } from 'antd'
 import { titleTranslate, compare } from '../util/util'
 import useSWR from 'swr'
 // import styles from './index.module.less'
+const { Text } = Typography
 
 interface Options {
   dateRange: string[]
@@ -58,7 +59,31 @@ function OpeDetail({ url, options, detailType }: Props) {
     return (
       <div>
         <Card title='详细数据列表'>
-          <Table columns={columns} dataSource={data} />
+          <Table 
+            columns={columns}
+            dataSource={data} 
+            summary={(data) => {
+              let visitsSum = 0
+              /* eslint-disable */
+              data.forEach(
+                ({ visits }) => {
+                  visitsSum += visits
+                }
+              )
+              /* eslint-enable */
+              return (
+                <Table.Summary.Row>
+                  <Table.Summary.Cell index={0}>
+                    <Text strong>总计</Text>
+                  </Table.Summary.Cell>
+                  <Table.Summary.Cell index={1}>
+                    <Text strong>{visitsSum}</Text>
+                  </Table.Summary.Cell>
+                </Table.Summary.Row>
+              )
+            }}
+
+          />
         </Card>
       </div>
     )
