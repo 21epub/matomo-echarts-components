@@ -42,7 +42,8 @@ import {
   // SummaryMobile
   // FunnelDetail,
   Filter,
-  HomeReachCard
+  // HomeReachCard,
+  StatisticReportCard
 } from '@21epub/matomo-echarts-components'
 import '@21epub/matomo-echarts-components/dist/index.css'
 import 'antd/dist/antd.css'
@@ -163,10 +164,10 @@ const TestOptions = () => {
 
       <Row gutter={[16, 16]}>
         <Col span={24}>
-          <HomeReachCard
-            url='https://yapi.epub360.com/mock/36/v3/api/plugins/visits/reach/'
+          <StatisticReportCard
+            url='https://yapi.epub360.com/mock/140/v3/api/report/contents/'
             options={options}
-            title='数字内容成效'
+            title='统计报表'
           />
         </Col>
       </Row>

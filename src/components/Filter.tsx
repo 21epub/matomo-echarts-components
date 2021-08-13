@@ -3,15 +3,20 @@ import { AppContext } from '../util/context'
 import SelectPeriod from './SelectPeriod'
 import { keyToRange } from '../util/dateCompute'
 import styles from './index.module.less'
-import { Tabs } from 'antd'
+import { Space, Tabs } from 'antd'
 const { TabPane } = Tabs
 
 interface Props {
   isOrgVersion?: boolean
   isHomePageVersion?: boolean
+  isStatisticReportVersion?: boolean
 }
 
-function Filter({ isOrgVersion = false, isHomePageVersion = false }: Props) {
+function Filter({
+  isOrgVersion = false,
+  isHomePageVersion = false,
+  isStatisticReportVersion = false
+}: Props) {
   const { state: options, dispatch } = useContext(AppContext)
 
   const filter = (key: string) => {
@@ -37,7 +42,7 @@ function Filter({ isOrgVersion = false, isHomePageVersion = false }: Props) {
     }
   }
 
-  if (isOrgVersion === true) {
+  if (isOrgVersion) {
     return (
       <div className={styles.filter}>
         <Tabs
@@ -57,7 +62,7 @@ function Filter({ isOrgVersion = false, isHomePageVersion = false }: Props) {
         </Tabs>
       </div>
     )
-  } else if (isHomePageVersion === true) {
+  } else if (isHomePageVersion) {
     return (
       <div className={styles.reachFilter}>
         <Tabs
@@ -75,6 +80,21 @@ function Filter({ isOrgVersion = false, isHomePageVersion = false }: Props) {
           <TabPane tab='全部' key='all' />
         </Tabs>
       </div>
+    )
+  } else if (isStatisticReportVersion) {
+    return (
+      <Space className={styles.reachFilter} size='large'>
+        <Tabs
+          defaultActiveKey='today'
+          activeKey={options.period}
+          onChange={filter}
+        >
+          <TabPane tab='近7日' key='last7' />
+          <TabPane tab='近15日' key='last15' />
+          <TabPane tab='近30日' key='last30' />
+        </Tabs>
+        <SelectPeriod />
+      </Space>
     )
   } else {
     return (

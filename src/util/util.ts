@@ -271,6 +271,18 @@ function titleTranslate(title: any) {
       return '曝光量'
     case 'click':
       return '点击量'
+    case 'cbt':
+      return 'CBT'
+    case 'doc':
+      return '文档'
+    case 'docset':
+      return '文档集'
+    case 'quiz':
+      return 'Quiz'
+    case 'video':
+      return '视频'
+    case 'h5':
+      return 'H5'
     default:
       return 'null'
   }
@@ -304,6 +316,17 @@ export function getUnit(keyState: string) {
     default:
       return ''
   }
+}
+
+export function getTabSum(keyState: string, elements: Record<string, any>) {
+  let sum = 0
+  const valueList = Object.values(elements)
+
+  valueList.forEach((obj: Record<string, number>) => {
+    sum += obj[keyState]
+  })
+
+  return sum
 }
 
 export { dataFormat, titleTranslate, compare, translatePlaceName }
