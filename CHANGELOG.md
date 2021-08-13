@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8-alpha.9](https://github.com/21epub/matomo-echarts-components/compare/v0.1.8-alpha.8...v0.1.8-alpha.9) (2021-08-13)
+
+
+### Features
+
+* 🎸 add statistic report card ([2a8fe94](https://github.com/21epub/matomo-echarts-components/commit/2a8fe94d2601c0aa1b05f6fa730ff883ccb0b9de))
+
 ### [0.1.8-alpha.8](https://github.com/21epub/matomo-echarts-components/compare/v0.1.8-alpha.7...v0.1.8-alpha.8) (2021-08-13)
 
 ### [0.1.8-alpha.7](https://github.com/21epub/matomo-echarts-components/compare/v0.1.8-alpha.6...v0.1.8-alpha.7) (2021-07-08)
