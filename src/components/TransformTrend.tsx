@@ -242,8 +242,6 @@ function TransformTrend({
                 </Card>
               </div>
             </Col>
-          </Row>
-          <Row gutter={[16, 16]}>
             <Col span={24}>
               <TransformDetail
                 url={summaryUrl}
