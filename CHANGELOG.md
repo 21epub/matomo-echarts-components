@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8-alpha.11](https://github.com/21epub/matomo-echarts-components/compare/v0.1.8-alpha.10...v0.1.8-alpha.11) (2021-10-15)
+
+
+### Features
+
+* 🎸 add cbt trend ([1f4abb1](https://github.com/21epub/matomo-echarts-components/commit/1f4abb12de8a4e1edcb20381b448a816d442fd97))
+
 ### [0.1.8-alpha.10](https://github.com/21epub/matomo-echarts-components/compare/v0.1.8-alpha.9...v0.1.8-alpha.10) (2021-09-08)
 
 
