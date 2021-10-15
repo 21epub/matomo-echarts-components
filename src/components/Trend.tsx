@@ -92,7 +92,12 @@ function Trend({
     </Tabs>
   ) : (
     <Col xs={{ span: 14 }}>
-      <Tabs defaultActiveKey='nb_hits' activeKey={keyState} onChange={getKey}>
+      <Tabs
+        defaultActiveKey='nb_hits'
+        activeKey={keyState}
+        onChange={getKey}
+        style={isCbtVersion ? { marginLeft: '20%' } : undefined}
+      >
         <TabPane tab='PV' key='nb_hits' />
         <TabPane tab='UV' key='nb_uniq_visitors' />
         {!isCbtVersion ? <TabPane tab='转发数' key='forwarding_number' /> : ''}

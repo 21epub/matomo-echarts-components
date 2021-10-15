@@ -59,17 +59,15 @@ function OpeDetail({ url, options, detailType }: Props) {
     return (
       <div>
         <Card title='详细数据列表'>
-          <Table 
+          <Table
             columns={columns}
-            dataSource={data} 
+            dataSource={data}
             summary={(data) => {
               let visitsSum = 0
               /* eslint-disable */
-              data.forEach(
-                ({ visits }) => {
-                  visitsSum += visits
-                }
-              )
+              data.forEach(({ visits }) => {
+                visitsSum += visits
+              })
               /* eslint-enable */
               return (
                 <Table.Summary.Row>
@@ -82,7 +80,6 @@ function OpeDetail({ url, options, detailType }: Props) {
                 </Table.Summary.Row>
               )
             }}
-
           />
         </Card>
       </div>

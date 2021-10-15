@@ -662,3 +662,38 @@
     }
   }
 }
+
+.cbtFilter {
+  :global {
+    .ant-tabs {
+      height: 46px;
+      // background-color: white;
+
+      .ant-tabs-nav {
+        margin-top: -10px;
+      }
+      .ant-tabs-nav::before {
+        border-bottom: 0;
+      }
+      .ant-tabs-extra-content {
+        position: relative;
+        right: 10px;
+        line-height: 52px;
+      }
+
+      .ant-tabs-tab-btn:focus {
+        color: #1890ff;
+      }
+    }
+
+    .ant-tabs-nav::before {
+      border-bottom: 0;
+    }
+
+    .ant-tabs-ink-bar {
+      &.ant-tabs-ink-bar-animated {
+        display: none;
+      }
+    }
+  }
+}

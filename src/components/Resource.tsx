@@ -101,25 +101,23 @@ function Resource({ url, options, extra }: Props) {
                 <SelectYear />
               </Space>
             </Col>
-          </Row>          
+          </Row>
           <Row>
             <Col span={24}>
-              <Table 
+              <Table
                 columns={columns}
                 dataSource={data}
-                bordered 
+                bordered
                 summary={(data) => {
                   let h5CountSum = 0
                   let posterSum = 0
                   let h5TotalVisits = 0
                   /* eslint-disable */
-                  data.forEach(
-                    ({ h5_count, total_visits, poster_count }) => {
-                      h5CountSum += h5_count
-                      h5TotalVisits += total_visits
-                      posterSum += poster_count
-                    }
-                  )
+                  data.forEach(({ h5_count, total_visits, poster_count }) => {
+                    h5CountSum += h5_count
+                    h5TotalVisits += total_visits
+                    posterSum += poster_count
+                  })
                   /* eslint-enable */
 
                   return (

@@ -100,7 +100,7 @@ function Filter({
     )
   } else if (isCbtVersion) {
     return (
-      <Space className={styles.filter} size='large'>
+      <Space className={styles.reachFilter} size='large'>
         <Tabs
           defaultActiveKey='today'
           activeKey={options.period}
