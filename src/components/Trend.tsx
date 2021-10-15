@@ -22,6 +22,7 @@ interface Props {
   cardTitle: string
   isDetailVersion?: boolean
   isOrgVersion?: boolean
+  isCbtVersion?: boolean
   createTime?: string
   extra?: React.ReactNode[]
 }
@@ -33,6 +34,7 @@ function Trend({
   cardTitle,
   isDetailVersion = false,
   isOrgVersion = false,
+  isCbtVersion = false,
   createTime,
   extra
 }: Props) {
@@ -84,18 +86,18 @@ function Trend({
     <Tabs defaultActiveKey='nb_hits' activeKey={keyState} onChange={getKey}>
       <TabPane tab='PV' key='nb_hits' />
       <TabPane tab='UV' key='nb_uniq_visitors' />
-      <TabPane tab='转发数' key='forwarding_number' />
-      <TabPane tab='平均时长' key='avg_time_on_page' />
-      <TabPane tab='跳出率' key='bounce_rate' />
+      {!isCbtVersion ? <TabPane tab='转发数' key='forwarding_number' /> : ''}
+      {!isCbtVersion ? <TabPane tab='平均时长' key='avg_time_on_page' /> : ''}
+      {!isCbtVersion ? <TabPane tab='跳出率' key='bounce_rate' /> : ''}
     </Tabs>
   ) : (
     <Col xs={{ span: 14 }}>
       <Tabs defaultActiveKey='nb_hits' activeKey={keyState} onChange={getKey}>
         <TabPane tab='PV' key='nb_hits' />
         <TabPane tab='UV' key='nb_uniq_visitors' />
-        <TabPane tab='转发数' key='forwarding_number' />
-        <TabPane tab='平均时长' key='avg_time_on_page' />
-        <TabPane tab='跳出率' key='bounce_rate' />
+        {!isCbtVersion ? <TabPane tab='转发数' key='forwarding_number' /> : ''}
+        {!isCbtVersion ? <TabPane tab='平均时长' key='avg_time_on_page' /> : ''}
+        {!isCbtVersion ? <TabPane tab='跳出率' key='bounce_rate' /> : ''}
       </Tabs>
     </Col>
   )

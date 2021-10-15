@@ -30,7 +30,7 @@ import {
   // HorizontalBarchartMobile,
   // VisitorsList,
   // EquipmentDetail,
-  // Trend
+  Trend,
   // InstallButton,
   // Promote,
   // Summary,
@@ -68,7 +68,7 @@ const TestOptions = () => {
 
   return (
     <div>
-      <Filter isOrgVersion />
+      <Filter isCbtVersion />
       {/* <Col span={24}>
         <Card style={{backgroundColor:"grey"}}>
         <Filter isOrgVersion />
@@ -222,6 +222,7 @@ const TestOptions = () => {
           />
         </Col>
       </Row>
+      */}
       <Row gutter={[16, 16]}>
         <Col span={24}>
           <Trend
@@ -229,10 +230,11 @@ const TestOptions = () => {
             options={options}
             cardTitle='test'
             createTime={createTime}
-            isDetailVersion
+            // isDetailVersion
+            isCbtVersion
           />
         </Col>
-      </Row> */}
+      </Row>
 
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>

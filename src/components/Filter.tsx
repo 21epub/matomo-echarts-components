@@ -10,12 +10,14 @@ interface Props {
   isOrgVersion?: boolean
   isHomePageVersion?: boolean
   isStatisticReportVersion?: boolean
+  isCbtVersion?: boolean
 }
 
 function Filter({
   isOrgVersion = false,
   isHomePageVersion = false,
-  isStatisticReportVersion = false
+  isStatisticReportVersion = false,
+  isCbtVersion = false
 }: Props) {
   const { state: options, dispatch } = useContext(AppContext)
 
@@ -92,6 +94,21 @@ function Filter({
           <TabPane tab='近7日' key='last7' />
           <TabPane tab='近15日' key='last15' />
           <TabPane tab='近30日' key='last30' />
+        </Tabs>
+        <SelectPeriod />
+      </Space>
+    )
+  } else if (isCbtVersion) {
+    return (
+      <Space className={styles.reachFilter} size='large'>
+        <Tabs
+          defaultActiveKey='today'
+          activeKey={options.period}
+          onChange={filter}
+        >
+          <TabPane tab='近7日' key='last7' />
+          <TabPane tab='近30日' key='last30' />
+          <TabPane tab='近一年' key='last365' />
         </Tabs>
         <SelectPeriod />
       </Space>
