@@ -267,6 +267,10 @@ function titleTranslate(title: any) {
       return '页面'
     case 'funnelnb_events':
       return '访客数'
+    case 'eventlabel':
+      return '事件名称'
+    case 'eventnb_events':
+      return '触发数'
     case 'exposure':
       return '曝光量'
     case 'click':
