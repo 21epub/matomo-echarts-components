@@ -60,6 +60,7 @@ function OpeDetail({ url, options, detailType }: Props) {
       <div>
         <Card title='详细数据列表'>
           <Table
+            pagination={{ pageSize: 20 }}
             columns={columns}
             dataSource={data}
             summary={(data) => {
