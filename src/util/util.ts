@@ -205,7 +205,7 @@ function translatePlaceName(placeName: string) {
   }
 }
 
-function titleTranslate(title: any) {
+function titleTranslate(title: any, type = 'CBT') {
   switch (title) {
     case 'nb_hits':
       return 'PV'
@@ -276,7 +276,8 @@ function titleTranslate(title: any) {
     case 'click':
       return '点击量'
     case 'cbt':
-      return 'CBT'
+      if (type === 'CBT') return 'CBT'
+      else return type
     case 'doc':
       return '文档'
     case 'docset':

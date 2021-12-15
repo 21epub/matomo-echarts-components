@@ -43,7 +43,8 @@ import {
   // FunnelDetail,
   Filter,
   // HomeReachCard,
-  StatisticReportCard
+  // StatisticReportCard,
+  StatisticReportCardDigital
 } from '@21epub/matomo-echarts-components'
 import '@21epub/matomo-echarts-components/dist/index.css'
 import 'antd/dist/antd.css'
@@ -162,7 +163,7 @@ const TestOptions = () => {
         </Col>
       </Row> */}
 
-      <Row gutter={[16, 16]}>
+      {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <StatisticReportCard
             url='https://yapi.epub360.com/mock/140/v3/api/report/contents/'
@@ -170,8 +171,17 @@ const TestOptions = () => {
             title='统计报表'
           />
         </Col>
-      </Row>
+      </Row> */}
 
+      <Row gutter={[16, 16]}>
+        <Col span={24}>
+          <StatisticReportCardDigital
+            url='https://yapi.epub360.com/mock/140/v3/api/report/contents/'
+            options={options}
+            title='统计报表'
+          />
+        </Col>
+      </Row>
       {/* <Row gutter={[16, 16]}>
         <Col span={24}>
           <CaseDetail

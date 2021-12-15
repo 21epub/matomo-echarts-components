@@ -40,3 +40,4 @@ export { default as HorizontalBarchartMobile } from './components/mobile/Horizon
 export { default as CampaignChart } from './components/CampaignChart'
 export { default as CampaignDetail } from './components/CampaignDetail'
 export { default as StatisticReportCard } from './components/StatisticReportCard'
+export { default as StatisticReportCardDigital } from './components/StatisticReportCardDigital'
