@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8-alpha.16](https://github.com/21epub/matomo-echarts-components/compare/v0.1.8-alpha.15...v0.1.8-alpha.16) (2021-12-15)
+
+
+### Bug Fixes
+
+* 🐛 add digital statistic card ([c823d97](https://github.com/21epub/matomo-echarts-components/commit/c823d9785db3fad123063a8dd98a6d186702beb8))
+
 ### [0.1.8-alpha.15](https://github.com/21epub/matomo-echarts-components/compare/v0.1.8-alpha.14...v0.1.8-alpha.15) (2021-10-27)
 
 
