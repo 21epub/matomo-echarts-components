@@ -81,9 +81,24 @@ function CampaignDetail({
 
     const data: any = []
     elements = elements.forEach((it: any) => {
-      const labelId = String(it.label).substr(0, String(it.label).length - 1)
+      const labelId = String(it.label).endsWith('/')
+        ? String(it.label).substr(0, String(it.label).length - 1)
+        : String(it.label).substr(0, String(it.label).length)
+
       const labelName = getLabelName(labelId)
-      if (labelName) data.push({ label: labelName, nb_visits: it.nb_visits })
+      if (labelName) {
+        if (
+          data.filter((labelItem: any) => labelItem.label === labelName)?.length
+        ) {
+          data.forEach((dataItem: any) => {
+            if (dataItem.label === labelName) {
+              dataItem.nb_visits = dataItem.nb_visits + it.nb_visits
+            }
+          })
+        } else {
+          data.push({ label: labelName, nb_visits: it.nb_visits })
+        }
+      }
     })
 
     if (data?.length) {
