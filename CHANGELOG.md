@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.8](https://github.com/21epub/matomo-echarts-components/compare/v0.1.8-alpha.16...v0.1.8) (2022-04-26)
+
+
+### Bug Fixes
+
+* 🐛 fix campaignchart ([9252402](https://github.com/21epub/matomo-echarts-components/commit/9252402fd90f66cd9016d85dea7ae29bbd0203fe))
+
 ### [0.1.8-alpha.16](https://github.com/21epub/matomo-echarts-components/compare/v0.1.8-alpha.15...v0.1.8-alpha.16) (2021-12-15)
 
 
