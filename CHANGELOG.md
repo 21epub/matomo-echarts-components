@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://github.com/21epub/matomo-echarts-components/compare/v0.1.10...v0.1.11) (2022-08-15)
+
+
+### Bug Fixes
+
+* 🐛 fix tab active color ([b7ec100](https://github.com/21epub/matomo-echarts-components/commit/b7ec10026fa820d46d65305ecb25e3c648a39632))
+
 ### [0.1.10](https://github.com/21epub/matomo-echarts-components/compare/v0.1.9...v0.1.10) (2022-08-15)
 
 
