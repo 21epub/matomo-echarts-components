@@ -202,7 +202,7 @@ function ContentByOrg({ url, options, extra }: Props) {
                   let h5CountSum = 0
                   let h5ReleaseSum = 0
                   let h5TotalVisits = 0
-                  let h5AveVisits = 0
+                  // let h5AveVisits = 0
                   let posterSum = 0
 
                   /* eslint-disable */
@@ -211,13 +211,13 @@ function ContentByOrg({ url, options, extra }: Props) {
                       h5_count,
                       h5_release_count,
                       total_visits,
-                      ave_visits,
+                      // ave_visits,
                       poster_count
                     }) => {
                       h5CountSum += h5_count.props.children
                       h5ReleaseSum += h5_release_count.props.children
                       h5TotalVisits += total_visits
-                      h5AveVisits += ave_visits
+                      // h5AveVisits += ave_visits
                       posterSum += poster_count
                     }
                   )
@@ -238,7 +238,7 @@ function ContentByOrg({ url, options, extra }: Props) {
                         <Text strong>{h5TotalVisits}</Text>
                       </Table.Summary.Cell>
                       <Table.Summary.Cell index={4}>
-                        <Text strong>{h5AveVisits}</Text>
+                        <Text strong>/</Text>
                       </Table.Summary.Cell>
                       <Table.Summary.Cell index={5}>
                         <Text strong>{posterSum}</Text>
