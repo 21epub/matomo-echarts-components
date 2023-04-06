@@ -87,8 +87,8 @@ function Trend({
       <TabPane tab='PV' key='nb_hits' />
       <TabPane tab='UV' key='nb_uniq_visitors' />
       {!isCbtVersion ? <TabPane tab='转发数' key='forwarding_number' /> : ''}
-      {!isCbtVersion ? <TabPane tab='平均时长' key='avg_time_on_page' /> : ''}
-      {!isCbtVersion ? <TabPane tab='跳出率' key='bounce_rate' /> : ''}
+      {/* {!isCbtVersion ? <TabPane tab='平均时长' key='avg_time_on_page' /> : ''}
+      {!isCbtVersion ? <TabPane tab='跳出率' key='bounce_rate' /> : ''} */}
     </Tabs>
   ) : (
     <Col xs={{ span: 14 }}>
@@ -101,8 +101,8 @@ function Trend({
         <TabPane tab='PV' key='nb_hits' />
         <TabPane tab='UV' key='nb_uniq_visitors' />
         {!isCbtVersion ? <TabPane tab='转发数' key='forwarding_number' /> : ''}
-        {!isCbtVersion ? <TabPane tab='平均时长' key='avg_time_on_page' /> : ''}
-        {!isCbtVersion ? <TabPane tab='跳出率' key='bounce_rate' /> : ''}
+        {/* {!isCbtVersion ? <TabPane tab='平均时长' key='avg_time_on_page' /> : ''}
+        {!isCbtVersion ? <TabPane tab='跳出率' key='bounce_rate' /> : ''} */}
       </Tabs>
     </Col>
   )
@@ -112,7 +112,7 @@ function Trend({
       <TabPane tab='PV' key='nb_hits' />
       <TabPane tab='UV' key='nb_uniq_visitors' />
       <TabPane tab='分享转发' key='forwarding_number' />
-      <TabPane tab='数据' key='add_data' />
+      {/* <TabPane tab='数据' key='add_data' /> */}
     </Tabs>
   ) : (
     <Col xs={{ span: 14 }}>
@@ -120,7 +120,7 @@ function Trend({
         <TabPane tab='PV' key='nb_hits' />
         <TabPane tab='UV' key='nb_uniq_visitors' />
         <TabPane tab='分享转发' key='forwarding_number' />
-        <TabPane tab='数据' key='add_data' />
+        {/* <TabPane tab='数据' key='add_data' /> */}
       </Tabs>
     </Col>
   )

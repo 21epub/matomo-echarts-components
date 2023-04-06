@@ -55,7 +55,7 @@ function HomePageTrend({ url, options }: Props) {
       <TabPane tab='PV' key='nb_hits' />
       <TabPane tab='UV' key='nb_uniq_visitors' />
       <TabPane tab='分享转发' key='forwarding_number' />
-      <TabPane tab='数据' key='add_data' />
+      {/* <TabPane tab='数据' key='add_data' /> */}
     </Tabs>
   )
 

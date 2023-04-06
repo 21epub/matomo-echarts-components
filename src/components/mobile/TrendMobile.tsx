@@ -78,8 +78,8 @@ function TrendMobile({
         <TabPane tab='PV' key='nb_hits' />
         <TabPane tab='UV' key='nb_uniq_visitors' />
         <TabPane tab='转发数' key='forwarding_number' />
-        <TabPane tab='平均时长' key='avg_time_on_page' />
-        <TabPane tab='跳出率' key='bounce_rate' />
+        {/* <TabPane tab='平均时长' key='avg_time_on_page' />
+        <TabPane tab='跳出率' key='bounce_rate' /> */}
       </Tabs>
     </Col>
   )
@@ -90,7 +90,7 @@ function TrendMobile({
         <TabPane tab='PV' key='nb_hits' />
         <TabPane tab='UV' key='nb_uniq_visitors' />
         <TabPane tab='分享转发' key='forwarding_number' />
-        <TabPane tab='数据' key='add_data' />
+        {/* <TabPane tab='数据' key='add_data' /> */}
       </Tabs>
     </Col>
   )

@@ -38,14 +38,14 @@ function OrgSummary({ url, options, isHomePageVersion = false }: Props) {
     const titleList = [
       '新增浏览量（PV）',
       '新增访客数（UV）',
-      '新增转发数',
-      '新增数据记录（个）'
+      '新增转发数'
+      // '新增数据记录（个）'
     ]
     const data = [
       elements.total.nb_hits,
       elements.total.nb_uniq_visitors,
-      elements.total.forwarding_number,
-      elements.total.add_data
+      elements.total.forwarding_number
+      // elements.total.add_data
     ]
     for (let i = 0; i < titleList.length; i++) {
       cardConent[i] = {
@@ -76,7 +76,7 @@ function OrgSummary({ url, options, isHomePageVersion = false }: Props) {
             <Row>
               {cardConent.map((e, i) => {
                 return (
-                  <Col span={5} offset={1} key={i}>
+                  <Col span={6} offset={2} key={i}>
                     <p>{e.titleList}</p>
                     <h1>{e.dataList}</h1>
                   </Col>

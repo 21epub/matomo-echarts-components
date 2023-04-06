@@ -73,8 +73,8 @@ function SummaryMobile({ url, createTime }: Props) {
               <p>浏览量</p>
               <p>访客数</p>
               <p>转发数</p>
-              <p>平均时长</p>
-              <p>跳出率</p>
+              {/* <p>平均时长</p>
+              <p>跳出率</p> */}
             </div>
           </Col>
           {content.map((e, i) => {
@@ -84,8 +84,8 @@ function SummaryMobile({ url, createTime }: Props) {
                 <p>{e.pvList}</p>
                 <p>{e.uvList}</p>
                 <p>{e.forwardingList}</p>
-                <p>{e.avgTimeList}</p>
-                <p>{e.bounceRateList}</p>
+                {/* <p>{e.avgTimeList}</p>
+                <p>{e.bounceRateList}</p> */}
               </Col>
             )
           })}
