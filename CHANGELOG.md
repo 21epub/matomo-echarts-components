@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.15](https://github.com/21epub/matomo-echarts-components/compare/v0.1.14...v0.1.15) (2023-04-06)
+
+
+### Bug Fixes
+
+* 隐藏今日tab ([8352e9a](https://github.com/21epub/matomo-echarts-components/commit/8352e9a21e18711c75d8ce0d89bc2ea28603dde2))
+
 ### [0.1.14](https://github.com/21epub/matomo-echarts-components/compare/v0.1.13...v0.1.14) (2023-04-06)
 
 
