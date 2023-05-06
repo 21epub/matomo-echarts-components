@@ -55,7 +55,7 @@ function dataFormat(elements: Array<any>, mapDetail = false) {
       case 'Liaoning':
         area = '辽宁' // 17
         break
-      case 'Inner':
+      case 'Nei':
         area = '内蒙古' // 18
         break
       case 'Ningxia':
@@ -79,7 +79,7 @@ function dataFormat(elements: Array<any>, mapDetail = false) {
       case 'Sichuan':
         area = '四川' // 25
         break
-      case 'Tianjing':
+      case 'Tianjin':
         area = '天津' // 26
         break
       case 'Tibet':
@@ -107,7 +107,7 @@ function dataFormat(elements: Array<any>, mapDetail = false) {
         area = '台湾' // 34
         break
       default:
-        console.log('transfer err')
+        console.log(area)
         break
     }
     if (mapDetail === true) {

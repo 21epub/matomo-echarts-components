@@ -96,11 +96,10 @@ function EchartsMap({
         splitNumber: 5,
         // seriesIndex:0,
         pieces: [
-          // {gt: 10000, color: 'RGBA(125, 22, 24, 1.00)'},            // (1500, Infinity]
-          { gt: 1000, lte: 10000, color: 'RGB(69, 132, 220)' },
-          { gt: 100, lte: 1000, color: 'RGB(105, 157, 230)' },
-          { gt: 10, lte: 100, color: 'RGB(162, 190, 234)' },
-          { gt: 0, lte: 10, color: 'RGB(207, 223, 244)' },
+          { gt: 50000, color: 'RGB(69, 132, 220)' }, // (1500, Infinity]
+          { gt: 10000, lte: 50000, color: 'RGB(105, 157, 230)' },
+          { gt: 5000, lte: 10000, color: 'RGB(162, 190, 234)' },
+          { gt: 0, lte: 5000, color: 'RGB(207, 223, 244)' },
           { value: 0, color: '#eef3fd' }
         ],
         realtime: false,
