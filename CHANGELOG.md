@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.17](https://github.com/21epub/matomo-echarts-components/compare/v0.1.16...v0.1.17) (2023-05-09)
+
+
+### Bug Fixes
+
+* map max min val ([c0ef731](https://github.com/21epub/matomo-echarts-components/commit/c0ef731bc0df37f9ef05c7b4d9392812b9ef797c))
+
 ### [0.1.16](https://github.com/21epub/matomo-echarts-components/compare/v0.1.15...v0.1.16) (2023-05-06)
 
 
