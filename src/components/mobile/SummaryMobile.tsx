@@ -23,7 +23,7 @@ function SummaryMobile({ url, createTime }: Props) {
   if (elements?.yesterday) {
     const content = []
     const spanList = [6, 6, 6]
-    const titleList = ['昨日', '总']
+    const titleList = ['今日', '昨日', '总']
     const pvList = [
       // elements.today.nb_hits,
       elements.yesterday.nb_hits,

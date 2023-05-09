@@ -53,7 +53,7 @@ function Filter({
           tabBarExtraContent={<SelectPeriod />}
           onChange={filter}
         >
-          {/* <TabPane tab='今日' key='today' /> */}
+          <TabPane tab='今日' key='today' />
           <TabPane tab='昨日' key='yesterday' />
           <TabPane tab='近7日' key='last7' />
           <TabPane tab='近15日' key='last15' />
@@ -122,7 +122,7 @@ function Filter({
           tabBarExtraContent={<SelectPeriod />}
           onChange={filter}
         >
-          {/* <TabPane tab='今日' key='today' /> */}
+          <TabPane tab='今日' key='today' />
           <TabPane tab='昨日' key='yesterday' />
           <TabPane tab='近7日' key='last7' />
           <TabPane tab='近15日' key='last15' />

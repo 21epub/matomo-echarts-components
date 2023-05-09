@@ -30,13 +30,13 @@ function Summary({ url, createTime }: Props) {
       // '平均时长',
       // '跳出率'
     ]
-    // const todayData = [
-    //   elements.today.nb_hits,
-    //   elements.today.nb_uniq_visitors,
-    //   elements.today.forwarding_number
-    //   secondToTime(elements.today.avg_time_on_page),
-    //   elements.today.bounce_rate
-    // ]
+    const todayData = [
+      elements.today.nb_hits,
+      elements.today.nb_uniq_visitors,
+      elements.today.forwarding_number
+      // secondToTime(elements.today.avg_time_on_page),
+      // elements.today.bounce_rate
+    ]
     const yesterdayData = [
       elements.yesterday.nb_hits,
       elements.yesterday.nb_uniq_visitors,
@@ -55,7 +55,7 @@ function Summary({ url, createTime }: Props) {
       content[i] = {
         spanList: spanList[i],
         titleList: titleList[i],
-        // todayData: todayData[i],
+        todayData: todayData[i],
         yesterdayData: yesterdayData[i],
         totalData: totalData[i]
       }
@@ -65,7 +65,7 @@ function Summary({ url, createTime }: Props) {
         <Row align='bottom'>
           <Col span={2}>
             <br />
-            {/* <p>今日</p> */}
+            <p>今日</p>
             <p>昨日</p>
             <p>总</p>
           </Col>
@@ -73,7 +73,7 @@ function Summary({ url, createTime }: Props) {
             return (
               <Col span={e.spanList} key={i}>
                 <p>{e.titleList}</p>
-                {/* <h1>{e.todayData}</h1> */}
+                <h1>{e.todayData}</h1>
                 <p>{e.yesterdayData}</p>
                 <p>{e.totalData}</p>
               </Col>

@@ -72,6 +72,12 @@ function EchartsMap({
 
   if (elements?.length) {
     const data = dataFormat(elements)
+    const valList = data.map((item) => item.value)
+    const maxVal = Math.max(...valList)
+    const firstStage = Math.floor(maxVal * 0.25)
+    const secondStage = Math.floor(maxVal * 0.5)
+    const thirdStage = Math.floor(maxVal * 0.75)
+
     var content = {
       title: {
         text: '浏览量',
@@ -96,10 +102,10 @@ function EchartsMap({
         splitNumber: 5,
         // seriesIndex:0,
         pieces: [
-          { gt: 50000, color: 'RGB(69, 132, 220)' }, // (1500, Infinity]
-          { gt: 10000, lte: 50000, color: 'RGB(105, 157, 230)' },
-          { gt: 5000, lte: 10000, color: 'RGB(162, 190, 234)' },
-          { gt: 0, lte: 5000, color: 'RGB(207, 223, 244)' },
+          { gt: thirdStage, color: 'RGB(69, 132, 220)' }, // (1500, Infinity]
+          { gt: secondStage, lte: thirdStage, color: 'RGB(105, 157, 230)' },
+          { gt: firstStage, lte: secondStage, color: 'RGB(162, 190, 234)' },
+          { gt: 0, lte: firstStage, color: 'RGB(207, 223, 244)' },
           { value: 0, color: '#eef3fd' }
         ],
         realtime: false,
