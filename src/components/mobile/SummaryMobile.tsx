@@ -25,18 +25,18 @@ function SummaryMobile({ url, createTime }: Props) {
     const spanList = [6, 6, 6]
     const titleList = ['今日', '昨日', '总']
     const pvList = [
-      // elements.today.nb_hits,
+      elements.today.nb_hits,
       elements.yesterday.nb_hits,
       elements.total.nb_hits
     ]
     const uvList = [
-      // elements.today.nb_uniq_visitors,
+      elements.today.nb_uniq_visitors,
       elements.yesterday.nb_uniq_visitors,
       elements.total.nb_uniq_visitors
     ]
 
     const forwardingList = [
-      // elements.today.forwarding_number,
+      elements.today.forwarding_number,
       elements.yesterday.forwarding_number,
       elements.total.forwarding_number
     ]
@@ -48,7 +48,7 @@ function SummaryMobile({ url, createTime }: Props) {
     ]
 
     const bounceRateList = [
-      // elements.today.bounce_rate,
+      elements.today.bounce_rate,
       elements.yesterday.bounce_rate,
       elements.total.bounce_rate
     ]
