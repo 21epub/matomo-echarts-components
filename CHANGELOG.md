@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.19](https://github.com/21epub/matomo-echarts-components/compare/v0.1.18...v0.1.19) (2024-02-26)
+
+
+### Bug Fixes
+
+* cbt to 课程单元 ([5c7b340](https://github.com/21epub/matomo-echarts-components/commit/5c7b340af34ed8e64021ccd0dc561467f1ab7749))
+
 ### [0.1.18](https://github.com/21epub/matomo-echarts-components/compare/v0.1.17...v0.1.18) (2023-05-10)
 
 
