@@ -26,7 +26,7 @@ export default function StatisticReportTrend({
       onChange={getKey}
       className='homePageTabs'
     >
-      <TabPane tab='CBT' key='cbt' />
+      <TabPane tab='课程单元' key='cbt' />
       <TabPane tab='文档' key='doc' />
       <TabPane tab='文档集' key='docset' />
       <TabPane tab='Quiz' key='quiz' />

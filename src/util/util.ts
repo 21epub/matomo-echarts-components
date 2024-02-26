@@ -276,7 +276,7 @@ function titleTranslate(title: any, type = 'CBT') {
     case 'click':
       return '点击量'
     case 'cbt':
-      if (type === 'CBT') return 'CBT'
+      if (type === 'CBT') return '课程单元'
       else return type
     case 'doc':
       return '文档'

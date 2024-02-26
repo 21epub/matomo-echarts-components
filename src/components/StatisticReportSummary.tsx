@@ -10,7 +10,7 @@ interface Props {
 export default function StatisticReportSummary({ elements }: Props) {
   if (elements) {
     const cardConent = []
-    const titleList = ['CBT', '文档', '文档集', 'Quiz', '视频', 'H5']
+    const titleList = ['课程单元', '文档', '文档集', 'Quiz', '视频', 'H5']
     const data = [
       getTabSum('cbt', elements),
       getTabSum('doc', elements),
